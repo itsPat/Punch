@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  Punch
 //
 //  Created by Patrick Trudel on 2019-06-24.
