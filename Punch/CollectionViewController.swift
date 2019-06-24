@@ -1,5 +1,5 @@
 //
-//  CollectionView.swift
+//  CollectionViewController.swift
 //  Punch
 //
 //  Created by Patrick Trudel on 2019-06-24.
@@ -18,7 +18,7 @@ struct Employee {
     let shift: [Shift]
 }
 
-class CollectionView: UIViewController {
+class CollectionViewController: UIViewController {
 
     
     let items: [Employee] = [
@@ -53,13 +53,13 @@ class CollectionView: UIViewController {
 
 }
 
-extension CollectionView: UICollectionViewDelegateFlowLayout {
+extension CollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width * 0.8, height: view.frame.width * 0.2)
     }
 }
 
-extension CollectionView: UICollectionViewDataSource {
+extension CollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
