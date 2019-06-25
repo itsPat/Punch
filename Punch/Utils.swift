@@ -15,6 +15,7 @@ struct CustomColors {
     static let pink = UIColor(red: 230/255, green: 105/255, blue: 204/255, alpha: 1.0)
     static let purple = UIColor(red: 146/255, green: 104/255, blue: 245/255, alpha: 1.0)
     static let orange = UIColor(red: 255/255, green: 198/255, blue: 37/255, alpha: 1.0)
+    static let gray = UIColor(red: 111/255, green: 113/255, blue: 121/255, alpha: 1.0)
 }
 
 extension UIView {

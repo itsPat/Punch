@@ -20,7 +20,9 @@ class LoginViewController: UIViewController {
     }
     
     func setupButton() {
-        view.layoutIfNeeded()
+        DispatchQueue.main.async {
+            self.view.layoutIfNeeded()
+        }
         signInButton.setCornerRadius()
         signInButton.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.green)
         signInButton.setStandardShadow()
@@ -38,7 +40,9 @@ class LoginViewController: UIViewController {
             let reason = "Identify yourself!"
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { (success, err) in
                 if success {
-                    self.performSegue(withIdentifier: "employeeSegue", sender: nil)
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "employeeSegue", sender: nil)
+                    }
                     print("Successfully Authenticated User.")
                 } else if let err = err {
                     print("Error: \(err)")

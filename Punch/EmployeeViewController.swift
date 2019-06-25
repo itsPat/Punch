@@ -22,9 +22,15 @@ struct Employee {
 class EmployeeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var amountOwedLabel: UILabel!
+    @IBOutlet weak var labelContainerView: UIView!
+    var calendarSize = CGSize()
     
     override func viewDidLoad() {
-        collectionView.register(CalendarView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "calendarView")
+        calendarSize = CGSize(width: view.frame.width * 0.8, height: view.frame.width * 0.8)
+        collectionView.register(FSCalendar.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "calendarView")
+        labelContainerView.setStandardShadow()
+        labelContainerView.backgroundColor = CustomColors.gray
     }
 
     
@@ -55,7 +61,7 @@ extension EmployeeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width * 0.8, height: view.frame.width * 0.8)
+        return calendarSize
     }
 }
 
@@ -69,18 +75,14 @@ extension EmployeeViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
         cell.titleLabel.text = formatToDateString(date: items[indexPath.item].start)
         cell.detailLabel.text = "\(formatToHourMinutesString(date: items[indexPath.item].start)) - \(formatToHourMinutesString(date: items[indexPath.item].finish))"
-        cell.layer.backgroundColor = UIColor.white.cgColor
-        cell.layer.cornerRadius = cell.frame.height * 0.2
-        cell.layer.shadowColor = Int.random(in: 1...6) == 1 ? UIColor.red.cgColor : UIColor.gray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 1.0, height: 3.0)
-        cell.layer.shadowRadius = 2.0
-        cell.layer.shadowOpacity = 1.0
-        cell.layer.masksToBounds = false
+        cell.setStandardShadow()
+        cell.setCornerRadius()
+        cell.setStandardShadow()
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "calendarView", for: indexPath) as! CalendarView
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "calendarView", for: indexPath) as! FSCalendar
         headerView.dataSource = self
         headerView.delegate = self
         return headerView
@@ -101,55 +103,13 @@ extension EmployeeViewController: UICollectionViewDataSource {
 
 }
 
-extension EmployeeViewController: CalendarViewDataSource, CalendarViewDelegate {
-    func calendar(_ calendar: CalendarView, didSelectDate date : Date, withEvents events: [CalendarEvent]) {
-        
-        print("Did Select: \(date) with \(events.count) events")
-        for event in events {
-            print("\t\"\(event.title)\" - Starting at:\(event.startDate)")
+extension EmployeeViewController: FSCalendarDelegate, FSCalendarDataSource {
+    
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        self.calendarSize = bounds.size
+        DispatchQueue.main.async {
+            self.view.layoutIfNeeded()
         }
-        
     }
     
-    func calendar(_ calendar: CalendarView, didDeselectDate date : Date) {
-        
-    }
-    
-    
-//    func calendar(_ calendar: CalendarView, didLongPressDate date : Date) {
-//        
-//        let alert = UIAlertController(title: "Create New Event", message: "Message", preferredStyle: .alert)
-//        
-//        alert.addTextField { (textField: UITextField) in
-//            textField.placeholder = "Event Title"
-//        }
-//        
-//        let addEventAction = UIAlertAction(title: "Create", style: .default, handler: { (action) -> Void in
-//            let title = alert.textFields?.first?.text
-//            self.calendarView.addEvent(title!, date: date)
-//        })
-//        
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-//        
-//        alert.addAction(addEventAction)
-//        alert.addAction(cancelAction)
-//        
-//        self.present(alert, animated: true, completion: nil)
-//        
-//    }
-    
-
-    func startDate() -> Date {
-        var dateComponents = Calendar.current.dateComponents([.day,.month,.year], from: Date())
-        dateComponents.year = -1
-        let oneYearAgo = Calendar.current.date(from: dateComponents)!
-        return oneYearAgo
-    }
-
-    func endDate() -> Date {
-        var dateComponents = Calendar.current.dateComponents([.day,.month,.year], from: Date())
-        dateComponents.year = 1
-        let oneYearFromToday = Calendar.current.date(from: dateComponents)!
-        return oneYearFromToday
-    }
 }

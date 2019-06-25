@@ -54,6 +54,8 @@ extension AdminPayViewController: UICollectionViewDataSource {
         cell.titleLabel.text = items[indexPath.item].name
         cell.detailLabel.text = "$\(items[indexPath.item].amountOwed)"
         cell.setStandardShadow()
+        cell.setCornerRadius()
+        cell.setStandardShadow()
         return cell
     }
     

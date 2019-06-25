@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,26 +15,26 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Punch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AYQ-JN-He6">
-                                <rect key="frame" x="60" y="358.5" width="294" height="179"/>
+                                <rect key="frame" x="60" y="324.66666666666669" width="255" height="162.66666666666669"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVW-Gk-thr">
-                                        <rect key="frame" x="0.0" y="0.0" width="294" height="54.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="49"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jya-TB-bUM" userLabel="Password">
-                                        <rect key="frame" x="0.0" y="62.5" width="294" height="54"/>
+                                        <rect key="frame" x="0.0" y="57" width="255" height="48.666666666666657"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HD0-hr-FgF">
-                                        <rect key="frame" x="0.0" y="124.5" width="294" height="54.5"/>
+                                        <rect key="frame" x="0.0" y="113.66666666666663" width="255" height="49"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,7 +55,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnp-rJ-01C">
-                                <rect key="frame" x="60" y="104" width="172.5" height="48"/>
+                                <rect key="frame" x="60.000000000000014" y="104" width="172.33333333333337" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -90,17 +90,11 @@
             <objects>
                 <viewController id="3Od-gz-N0x" customClass="EmployeeViewController" customModule="Punch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uyJ-EA-Ggr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1920" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGK-Lj-fAu">
-                                <rect key="frame" x="0.0" y="44" width="414" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qXg-o5-Gq8">
-                                <rect key="frame" x="0.0" y="65" width="414" height="831"/>
+                                <rect key="frame" x="0.0" y="123.66666666666669" width="375" height="688.33333333333326"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="ApZ-pz-ybX">
                                     <size key="itemSize" width="414" height="100"/>
@@ -110,7 +104,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="oIj-Q2-TLT" customClass="CollectionViewCell" customModule="Punch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                        <rect key="frame" x="-19.666666666666668" y="0.0" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -164,38 +158,58 @@
                                     <outlet property="delegate" destination="3Od-gz-N0x" id="Vhv-4T-DHu"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0d-Im-sg8" userLabel="labelContainerView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="123.66666666666667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1920" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGK-Lj-fAu">
+                                        <rect key="frame" x="37.666666666666657" y="24.333333333333329" width="300" height="75"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="hGK-Lj-fAu" firstAttribute="centerX" secondItem="K0d-Im-sg8" secondAttribute="centerX" id="Hm2-pO-Sxm"/>
+                                    <constraint firstItem="hGK-Lj-fAu" firstAttribute="centerY" secondItem="K0d-Im-sg8" secondAttribute="centerY" id="nkz-Nj-QKf"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="qXg-o5-Gq8" secondAttribute="bottom" id="4Rv-nH-QAm"/>
                             <constraint firstItem="qXg-o5-Gq8" firstAttribute="leading" secondItem="3ZC-Vf-GaC" secondAttribute="leading" id="7oj-0O-Ci9"/>
                             <constraint firstItem="qXg-o5-Gq8" firstAttribute="trailing" secondItem="3ZC-Vf-GaC" secondAttribute="trailing" id="AfY-f3-fVU"/>
-                            <constraint firstItem="3ZC-Vf-GaC" firstAttribute="trailing" secondItem="hGK-Lj-fAu" secondAttribute="trailing" id="TzS-eE-haS"/>
-                            <constraint firstItem="hGK-Lj-fAu" firstAttribute="top" secondItem="3ZC-Vf-GaC" secondAttribute="top" id="d62-Oi-Mx3"/>
-                            <constraint firstItem="qXg-o5-Gq8" firstAttribute="top" secondItem="hGK-Lj-fAu" secondAttribute="bottom" id="gyB-e3-Rn0"/>
-                            <constraint firstItem="hGK-Lj-fAu" firstAttribute="leading" secondItem="3ZC-Vf-GaC" secondAttribute="leading" id="mgE-Qq-RHx"/>
-                            <constraint firstItem="qXg-o5-Gq8" firstAttribute="top" secondItem="hGK-Lj-fAu" secondAttribute="bottom" id="xgq-9P-dsy"/>
+                            <constraint firstItem="K0d-Im-sg8" firstAttribute="trailing" secondItem="3ZC-Vf-GaC" secondAttribute="trailing" id="Chm-Ep-ZCu"/>
+                            <constraint firstItem="K0d-Im-sg8" firstAttribute="top" secondItem="uyJ-EA-Ggr" secondAttribute="top" id="HMS-GP-Nox"/>
+                            <constraint firstItem="K0d-Im-sg8" firstAttribute="leading" secondItem="3ZC-Vf-GaC" secondAttribute="leading" id="I59-ok-b0P"/>
+                            <constraint firstItem="hGK-Lj-fAu" firstAttribute="width" secondItem="uyJ-EA-Ggr" secondAttribute="width" multiplier="0.8" id="Qlo-pU-nPJ"/>
+                            <constraint firstItem="hGK-Lj-fAu" firstAttribute="height" secondItem="uyJ-EA-Ggr" secondAttribute="width" multiplier="0.2" id="p58-jZ-he8"/>
+                            <constraint firstItem="K0d-Im-sg8" firstAttribute="height" secondItem="uyJ-EA-Ggr" secondAttribute="width" multiplier="0.33" id="r0v-vi-mUj"/>
+                            <constraint firstItem="qXg-o5-Gq8" firstAttribute="top" secondItem="K0d-Im-sg8" secondAttribute="bottom" id="wU6-Ot-TPh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3ZC-Vf-GaC"/>
                     </view>
                     <connections>
+                        <outlet property="amountOwedLabel" destination="hGK-Lj-fAu" id="lTR-Sg-clD"/>
                         <outlet property="collectionView" destination="qXg-o5-Gq8" id="V9g-28-Y7p"/>
+                        <outlet property="labelContainerView" destination="K0d-Im-sg8" id="IEc-Kw-5Ss"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dB1-Qg-QUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1218.840579710145" y="-248.4375"/>
+            <point key="canvasLocation" x="1218.4000000000001" y="-249.01477832512316"/>
         </scene>
         <!--Admin Pay View Controller-->
         <scene sceneID="AJt-X7-6Ue">
             <objects>
                 <viewController id="uaY-fu-mj2" customClass="AdminPayViewController" customModule="Punch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UUG-uM-Pej">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QDB-6B-eKc">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="q46-Pd-f4d">
                                     <size key="itemSize" width="414" height="100"/>
@@ -205,7 +219,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="hjc-Zb-n7V" customClass="CollectionViewCell" customModule="Punch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                        <rect key="frame" x="-19.666666666666668" y="0.0" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -280,11 +294,11 @@
             <objects>
                 <viewController id="eSB-Xd-Yzo" customClass="AdminHistoryViewController" customModule="Punch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vZb-nc-fOk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FSd-LW-L1N">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="zXW-t9-sJv">
                                     <size key="itemSize" width="414" height="100"/>
@@ -294,7 +308,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="ay2-Y8-rnf" customClass="CollectionViewCell" customModule="Punch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                        <rect key="frame" x="-19.666666666666668" y="0.0" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -369,11 +383,11 @@
             <objects>
                 <viewController id="WR0-tc-KDu" userLabel="Admin Today View Controller" customClass="AdminTodayViewController" customModule="Punch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wBQ-HF-gN6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7AX-UK-gOO">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="EmQ-Su-Cxq">
                                     <size key="itemSize" width="414" height="100"/>
@@ -383,7 +397,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="sxa-wk-uA0" customClass="CollectionViewCell" customModule="Punch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                        <rect key="frame" x="-19.666666666666668" y="0.0" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
