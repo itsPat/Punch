@@ -93,8 +93,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1920" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGK-Lj-fAu">
+                                <rect key="frame" x="0.0" y="44" width="414" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qXg-o5-Gq8">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="65" width="414" height="831"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="ApZ-pz-ybX">
                                     <size key="itemSize" width="414" height="100"/>
@@ -161,17 +167,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3ZC-Vf-GaC" firstAttribute="trailing" secondItem="qXg-o5-Gq8" secondAttribute="trailing" id="0KN-Eq-Jyh"/>
-                            <constraint firstItem="qXg-o5-Gq8" firstAttribute="top" secondItem="3ZC-Vf-GaC" secondAttribute="top" constant="-44" id="Fl3-P4-BaG"/>
-                            <constraint firstItem="3ZC-Vf-GaC" firstAttribute="bottom" secondItem="qXg-o5-Gq8" secondAttribute="bottom" constant="-34" id="K6k-fE-ovW"/>
-                            <constraint firstItem="qXg-o5-Gq8" firstAttribute="leading" secondItem="3ZC-Vf-GaC" secondAttribute="leading" id="i5g-Pc-M8H"/>
+                            <constraint firstAttribute="bottom" secondItem="qXg-o5-Gq8" secondAttribute="bottom" id="4Rv-nH-QAm"/>
+                            <constraint firstItem="qXg-o5-Gq8" firstAttribute="leading" secondItem="3ZC-Vf-GaC" secondAttribute="leading" id="7oj-0O-Ci9"/>
+                            <constraint firstItem="qXg-o5-Gq8" firstAttribute="trailing" secondItem="3ZC-Vf-GaC" secondAttribute="trailing" id="AfY-f3-fVU"/>
+                            <constraint firstItem="3ZC-Vf-GaC" firstAttribute="trailing" secondItem="hGK-Lj-fAu" secondAttribute="trailing" id="TzS-eE-haS"/>
+                            <constraint firstItem="hGK-Lj-fAu" firstAttribute="top" secondItem="3ZC-Vf-GaC" secondAttribute="top" id="d62-Oi-Mx3"/>
+                            <constraint firstItem="qXg-o5-Gq8" firstAttribute="top" secondItem="hGK-Lj-fAu" secondAttribute="bottom" id="gyB-e3-Rn0"/>
+                            <constraint firstItem="hGK-Lj-fAu" firstAttribute="leading" secondItem="3ZC-Vf-GaC" secondAttribute="leading" id="mgE-Qq-RHx"/>
+                            <constraint firstItem="qXg-o5-Gq8" firstAttribute="top" secondItem="hGK-Lj-fAu" secondAttribute="bottom" id="xgq-9P-dsy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3ZC-Vf-GaC"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="qXg-o5-Gq8" id="V9g-28-Y7p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dB1-Qg-QUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1219" y="-248"/>
+            <point key="canvasLocation" x="1218.840579710145" y="-248.4375"/>
         </scene>
         <!--Admin Pay View Controller-->
         <scene sceneID="AJt-X7-6Ue">
