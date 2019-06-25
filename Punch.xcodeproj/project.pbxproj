@@ -7,16 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		783D5F9222C1927900645E11 /* AdminTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9122C1927900645E11 /* AdminTodayViewController.swift */; };
+		783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9322C1970600645E11 /* AdminPayViewController.swift */; };
+		783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */; };
 		78CD0B0322C1792C008C251C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B0222C1792C008C251C /* AppDelegate.swift */; };
 		78CD0B0522C1792C008C251C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B0422C1792C008C251C /* LoginViewController.swift */; };
 		78CD0B0822C1792C008C251C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CD0B0622C1792C008C251C /* Main.storyboard */; };
 		78CD0B0A22C1792D008C251C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78CD0B0922C1792D008C251C /* Assets.xcassets */; };
 		78CD0B0D22C1792D008C251C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CD0B0B22C1792D008C251C /* LaunchScreen.storyboard */; };
-		78CD0B1522C17F9B008C251C /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B1422C17F9B008C251C /* CollectionViewController.swift */; };
+		78CD0B1522C17F9B008C251C /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */; };
 		78CD0B1722C18216008C251C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B1622C18216008C251C /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		783D5F9122C1927900645E11 /* AdminTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTodayViewController.swift; sourceTree = "<group>"; };
+		783D5F9322C1970600645E11 /* AdminPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPayViewController.swift; sourceTree = "<group>"; };
+		783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHistoryViewController.swift; sourceTree = "<group>"; };
 		78CD0AFF22C1792C008C251C /* Punch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Punch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CD0B0222C1792C008C251C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78CD0B0422C1792C008C251C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -24,7 +30,7 @@
 		78CD0B0922C1792D008C251C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78CD0B0C22C1792D008C251C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		78CD0B0E22C1792D008C251C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		78CD0B1422C17F9B008C251C /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewController.swift; sourceTree = "<group>"; };
 		78CD0B1622C18216008C251C /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,9 +65,12 @@
 			isa = PBXGroup;
 			children = (
 				78CD0B0222C1792C008C251C /* AppDelegate.swift */,
-				78CD0B1422C17F9B008C251C /* CollectionViewController.swift */,
-				78CD0B1622C18216008C251C /* CollectionViewCell.swift */,
 				78CD0B0422C1792C008C251C /* LoginViewController.swift */,
+				78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */,
+				783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */,
+				783D5F9122C1927900645E11 /* AdminTodayViewController.swift */,
+				783D5F9322C1970600645E11 /* AdminPayViewController.swift */,
+				78CD0B1622C18216008C251C /* CollectionViewCell.swift */,
 				78CD0B0622C1792C008C251C /* Main.storyboard */,
 				78CD0B0922C1792D008C251C /* Assets.xcassets */,
 				78CD0B0B22C1792D008C251C /* LaunchScreen.storyboard */,
@@ -141,10 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78CD0B1522C17F9B008C251C /* CollectionViewController.swift in Sources */,
+				783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */,
+				78CD0B1522C17F9B008C251C /* EmployeeViewController.swift in Sources */,
 				78CD0B0522C1792C008C251C /* LoginViewController.swift in Sources */,
 				78CD0B1722C18216008C251C /* CollectionViewCell.swift in Sources */,
+				783D5F9222C1927900645E11 /* AdminTodayViewController.swift in Sources */,
 				78CD0B0322C1792C008C251C /* AppDelegate.swift in Sources */,
+				783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
