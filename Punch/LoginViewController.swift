@@ -7,14 +7,47 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class LoginViewController: UIViewController {
-
+    @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet weak var passTextField: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setupButton()
     }
-
+    
+    func setupButton() {
+        signInButton.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.green)
+//        signInButton.setStandardShadow() Is affecting the size of the gradient.
+        signInButton.layer.cornerRadius = signInButton.bounds.height*0.1
+    }
+    
+    @IBAction func signInTapped(_ sender: Any) {
+        authenticateWithBiometrics()
+    }
+    
+    
+    func authenticateWithBiometrics() {
+        let context = LAContext()
+        var error: NSError?
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Identify yourself!"
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { (success, err) in
+                if success {
+                    self.performSegue(withIdentifier: "employeeSegue", sender: nil)
+                    print("Successfully Authenticated User.")
+                } else if let err = err {
+                    print("Error: \(err)")
+                }
+            }
+        } else {
+            // no biometry so use username + password.
+        }
+    }
+    
 
 }
 

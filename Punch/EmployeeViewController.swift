@@ -37,6 +37,8 @@ class EmployeeViewController: UIViewController {
         Shift(start: Date(), finish: Date()),
     ]
     
+    //TODO: When a cell is tapped, check that the date is today, if so punch the user in.
+    
     
 
 }

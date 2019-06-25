@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n8d-I8-PSC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -36,10 +36,13 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HD0-hr-FgF">
                                         <rect key="frame" x="0.0" y="124.5" width="294" height="54.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Sign In" backgroundImage="gradient">
+                                        <state key="normal" title="Sign In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signInTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lk8-ty-JGC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -58,7 +61,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="jnp-rJ-01C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="BTT-FF-ev5"/>
                             <constraint firstItem="AYQ-JN-He6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Cua-6D-LPD"/>
@@ -70,6 +73,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="passTextField" destination="Jya-TB-bUM" id="tT9-fX-7Yt"/>
+                        <outlet property="signInButton" destination="HD0-hr-FgF" id="PQk-fd-yL1"/>
+                        <outlet property="userTextField" destination="hVW-Gk-thr" id="Udn-Rb-BQe"/>
+                        <segue destination="3Od-gz-N0x" kind="show" identifier="employeeSegue" id="4e7-hk-leh"/>
+                        <segue destination="n8d-I8-PSC" kind="show" identifier="adminSegue" id="MKO-8Q-vov"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -171,9 +181,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QDB-6B-eKc">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QDB-6B-eKc">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="q46-Pd-f4d">
                                     <size key="itemSize" width="414" height="100"/>
@@ -239,6 +248,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="QDB-6B-eKc" secondAttribute="bottom" id="64K-h5-BTT"/>
+                            <constraint firstItem="QDB-6B-eKc" firstAttribute="trailing" secondItem="Hm3-PA-0GM" secondAttribute="trailing" id="7tt-aC-x6L"/>
+                            <constraint firstItem="QDB-6B-eKc" firstAttribute="leading" secondItem="Hm3-PA-0GM" secondAttribute="leading" id="Kpl-ZP-1FO"/>
+                            <constraint firstItem="QDB-6B-eKc" firstAttribute="top" secondItem="UUG-uM-Pej" secondAttribute="top" id="XK8-qI-MZP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Hm3-PA-0GM"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="money" id="JDE-bB-WJG"/>
@@ -247,10 +262,10 @@
             </objects>
             <point key="canvasLocation" x="3383" y="427"/>
         </scene>
-        <!--View Controller-->
+        <!--Admin History View Controller-->
         <scene sceneID="gCR-u1-RWN">
             <objects>
-                <viewController id="eSB-Xd-Yzo" sceneMemberID="viewController">
+                <viewController id="eSB-Xd-Yzo" customClass="AdminHistoryViewController" customModule="Punch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vZb-nc-fOk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -446,7 +461,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gradient" width="1024" height="1024"/>
         <image name="history" width="25" height="25"/>
         <image name="home" width="25" height="25"/>
         <image name="money" width="25" height="25"/>

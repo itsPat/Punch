@@ -10,6 +10,7 @@
 		783D5F9222C1927900645E11 /* AdminTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9122C1927900645E11 /* AdminTodayViewController.swift */; };
 		783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9322C1970600645E11 /* AdminPayViewController.swift */; };
 		783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */; };
+		7855CD4E22C26FEC00650D7E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7855CD4D22C26FEC00650D7E /* Utils.swift */; };
 		78CD0B0322C1792C008C251C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B0222C1792C008C251C /* AppDelegate.swift */; };
 		78CD0B0522C1792C008C251C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B0422C1792C008C251C /* LoginViewController.swift */; };
 		78CD0B0822C1792C008C251C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CD0B0622C1792C008C251C /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		783D5F9122C1927900645E11 /* AdminTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTodayViewController.swift; sourceTree = "<group>"; };
 		783D5F9322C1970600645E11 /* AdminPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPayViewController.swift; sourceTree = "<group>"; };
 		783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHistoryViewController.swift; sourceTree = "<group>"; };
+		7855CD4D22C26FEC00650D7E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		78CD0AFF22C1792C008C251C /* Punch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Punch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CD0B0222C1792C008C251C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78CD0B0422C1792C008C251C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				78CD0B0922C1792D008C251C /* Assets.xcassets */,
 				78CD0B0B22C1792D008C251C /* LaunchScreen.storyboard */,
 				78CD0B0E22C1792D008C251C /* Info.plist */,
+				7855CD4D22C26FEC00650D7E /* Utils.swift */,
 			);
 			path = Punch;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				783D5F9222C1927900645E11 /* AdminTodayViewController.swift in Sources */,
 				78CD0B0322C1792C008C251C /* AppDelegate.swift in Sources */,
 				783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */,
+				7855CD4E22C26FEC00650D7E /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

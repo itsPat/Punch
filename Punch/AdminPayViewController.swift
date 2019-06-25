@@ -53,13 +53,7 @@ extension AdminPayViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
         cell.titleLabel.text = items[indexPath.item].name
         cell.detailLabel.text = "$\(items[indexPath.item].amountOwed)"
-        cell.layer.backgroundColor = UIColor.white.cgColor
-        cell.layer.cornerRadius = cell.frame.height * 0.2
-        cell.layer.shadowColor = Int.random(in: 1...6) == 1 ? UIColor.red.cgColor : UIColor.gray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 1.0, height: 3.0)
-        cell.layer.shadowRadius = 2.0
-        cell.layer.shadowOpacity = 1.0
-        cell.layer.masksToBounds = false
+        cell.setStandardShadow()
         return cell
     }
     
