@@ -20,9 +20,10 @@ class LoginViewController: UIViewController {
     }
     
     func setupButton() {
+        view.layoutIfNeeded()
+        signInButton.setCornerRadius()
         signInButton.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.green)
-//        signInButton.setStandardShadow() Is affecting the size of the gradient.
-        signInButton.layer.cornerRadius = signInButton.bounds.height*0.1
+        signInButton.setStandardShadow()
     }
     
     @IBAction func signInTapped(_ sender: Any) {
