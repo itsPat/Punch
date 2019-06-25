@@ -52,6 +52,7 @@ extension EmployeeViewController: UICollectionViewDelegateFlowLayout {
 extension EmployeeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
         return items.count
     }
 

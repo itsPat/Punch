@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>130796654269-9jfsmmn91pde11nldseven4u2e0pc1sn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.130796654269-9jfsmmn91pde11nldseven4u2e0pc1sn</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA4m-ArSV_uVRIE4_4u79B6mS-lTIAH_GI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>130796654269</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.trudev.Punch</string>
+	<key>PROJECT_ID</key>
+	<string>epos-project-bdc24</string>
+	<key>STORAGE_BUCKET</key>
+	<string>epos-project-bdc24.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:130796654269:ios:8cc47ac396b0e772</string>
+	<key>DATABASE_URL</key>
+	<string>https://epos-project-bdc24.firebaseio.com</string>
+</dict>
+</plist>
