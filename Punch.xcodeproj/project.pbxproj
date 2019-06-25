@@ -13,6 +13,10 @@
 		783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9322C1970600645E11 /* AdminPayViewController.swift */; };
 		783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */; };
 		7855CD4E22C26FEC00650D7E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7855CD4D22C26FEC00650D7E /* Utils.swift */; };
+		788D2AA022C27F6300638CC7 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2A9F22C27F6300638CC7 /* FirebaseAuth.framework */; };
+		788D2AA222C27F6300638CC7 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA122C27F6300638CC7 /* FirebaseCore.framework */; };
+		788D2AA422C27F6300638CC7 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA322C27F6300638CC7 /* FirebaseDatabase.framework */; };
+		788D2AA622C27F6300638CC7 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA522C27F6300638CC7 /* FirebaseInstanceID.framework */; };
 		78CD0B0322C1792C008C251C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B0222C1792C008C251C /* AppDelegate.swift */; };
 		78CD0B0522C1792C008C251C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B0422C1792C008C251C /* LoginViewController.swift */; };
 		78CD0B0822C1792C008C251C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CD0B0622C1792C008C251C /* Main.storyboard */; };
@@ -31,6 +35,10 @@
 		783D5F9322C1970600645E11 /* AdminPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPayViewController.swift; sourceTree = "<group>"; };
 		783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHistoryViewController.swift; sourceTree = "<group>"; };
 		7855CD4D22C26FEC00650D7E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		788D2A9F22C27F6300638CC7 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		788D2AA122C27F6300638CC7 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		788D2AA322C27F6300638CC7 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		788D2AA522C27F6300638CC7 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CD0AFF22C1792C008C251C /* Punch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Punch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CD0B0222C1792C008C251C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78CD0B0422C1792C008C251C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +55,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				788D2AA022C27F6300638CC7 /* FirebaseAuth.framework in Frameworks */,
+				788D2AA222C27F6300638CC7 /* FirebaseCore.framework in Frameworks */,
+				788D2AA422C27F6300638CC7 /* FirebaseDatabase.framework in Frameworks */,
+				788D2AA622C27F6300638CC7 /* FirebaseInstanceID.framework in Frameworks */,
 				48CCB20E41B22A8DE676E758 /* Pods_Punch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,6 +69,10 @@
 		5707FBF9CD22BFC79E2E5773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				788D2A9F22C27F6300638CC7 /* FirebaseAuth.framework */,
+				788D2AA122C27F6300638CC7 /* FirebaseCore.framework */,
+				788D2AA322C27F6300638CC7 /* FirebaseDatabase.framework */,
+				788D2AA522C27F6300638CC7 /* FirebaseInstanceID.framework */,
 				331EC6C1AFFCC905ACC49DE2 /* Pods_Punch.framework */,
 			);
 			name = Frameworks;
@@ -380,7 +396,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 489ZVWUGPK;
+				DEVELOPMENT_TEAM = DTTK359L6E;
 				INFOPLIST_FILE = Punch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -399,7 +415,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 489ZVWUGPK;
+				DEVELOPMENT_TEAM = DTTK359L6E;
 				INFOPLIST_FILE = Punch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
