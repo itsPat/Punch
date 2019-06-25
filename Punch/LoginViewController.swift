@@ -13,7 +13,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
-    
+
+    let authService = AuthService.instance
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton()
@@ -26,27 +27,18 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signInTapped(_ sender: Any) {
-        authenticateWithBiometrics()
-    }
-    
-    
-    func authenticateWithBiometrics() {
-        let context = LAContext()
-        var error: NSError?
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Identify yourself!"
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { (success, err) in
-                if success {
-                    self.performSegue(withIdentifier: "employeeSegue", sender: nil)
-                    print("Successfully Authenticated User.")
-                } else if let err = err {
-                    print("Error: \(err)")
-                }
+        authService.authenticateWithBiometrics { (status, error) in
+            if status {
+                self.performSegue(withIdentifier: "employeeSegue", sender: nil)
+                print("Successfully Authenticated User.")
+            } else {
+                print("Error: \(String(describing: error)) - \(#file) - \(#function) - \(#line)")
             }
-        } else {
-            // no biometry so use username + password.
         }
     }
+    
+    
+   
     
 
 }

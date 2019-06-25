@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2516AEF722C2869500475198 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516AEF622C2869500475198 /* Company.swift */; };
+		2516AEF922C286D800475198 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516AEF822C286D800475198 /* Employee.swift */; };
 		257D8E9C22C272D200E90BD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */; };
+		257D8EA322C27E2700E90BD4 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257D8EA222C27E2700E90BD4 /* AuthService.swift */; };
 		48CCB20E41B22A8DE676E758 /* Pods_Punch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 331EC6C1AFFCC905ACC49DE2 /* Pods_Punch.framework */; };
 		783D5F9222C1927900645E11 /* AdminTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9122C1927900645E11 /* AdminTodayViewController.swift */; };
 		783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9322C1970600645E11 /* AdminPayViewController.swift */; };
@@ -24,7 +27,10 @@
 
 /* Begin PBXFileReference section */
 		1170A086AF9EBF46D1F1B688 /* Pods-Punch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Punch.release.xcconfig"; path = "Target Support Files/Pods-Punch/Pods-Punch.release.xcconfig"; sourceTree = "<group>"; };
+		2516AEF622C2869500475198 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		2516AEF822C286D800475198 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		257D8EA222C27E2700E90BD4 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		25890DFB12F692ADE659F51F /* Pods-Punch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Punch.debug.xcconfig"; path = "Target Support Files/Pods-Punch/Pods-Punch.debug.xcconfig"; sourceTree = "<group>"; };
 		331EC6C1AFFCC905ACC49DE2 /* Pods_Punch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Punch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		783D5F9122C1927900645E11 /* AdminTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTodayViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +60,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2516AEF522C2867600475198 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2516AEF622C2869500475198 /* Company.swift */,
+				2516AEF822C286D800475198 /* Employee.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		257D8EA122C27E0B00E90BD4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				257D8EA222C27E2700E90BD4 /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		5707FBF9CD22BFC79E2E5773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				78CD0B0222C1792C008C251C /* AppDelegate.swift */,
+				2516AEF522C2867600475198 /* Model */,
+				257D8EA122C27E0B00E90BD4 /* Services */,
 				257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */,
 				78CD0B0422C1792C008C251C /* LoginViewController.swift */,
 				78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */,
@@ -228,6 +253,9 @@
 				783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */,
 				78CD0B1522C17F9B008C251C /* EmployeeViewController.swift in Sources */,
 				78CD0B0522C1792C008C251C /* LoginViewController.swift in Sources */,
+				2516AEF922C286D800475198 /* Employee.swift in Sources */,
+				2516AEF722C2869500475198 /* Company.swift in Sources */,
+				257D8EA322C27E2700E90BD4 /* AuthService.swift in Sources */,
 				78CD0B1722C18216008C251C /* CollectionViewCell.swift in Sources */,
 				783D5F9222C1927900645E11 /* AdminTodayViewController.swift in Sources */,
 				78CD0B0322C1792C008C251C /* AppDelegate.swift in Sources */,
