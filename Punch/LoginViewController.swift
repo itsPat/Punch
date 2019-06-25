@@ -23,9 +23,6 @@ class LoginViewController: UIViewController {
         DispatchQueue.main.async {
             self.view.layoutIfNeeded()
         }
-        signInButton.setCornerRadius()
-        signInButton.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.green)
-        signInButton.setStandardShadow()
     }
     
     @IBAction func signInTapped(_ sender: Any) {
@@ -43,7 +40,6 @@ class LoginViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "employeeSegue", sender: nil)
                     }
-                    print("Successfully Authenticated User.")
                 } else if let err = err {
                     print("Error: \(err)")
                 }
@@ -53,6 +49,10 @@ class LoginViewController: UIViewController {
         }
     }
     
-
+    override func viewDidLayoutSubviews() {
+        signInButton.setCornerRadius()
+        signInButton.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.green)
+        signInButton.setStandardShadow()
+    }
 }
 
