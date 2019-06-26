@@ -9,6 +9,8 @@
 import Foundation
 import LocalAuthentication
 import Firebase
+
+
 class AuthService {
 
     static let instance = AuthService()
@@ -22,7 +24,18 @@ class AuthService {
                 if success {
                     authenticated(true, nil)
                     print("Successfully Authenticated User.")
+
+
+                    //Check if the user is authenticated
+                    if Auth.auth().currentUser == nil {
+                        //TODO: Authenticate the user in the Firebase
+                    }
                 } else if let err = err {
+                    //TODO: Authenticate the user with username + password
+                    if Auth.auth().currentUser == nil {
+                        //TODO: Authenticate the user in the Firebase
+                    }
+
                     authenticated(false, err)
                 }
             }
@@ -32,18 +45,30 @@ class AuthService {
         }
     }
 
-//    func registerUser(withEmail email: String, andPassword password: String, userCreationComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
-//        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-//            guard let user = user else {
-//                userCreationComplete(false, error)
-//                return
-//            }
-//
-//            let userData = ["provider": user.providerID, "email": user.email]
-//            DataService.instance.createDBUser(uid: user.uid, userData: userData)
-//            userCreationComplete(true, nil)
-//        }
-//    }
+    func registerUser(withEmail email: String, andPassword password: String, userCreationComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            if !(error is NSNull ){
+                print("Error registering user \(error?.localizedDescription)  at \(#file) - \(#function) - \(#line)")
+                if let erroCode = AuthErrorCode(rawValue: error!._code) {
+
+                }
+                return
+            }
+
+            guard let user = user else {
+                userCreationComplete(false, error)
+                return
+            }
+            user.additionalUserInfo?.profile
+            user.user.sendEmailVerification(completion: { (error) in
+
+            })
+
+            let userData = ["provider": user.providerID, "email": user.email]
+            DataService.instance.createDBUser(uid: user.uid, userData: userData)
+            userCreationComplete(true, nil)
+        }
+    }
 //
 //    func loginUser(withEmail email: String, andPassword password: String, loginComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
 //        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
