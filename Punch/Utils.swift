@@ -9,12 +9,10 @@
 import UIKit
 
 struct CustomColors {
-    static let red = UIColor(red: 235/255, green: 93/255, blue: 87/255, alpha: 1.0)
-    static let blue = UIColor(red: 86/255, green: 184/255, blue: 248/255, alpha: 1.0)
-    static let green = UIColor(red: 95/255, green: 206/255, blue: 140/255, alpha: 1.0)
-    static let pink = UIColor(red: 230/255, green: 105/255, blue: 204/255, alpha: 1.0)
-    static let purple = UIColor(red: 146/255, green: 104/255, blue: 245/255, alpha: 1.0)
-    static let orange = UIColor(red: 255/255, green: 198/255, blue: 37/255, alpha: 1.0)
+    static let blue = UIColor(red: 91/255, green: 109/255, blue: 248/255, alpha: 1.0)
+    static let darkBlue = UIColor(red: 98/255, green: 70/255, blue: 225/255, alpha: 1.0)
+    static let orange = UIColor(red: 253/255, green: 211/255, blue: 48/255, alpha: 1.0)
+    static let darkOrange = UIColor(red: 252/255, green: 177/255, blue: 44/255, alpha: 1.0)
     static let gray = UIColor(red: 111/255, green: 113/255, blue: 121/255, alpha: 1.0)
 }
 
@@ -42,7 +40,7 @@ extension UIView {
         gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
         layer.insertSublayer(gradientLayer, at: 0)
     }
 }

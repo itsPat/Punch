@@ -38,7 +38,6 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="signInTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lk8-ty-JGC"/>
@@ -54,19 +53,20 @@
                                     <constraint firstItem="HD0-hr-FgF" firstAttribute="leading" secondItem="AYQ-JN-He6" secondAttribute="leading" id="g0Z-7Z-RW8"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnp-rJ-01C">
-                                <rect key="frame" x="60.000000000000014" y="104" width="172.33333333333337" height="48"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clockIn" translatesAutoresizingMaskIntoConstraints="NO" id="al6-vN-xaC">
+                                <rect key="frame" x="94.333333333333314" y="101.66666666666669" width="186.66666666666669" height="203"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="al6-vN-xaC" secondAttribute="height" multiplier="80:87" id="upA-UU-qJr"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.35686274509803922" green="0.42745098039215684" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jnp-rJ-01C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="BTT-FF-ev5"/>
                             <constraint firstItem="AYQ-JN-He6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Cua-6D-LPD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AYQ-JN-He6" secondAttribute="trailing" constant="60" id="ERo-xY-4V7"/>
-                            <constraint firstItem="jnp-rJ-01C" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="GsS-yR-U7T"/>
+                            <constraint firstItem="al6-vN-xaC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FkV-e8-eFc"/>
+                            <constraint firstItem="AYQ-JN-He6" firstAttribute="top" secondItem="al6-vN-xaC" secondAttribute="bottom" constant="20" id="aCt-Uf-pv2"/>
+                            <constraint firstItem="al6-vN-xaC" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="caq-kc-Qb7"/>
                             <constraint firstItem="AYQ-JN-He6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="gru-Rc-fY8"/>
                             <constraint firstItem="AYQ-JN-He6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hnC-Mi-TSq"/>
                             <constraint firstItem="AYQ-JN-He6" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.2" id="wXJ-Rw-10H"/>
@@ -83,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="361" y="51"/>
+            <point key="canvasLocation" x="360.80000000000001" y="50.985221674876847"/>
         </scene>
         <!--Employee View Controller-->
         <scene sceneID="Oic-S4-cou">
@@ -168,7 +168,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="backgroundColor" red="0.35686274509999999" green="0.42745098040000001" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="hGK-Lj-fAu" firstAttribute="centerX" secondItem="K0d-Im-sg8" secondAttribute="centerX" id="Hm2-pO-Sxm"/>
                                     <constraint firstItem="hGK-Lj-fAu" firstAttribute="centerY" secondItem="K0d-Im-sg8" secondAttribute="centerY" id="nkz-Nj-QKf"/>
@@ -488,6 +488,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="clockIn" width="512" height="512"/>
         <image name="history" width="25" height="25"/>
         <image name="home" width="25" height="25"/>
         <image name="money" width="25" height="25"/>
