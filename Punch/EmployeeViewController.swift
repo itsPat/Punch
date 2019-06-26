@@ -30,7 +30,7 @@ class EmployeeViewController: UIViewController {
         calendarSize = CGSize(width: view.frame.width * 0.8, height: view.frame.width * 0.8)
         collectionView.register(FSCalendar.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "calendarView")
         labelContainerView.setStandardShadow()
-        labelContainerView.backgroundColor = CustomColors.gray
+        labelContainerView.backgroundColor = CustomColors.blue
     }
 
     

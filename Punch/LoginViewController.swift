@@ -16,13 +16,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupButton()
-    }
-    
-    func setupButton() {
-        DispatchQueue.main.async {
-            self.view.layoutIfNeeded()
-        }
+        self.view.layoutIfNeeded()
+        self.view.setGradientBackground(colorOne: CustomColors.darkBlue, colorTwo: CustomColors.blue)
     }
     
     @IBAction func signInTapped(_ sender: Any) {
@@ -51,7 +46,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         signInButton.setCornerRadius()
-        signInButton.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.green)
+        signInButton.setGradientBackground(colorOne: CustomColors.orange, colorTwo: CustomColors.darkOrange)
         signInButton.setStandardShadow()
     }
 }
