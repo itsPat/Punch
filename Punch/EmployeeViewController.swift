@@ -20,6 +20,18 @@ struct Employee {
 }
 
 class EmployeeViewController: UIViewController {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var amountOwedLabel: UILabel!
+    @IBOutlet weak var labelContainerView: UIView!
+    var calendarSize = CGSize()
+    
+    override func viewDidLoad() {
+        calendarSize = CGSize(width: view.frame.width * 0.8, height: view.frame.width * 0.8)
+        collectionView.register(FSCalendar.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "calendarView")
+        labelContainerView.setStandardShadow()
+        labelContainerView.backgroundColor = CustomColors.gray
+    }
 
     
     let items: [Shift] = [
@@ -47,12 +59,15 @@ extension EmployeeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width * 0.8, height: view.frame.width * 0.2)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return calendarSize
+    }
 }
 
 extension EmployeeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
         return items.count
     }
 
@@ -60,14 +75,17 @@ extension EmployeeViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
         cell.titleLabel.text = formatToDateString(date: items[indexPath.item].start)
         cell.detailLabel.text = "\(formatToHourMinutesString(date: items[indexPath.item].start)) - \(formatToHourMinutesString(date: items[indexPath.item].finish))"
-        cell.layer.backgroundColor = UIColor.white.cgColor
-        cell.layer.cornerRadius = cell.frame.height * 0.2
-        cell.layer.shadowColor = Int.random(in: 1...6) == 1 ? UIColor.red.cgColor : UIColor.gray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 1.0, height: 3.0)
-        cell.layer.shadowRadius = 2.0
-        cell.layer.shadowOpacity = 1.0
-        cell.layer.masksToBounds = false
+        cell.setStandardShadow()
+        cell.setCornerRadius()
+        cell.setStandardShadow()
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "calendarView", for: indexPath) as! FSCalendar
+        headerView.dataSource = self
+        headerView.delegate = self
+        return headerView
     }
     
     func formatToDateString(date: Date) -> String {
@@ -83,4 +101,15 @@ extension EmployeeViewController: UICollectionViewDataSource {
         return dateFormatter.string(from: date)
     }
 
+}
+
+extension EmployeeViewController: FSCalendarDelegate, FSCalendarDataSource {
+    
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        self.calendarSize = bounds.size
+        DispatchQueue.main.async {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
 }

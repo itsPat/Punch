@@ -62,8 +62,8 @@ class LoginViewController: UIViewController {
         let date2 = formatter.date(from: "2019-26-06 4:30 PM")?.timeIntervalSince1970 as! Double
 //        let shift = Shift1(id: "2F8F545A-9E3A-4073-B58B-F8B7774AB62B", employeeId: "A9DD96FA-0234-45FC-AA02-9A8A375B2E72", startTime: "9:00AM", finishTime: "5:00PM", punchInTime: date1, punchOutTime: date2)
 
-        dataService.updateShiftById(uid: shift.id, shiftData: shift.dictionary())
-//        dataService.getShiftsByEmployeeId(forEmployee: "A9DD96FA-0234-45FC-AA02-9A8A375B2E72") { (shifts) in
+
+      //        dataService.getShiftsByEmployeeId(forEmployee: "A9DD96FA-0234-45FC-AA02-9A8A375B2E72") { (shifts) in
 //            for _shift in shifts {
 //                print(shift.id, shift.employeeId)
 //            }

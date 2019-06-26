@@ -7,27 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2516AEF722C2869500475198 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516AEF622C2869500475198 /* Company.swift */; };
-		2516AEF922C286D800475198 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516AEF822C286D800475198 /* Employee.swift */; };
-		2516AEFB22C28CEB00475198 /* Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516AEFA22C28CEB00475198 /* Shifts.swift */; };
-		2516AEFD22C2951300475198 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516AEFC22C2951300475198 /* DataService.swift */; };
-		2516AF0522C2C75800475198 /* PunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516AF0422C2C75800475198 /* PunchTests.swift */; };
-		2516AF0D22C2CA2100475198 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF0C22C2CA2100475198 /* FirebaseCore.framework */; };
-		2516AF0F22C2CA4700475198 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF0E22C2CA4700475198 /* FirebaseAuth.framework */; };
-		2516AF1122C2CA4700475198 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF1022C2CA4700475198 /* FirebaseDatabase.framework */; };
-		2516AF1322C2CA4700475198 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF1222C2CA4700475198 /* FirebaseInstanceID.framework */; };
-		2516AF1522C2CA4800475198 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF1422C2CA4800475198 /* GoogleUtilities.framework */; };
-		2516AF1722C2CA4800475198 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF1622C2CA4800475198 /* GTMSessionFetcher.framework */; };
-		2516AF1922C2CA4800475198 /* leveldb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF1822C2CA4800475198 /* leveldb.framework */; };
-		2516AF1B22C2CA4800475198 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF1A22C2CA4800475198 /* nanopb.framework */; };
-		2516AF1C22C2CA4800475198 /* Pods_Punch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 331EC6C1AFFCC905ACC49DE2 /* Pods_Punch.framework */; };
 		257D8E9C22C272D200E90BD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */; };
-		257D8EA322C27E2700E90BD4 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257D8EA222C27E2700E90BD4 /* AuthService.swift */; };
 		48CCB20E41B22A8DE676E758 /* Pods_Punch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 331EC6C1AFFCC905ACC49DE2 /* Pods_Punch.framework */; };
 		783D5F9222C1927900645E11 /* AdminTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9122C1927900645E11 /* AdminTodayViewController.swift */; };
 		783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9322C1970600645E11 /* AdminPayViewController.swift */; };
 		783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */; };
+		7850E04022C29FDE00FAECED /* Punch-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 7850E03E22C29F0200FAECED /* Punch-Bridging-Header.h */; };
 		7855CD4E22C26FEC00650D7E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7855CD4D22C26FEC00650D7E /* Utils.swift */; };
+		788D2AA022C27F6300638CC7 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2A9F22C27F6300638CC7 /* FirebaseAuth.framework */; };
+		788D2AA222C27F6300638CC7 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA122C27F6300638CC7 /* FirebaseCore.framework */; };
+		788D2AA422C27F6300638CC7 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA322C27F6300638CC7 /* FirebaseDatabase.framework */; };
+		788D2AA622C27F6300638CC7 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA522C27F6300638CC7 /* FirebaseInstanceID.framework */; };
 		78CD0B0322C1792C008C251C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B0222C1792C008C251C /* AppDelegate.swift */; };
 		78CD0B0522C1792C008C251C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B0422C1792C008C251C /* LoginViewController.swift */; };
 		78CD0B0822C1792C008C251C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CD0B0622C1792C008C251C /* Main.storyboard */; };
@@ -35,43 +25,27 @@
 		78CD0B0D22C1792D008C251C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CD0B0B22C1792D008C251C /* LaunchScreen.storyboard */; };
 		78CD0B1522C17F9B008C251C /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */; };
 		78CD0B1722C18216008C251C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B1622C18216008C251C /* CollectionViewCell.swift */; };
+		D25736A322C3D33200362F44 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736A222C3D33200362F44 /* DataService.swift */; };
+		D25736A622C3D38B00362F44 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736A522C3D38B00362F44 /* AuthService.swift */; };
+		D25736B122C3D3B700362F44 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736AE22C3D3B600362F44 /* Employee.swift */; };
+		D25736B222C3D3B700362F44 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736AF22C3D3B600362F44 /* Company.swift */; };
+		D25736B322C3D3B700362F44 /* Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736B022C3D3B600362F44 /* Shifts.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		2516AF0722C2C75800475198 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78CD0AF722C1792B008C251C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 78CD0AFE22C1792B008C251C;
-			remoteInfo = Punch;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1170A086AF9EBF46D1F1B688 /* Pods-Punch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Punch.release.xcconfig"; path = "Target Support Files/Pods-Punch/Pods-Punch.release.xcconfig"; sourceTree = "<group>"; };
-		2516AEF622C2869500475198 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
-		2516AEF822C286D800475198 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
-		2516AEFA22C28CEB00475198 /* Shifts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shifts.swift; sourceTree = "<group>"; };
-		2516AEFC22C2951300475198 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		2516AF0222C2C75800475198 /* PunchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PunchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2516AF0422C2C75800475198 /* PunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunchTests.swift; sourceTree = "<group>"; };
-		2516AF0622C2C75800475198 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2516AF0C22C2CA2100475198 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2516AF0E22C2CA4700475198 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2516AF1022C2CA4700475198 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2516AF1222C2CA4700475198 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2516AF1422C2CA4800475198 /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2516AF1622C2CA4800475198 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2516AF1822C2CA4800475198 /* leveldb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = leveldb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2516AF1A22C2CA4800475198 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		257D8EA222C27E2700E90BD4 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		25890DFB12F692ADE659F51F /* Pods-Punch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Punch.debug.xcconfig"; path = "Target Support Files/Pods-Punch/Pods-Punch.debug.xcconfig"; sourceTree = "<group>"; };
 		331EC6C1AFFCC905ACC49DE2 /* Pods_Punch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Punch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		783D5F9122C1927900645E11 /* AdminTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTodayViewController.swift; sourceTree = "<group>"; };
 		783D5F9322C1970600645E11 /* AdminPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPayViewController.swift; sourceTree = "<group>"; };
 		783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHistoryViewController.swift; sourceTree = "<group>"; };
+		7850E03E22C29F0200FAECED /* Punch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Punch-Bridging-Header.h"; sourceTree = "<group>"; };
 		7855CD4D22C26FEC00650D7E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		788D2A9F22C27F6300638CC7 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		788D2AA122C27F6300638CC7 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		788D2AA322C27F6300638CC7 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		788D2AA522C27F6300638CC7 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CD0AFF22C1792C008C251C /* Punch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Punch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CD0B0222C1792C008C251C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78CD0B0422C1792C008C251C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -81,29 +55,22 @@
 		78CD0B0E22C1792D008C251C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewController.swift; sourceTree = "<group>"; };
 		78CD0B1622C18216008C251C /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		D25736A222C3D33200362F44 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		D25736A522C3D38B00362F44 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Punch/AuthService.swift; sourceTree = SOURCE_ROOT; };
+		D25736AE22C3D3B600362F44 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
+		D25736AF22C3D3B600362F44 /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		D25736B022C3D3B600362F44 /* Shifts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shifts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2516AEFF22C2C75800475198 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2516AF0F22C2CA4700475198 /* FirebaseAuth.framework in Frameworks */,
-				2516AF1122C2CA4700475198 /* FirebaseDatabase.framework in Frameworks */,
-				2516AF1322C2CA4700475198 /* FirebaseInstanceID.framework in Frameworks */,
-				2516AF1522C2CA4800475198 /* GoogleUtilities.framework in Frameworks */,
-				2516AF1722C2CA4800475198 /* GTMSessionFetcher.framework in Frameworks */,
-				2516AF1922C2CA4800475198 /* leveldb.framework in Frameworks */,
-				2516AF1B22C2CA4800475198 /* nanopb.framework in Frameworks */,
-				2516AF1C22C2CA4800475198 /* Pods_Punch.framework in Frameworks */,
-				2516AF0D22C2CA2100475198 /* FirebaseCore.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		78CD0AFC22C1792B008C251C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				788D2AA022C27F6300638CC7 /* FirebaseAuth.framework in Frameworks */,
+				788D2AA222C27F6300638CC7 /* FirebaseCore.framework in Frameworks */,
+				788D2AA422C27F6300638CC7 /* FirebaseDatabase.framework in Frameworks */,
+				788D2AA622C27F6300638CC7 /* FirebaseInstanceID.framework in Frameworks */,
 				48CCB20E41B22A8DE676E758 /* Pods_Punch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,45 +78,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2516AEF522C2867600475198 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2516AEF622C2869500475198 /* Company.swift */,
-				2516AEF822C286D800475198 /* Employee.swift */,
-				2516AEFA22C28CEB00475198 /* Shifts.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		2516AF0322C2C75800475198 /* PunchTests */ = {
-			isa = PBXGroup;
-			children = (
-				2516AF0422C2C75800475198 /* PunchTests.swift */,
-				2516AF0622C2C75800475198 /* Info.plist */,
-			);
-			path = PunchTests;
-			sourceTree = "<group>";
-		};
-		257D8EA122C27E0B00E90BD4 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				257D8EA222C27E2700E90BD4 /* AuthService.swift */,
-				2516AEFC22C2951300475198 /* DataService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		5707FBF9CD22BFC79E2E5773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2516AF0E22C2CA4700475198 /* FirebaseAuth.framework */,
-				2516AF1022C2CA4700475198 /* FirebaseDatabase.framework */,
-				2516AF1222C2CA4700475198 /* FirebaseInstanceID.framework */,
-				2516AF1422C2CA4800475198 /* GoogleUtilities.framework */,
-				2516AF1622C2CA4800475198 /* GTMSessionFetcher.framework */,
-				2516AF1822C2CA4800475198 /* leveldb.framework */,
-				2516AF1A22C2CA4800475198 /* nanopb.framework */,
-				2516AF0C22C2CA2100475198 /* FirebaseCore.framework */,
+				788D2A9F22C27F6300638CC7 /* FirebaseAuth.framework */,
+				788D2AA322C27F6300638CC7 /* FirebaseDatabase.framework */,
+				788D2AA522C27F6300638CC7 /* FirebaseInstanceID.framework */,
+				788D2AA122C27F6300638CC7 /* FirebaseCore.framework */,
 				331EC6C1AFFCC905ACC49DE2 /* Pods_Punch.framework */,
 			);
 			name = Frameworks;
@@ -168,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				78CD0B0122C1792C008C251C /* Punch */,
-				2516AF0322C2C75800475198 /* PunchTests */,
 				78CD0B0022C1792C008C251C /* Products */,
 				643181576C7F77A151256AA1 /* Pods */,
 				5707FBF9CD22BFC79E2E5773 /* Frameworks */,
@@ -179,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				78CD0AFF22C1792C008C251C /* Punch.app */,
-				2516AF0222C2C75800475198 /* PunchTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,9 +120,9 @@
 		78CD0B0122C1792C008C251C /* Punch */ = {
 			isa = PBXGroup;
 			children = (
+				D25736A722C3D39500362F44 /* Model */,
+				D25736A422C3D33E00362F44 /* Services */,
 				78CD0B0222C1792C008C251C /* AppDelegate.swift */,
-				2516AEF522C2867600475198 /* Model */,
-				257D8EA122C27E0B00E90BD4 /* Services */,
 				257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */,
 				78CD0B0422C1792C008C251C /* LoginViewController.swift */,
 				78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */,
@@ -202,36 +135,50 @@
 				78CD0B0B22C1792D008C251C /* LaunchScreen.storyboard */,
 				78CD0B0E22C1792D008C251C /* Info.plist */,
 				7855CD4D22C26FEC00650D7E /* Utils.swift */,
+				7850E03E22C29F0200FAECED /* Punch-Bridging-Header.h */,
 			);
 			path = Punch;
 			sourceTree = "<group>";
 		};
+		D25736A422C3D33E00362F44 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D25736A522C3D38B00362F44 /* AuthService.swift */,
+				D25736A222C3D33200362F44 /* DataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D25736A722C3D39500362F44 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D25736AF22C3D3B600362F44 /* Company.swift */,
+				D25736AE22C3D3B600362F44 /* Employee.swift */,
+				D25736B022C3D3B600362F44 /* Shifts.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
-/* Begin PBXNativeTarget section */
-		2516AF0122C2C75800475198 /* PunchTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2516AF0922C2C75800475198 /* Build configuration list for PBXNativeTarget "PunchTests" */;
-			buildPhases = (
-				2516AEFE22C2C75800475198 /* Sources */,
-				2516AEFF22C2C75800475198 /* Frameworks */,
-				2516AF0022C2C75800475198 /* Resources */,
+/* Begin PBXHeadersBuildPhase section */
+		7850E03F22C29FD600FAECED /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7850E04022C29FDE00FAECED /* Punch-Bridging-Header.h in Headers */,
 			);
-			buildRules = (
-			);
-			dependencies = (
-				2516AF0822C2C75800475198 /* PBXTargetDependency */,
-			);
-			name = PunchTests;
-			productName = PunchTests;
-			productReference = 2516AF0222C2C75800475198 /* PunchTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
 		78CD0AFE22C1792B008C251C /* Punch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78CD0B1122C1792D008C251C /* Build configuration list for PBXNativeTarget "Punch" */;
 			buildPhases = (
 				84649539DAFF39C7FE63A8DC /* [CP] Check Pods Manifest.lock */,
+				7850E03F22C29FD600FAECED /* Headers */,
 				78CD0AFB22C1792B008C251C /* Sources */,
 				78CD0AFC22C1792B008C251C /* Frameworks */,
 				78CD0AFD22C1792B008C251C /* Resources */,
@@ -256,10 +203,6 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Patrick Trudel";
 				TargetAttributes = {
-					2516AF0122C2C75800475198 = {
-						CreatedOnToolsVersion = 10.2.1;
-						TestTargetID = 78CD0AFE22C1792B008C251C;
-					};
 					78CD0AFE22C1792B008C251C = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
@@ -279,19 +222,11 @@
 			projectRoot = "";
 			targets = (
 				78CD0AFE22C1792B008C251C /* Punch */,
-				2516AF0122C2C75800475198 /* PunchTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2516AF0022C2C75800475198 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		78CD0AFD22C1792B008C251C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -348,43 +283,27 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2516AEFE22C2C75800475198 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2516AF0522C2C75800475198 /* PunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		78CD0AFB22C1792B008C251C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */,
-				2516AEFD22C2951300475198 /* DataService.swift in Sources */,
 				78CD0B1522C17F9B008C251C /* EmployeeViewController.swift in Sources */,
+				D25736B122C3D3B700362F44 /* Employee.swift in Sources */,
 				78CD0B0522C1792C008C251C /* LoginViewController.swift in Sources */,
-				2516AEF922C286D800475198 /* Employee.swift in Sources */,
-				2516AEFB22C28CEB00475198 /* Shifts.swift in Sources */,
-				2516AEF722C2869500475198 /* Company.swift in Sources */,
-				257D8EA322C27E2700E90BD4 /* AuthService.swift in Sources */,
 				78CD0B1722C18216008C251C /* CollectionViewCell.swift in Sources */,
 				783D5F9222C1927900645E11 /* AdminTodayViewController.swift in Sources */,
 				78CD0B0322C1792C008C251C /* AppDelegate.swift in Sources */,
+				D25736B322C3D3B700362F44 /* Shifts.swift in Sources */,
+				D25736B222C3D3B700362F44 /* Company.swift in Sources */,
 				783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */,
+				D25736A622C3D38B00362F44 /* AuthService.swift in Sources */,
 				7855CD4E22C26FEC00650D7E /* Utils.swift in Sources */,
+				D25736A322C3D33200362F44 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2516AF0822C2C75800475198 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 78CD0AFE22C1792B008C251C /* Punch */;
-			targetProxy = 2516AF0722C2C75800475198 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		78CD0B0622C1792C008C251C /* Main.storyboard */ = {
@@ -406,46 +325,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2516AF0A22C2C75800475198 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 489ZVWUGPK;
-				INFOPLIST_FILE = PunchTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = code.luizramos.PunchTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Punch.app/Punch";
-			};
-			name = Debug;
-		};
-		2516AF0B22C2C75800475198 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 489ZVWUGPK;
-				INFOPLIST_FILE = PunchTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = code.luizramos.PunchTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Punch.app/Punch";
-			};
-			name = Release;
-		};
 		78CD0B0F22C1792D008C251C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -568,7 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 489ZVWUGPK;
+				DEVELOPMENT_TEAM = TL2NQXM9D4;
 				INFOPLIST_FILE = Punch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -576,6 +455,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.trudev.Punch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Punch/Punch-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -587,7 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 489ZVWUGPK;
+				DEVELOPMENT_TEAM = TL2NQXM9D4;
 				INFOPLIST_FILE = Punch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -595,6 +475,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.trudev.Punch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Punch/Punch-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -603,15 +484,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2516AF0922C2C75800475198 /* Build configuration list for PBXNativeTarget "PunchTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2516AF0A22C2C75800475198 /* Debug */,
-				2516AF0B22C2C75800475198 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		78CD0AFA22C1792B008C251C /* Build configuration list for PBXProject "Punch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
