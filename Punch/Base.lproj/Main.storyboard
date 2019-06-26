@@ -161,14 +161,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0d-Im-sg8" userLabel="labelContainerView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="324.66666666666669"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 1920" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGK-Lj-fAu">
-                                        <rect key="frame" x="20" y="64" width="335" height="42"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyR-Z7-6DE" customClass="FSCalendar">
-                                        <rect key="frame" x="20" y="125.99999999999999" width="335" height="178.66666666666663"/>
+                                        <rect key="frame" x="20" y="44" width="335" height="260.66666666666669"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
@@ -197,10 +191,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="XyR-Z7-6DE" secondAttribute="trailing" constant="20" id="AOx-UT-FI6"/>
                                     <constraint firstItem="XyR-Z7-6DE" firstAttribute="leading" secondItem="K0d-Im-sg8" secondAttribute="leading" constant="20" id="BIr-Sm-05P"/>
-                                    <constraint firstAttribute="trailing" secondItem="hGK-Lj-fAu" secondAttribute="trailing" constant="20" id="EWq-i4-EOj"/>
                                     <constraint firstAttribute="bottom" secondItem="XyR-Z7-6DE" secondAttribute="bottom" constant="20" id="ZmG-qh-j7O"/>
-                                    <constraint firstItem="hGK-Lj-fAu" firstAttribute="leading" secondItem="K0d-Im-sg8" secondAttribute="leading" constant="20" id="b8t-0E-7Dz"/>
-                                    <constraint firstItem="XyR-Z7-6DE" firstAttribute="top" secondItem="hGK-Lj-fAu" secondAttribute="bottom" constant="20" id="ff1-uw-ngS"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -208,18 +199,17 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="qXg-o5-Gq8" secondAttribute="bottom" id="4Rv-nH-QAm"/>
                             <constraint firstItem="qXg-o5-Gq8" firstAttribute="leading" secondItem="3ZC-Vf-GaC" secondAttribute="leading" id="7oj-0O-Ci9"/>
+                            <constraint firstItem="XyR-Z7-6DE" firstAttribute="top" secondItem="3ZC-Vf-GaC" secondAttribute="top" id="8hA-p7-yCw"/>
                             <constraint firstItem="qXg-o5-Gq8" firstAttribute="trailing" secondItem="3ZC-Vf-GaC" secondAttribute="trailing" id="AfY-f3-fVU"/>
                             <constraint firstItem="K0d-Im-sg8" firstAttribute="trailing" secondItem="3ZC-Vf-GaC" secondAttribute="trailing" id="Chm-Ep-ZCu"/>
                             <constraint firstItem="K0d-Im-sg8" firstAttribute="top" secondItem="uyJ-EA-Ggr" secondAttribute="top" id="HMS-GP-Nox"/>
                             <constraint firstItem="K0d-Im-sg8" firstAttribute="leading" secondItem="3ZC-Vf-GaC" secondAttribute="leading" id="I59-ok-b0P"/>
-                            <constraint firstItem="hGK-Lj-fAu" firstAttribute="top" secondItem="3ZC-Vf-GaC" secondAttribute="top" constant="20" id="OtL-dn-Jja"/>
-                            <constraint firstItem="K0d-Im-sg8" firstAttribute="height" secondItem="uyJ-EA-Ggr" secondAttribute="height" multiplier="0.4" id="r0v-vi-mUj"/>
+                            <constraint firstItem="K0d-Im-sg8" firstAttribute="height" secondItem="uyJ-EA-Ggr" secondAttribute="height" multiplier="0.4" id="chk-P3-Q2n"/>
                             <constraint firstItem="qXg-o5-Gq8" firstAttribute="top" secondItem="K0d-Im-sg8" secondAttribute="bottom" id="wU6-Ot-TPh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3ZC-Vf-GaC"/>
                     </view>
                     <connections>
-                        <outlet property="amountOwedLabel" destination="hGK-Lj-fAu" id="lTR-Sg-clD"/>
                         <outlet property="calendarView" destination="XyR-Z7-6DE" id="0v2-NO-mF0"/>
                         <outlet property="collectionView" destination="qXg-o5-Gq8" id="V9g-28-Y7p"/>
                         <outlet property="labelContainerView" destination="K0d-Im-sg8" id="IEc-Kw-5Ss"/>

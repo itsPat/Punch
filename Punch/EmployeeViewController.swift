@@ -25,10 +25,10 @@ class EmployeeViewController: UIViewController {
     @IBOutlet weak var amountOwedLabel: UILabel!
     @IBOutlet weak var labelContainerView: UIView!
     @IBOutlet weak var calendarView: FSCalendar!
-    var calendarSize = CGSize()
+    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
-        calendarSize = CGSize(width: view.frame.width * 0.8, height: view.frame.width * 0.8)
+        
         collectionView.register(FSCalendar.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "calendarView")
     }
     
@@ -44,21 +44,43 @@ class EmployeeViewController: UIViewController {
         calendarView.appearance.titleFont = UIFont.boldSystemFont(ofSize: 12)
     }
 
-    
-    let items: [Shift] = [
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
+    let items: [[Any]] = [
+        
+        [
+            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600)
+        ],
+        
+        [
+            Shift(start: Date(), finish: Date()),
+            Shift(start: Date(), finish: Date()),
+            Shift(start: Date(), finish: Date()),
+            Shift(start: Date(), finish: Date()),
+            Shift(start: Date(), finish: Date()),
+            Shift(start: Date(), finish: Date()),
+            Shift(start: Date(), finish: Date()),
+            Shift(start: Date(), finish: Date()),
+            Shift(start: Date(), finish: Date()),
+            Shift(start: Date(), finish: Date()),
+            Shift(start: Date(), finish: Date()),
+            Shift(start: Date(), finish: Date()),
+        ]
+        
     ]
+    
+//    let items: [Shift] = [
+//        Shift(start: Date(), finish: Date()),
+//        Shift(start: Date(), finish: Date()),
+//        Shift(start: Date(), finish: Date()),
+//        Shift(start: Date(), finish: Date()),
+//        Shift(start: Date(), finish: Date()),
+//        Shift(start: Date(), finish: Date()),
+//        Shift(start: Date(), finish: Date()),
+//        Shift(start: Date(), finish: Date()),
+//        Shift(start: Date(), finish: Date()),
+//        Shift(start: Date(), finish: Date()),
+//        Shift(start: Date(), finish: Date()),
+//        Shift(start: Date(), finish: Date()),
+//    ]
     
     //TODO: When a cell is tapped, check that the date is today, if so punch the user in.
     
@@ -74,15 +96,35 @@ extension EmployeeViewController: UICollectionViewDelegateFlowLayout {
 
 extension EmployeeViewController: UICollectionViewDataSource {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return items[section].count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
-        cell.titleLabel.text = formatToDateString(date: items[indexPath.item].start)
-        cell.detailLabel.text = "\(formatToHourMinutesString(date: items[indexPath.item].start)) - \(formatToHourMinutesString(date: items[indexPath.item].finish))"
-        cell.setStandardShadow()
+        
+        
+        var titleLabelText = ""
+        var detailLabelText = ""
+        
+        if indexPath.section == 0 {
+            // The $ Amount owed for this employee.
+            let item = items[indexPath.section][indexPath.row] as! Employee
+            titleLabelText = "$\(item.amountOwed)"
+            detailLabelText = "80 hours worked"
+        } else {
+            // The Upcoming shifts for this employee.
+            let item = items[indexPath.section][indexPath.row] as! Shift
+            titleLabelText = formatToDateString(date: item.start)
+            detailLabelText = "\(formatToHourMinutesString(date: item.start)) - \(formatToHourMinutesString(date: item.finish))"
+        }
+        
+        cell.titleLabel.text = titleLabelText
+        cell.detailLabel.text = detailLabelText
         cell.setCornerRadius()
         cell.setStandardShadow()
         return cell
@@ -106,7 +148,6 @@ extension EmployeeViewController: UICollectionViewDataSource {
 extension EmployeeViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        self.calendarSize = bounds.size
         DispatchQueue.main.async {
             self.view.layoutIfNeeded()
         }
