@@ -24,13 +24,32 @@ class EmployeeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var amountOwedLabel: UILabel!
     @IBOutlet weak var labelContainerView: UIView!
+    @IBOutlet weak var calendarView: FSCalendar!
     var calendarSize = CGSize()
     
     override func viewDidLoad() {
         calendarSize = CGSize(width: view.frame.width * 0.8, height: view.frame.width * 0.8)
         collectionView.register(FSCalendar.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "calendarView")
         labelContainerView.setStandardShadow()
-        labelContainerView.backgroundColor = CustomColors.blue
+        labelContainerView.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
+        setupAmountOwedLabel()
+        setupCalendarView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+    }
+    
+    func setupAmountOwedLabel() {
+        let gradientView = UIView(frame: amountOwedLabel.frame.insetBy(dx: 20, dy: 20))
+        gradientView.setGradientBackground(colorOne: CustomColors.orange, colorTwo: CustomColors.darkOrange)
+        amountOwedLabel.addSubview(gradientView)
+        amountOwedLabel.sendSubviewToBack(gradientView)
+    }
+    
+    func setupCalendarView() {
+        calendarView.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 18)
+        calendarView.appearance.titleFont = UIFont.boldSystemFont(ofSize: 12)
     }
 
     
@@ -59,10 +78,6 @@ extension EmployeeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width * 0.8, height: view.frame.width * 0.2)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return calendarSize
-    }
 }
 
 extension EmployeeViewController: UICollectionViewDataSource {
@@ -79,13 +94,6 @@ extension EmployeeViewController: UICollectionViewDataSource {
         cell.setCornerRadius()
         cell.setStandardShadow()
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "calendarView", for: indexPath) as! FSCalendar
-        headerView.dataSource = self
-        headerView.delegate = self
-        return headerView
     }
     
     func formatToDateString(date: Date) -> String {

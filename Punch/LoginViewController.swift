@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.layoutIfNeeded()
-        self.view.setGradientBackground(colorOne: CustomColors.darkBlue, colorTwo: CustomColors.blue)
+        self.view.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
       
       let dataService = DataService.instance
       //        dataService.createDBCompany(uid: UUID().uuidString, companyData: ["name": "Microsoft"])
