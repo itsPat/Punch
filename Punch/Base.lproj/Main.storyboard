@@ -158,48 +158,53 @@
                                     <outlet property="delegate" destination="3Od-gz-N0x" id="Vhv-4T-DHu"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0d-Im-sg8" userLabel="labelContainerView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0d-Im-sg8" userLabel="containerView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="324.66666666666669"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyR-Z7-6DE" customClass="FSCalendar">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zey-KC-4EF" userLabel="calendarConstraintsContainer">
                                         <rect key="frame" x="20" y="44" width="335" height="260.66666666666669"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="titleDefaultColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
-                                                <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
-                                                <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="titleSelectionColor">
-                                                <color key="value" cocoaTouchSystemColor="darkTextColor"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyR-Z7-6DE" customClass="FSCalendar">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="260.66666666666669"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleDefaultColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                                                        <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                                                        <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleSelectionColor">
+                                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.35686274509999999" green="0.42745098040000001" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="XyR-Z7-6DE" secondAttribute="trailing" constant="20" id="AOx-UT-FI6"/>
-                                    <constraint firstItem="XyR-Z7-6DE" firstAttribute="leading" secondItem="K0d-Im-sg8" secondAttribute="leading" constant="20" id="BIr-Sm-05P"/>
-                                    <constraint firstAttribute="bottom" secondItem="XyR-Z7-6DE" secondAttribute="bottom" constant="20" id="ZmG-qh-j7O"/>
+                                    <constraint firstItem="zey-KC-4EF" firstAttribute="leading" secondItem="K0d-Im-sg8" secondAttribute="leading" constant="20" id="hkT-px-Acr"/>
+                                    <constraint firstAttribute="trailing" secondItem="zey-KC-4EF" secondAttribute="trailing" constant="20" id="mPy-gj-188"/>
+                                    <constraint firstAttribute="bottom" secondItem="zey-KC-4EF" secondAttribute="bottom" constant="20" id="pi5-b1-n0d"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="qXg-o5-Gq8" secondAttribute="bottom" id="4Rv-nH-QAm"/>
+                            <constraint firstItem="zey-KC-4EF" firstAttribute="top" secondItem="3ZC-Vf-GaC" secondAttribute="top" id="7WM-gz-Rqb"/>
                             <constraint firstItem="qXg-o5-Gq8" firstAttribute="leading" secondItem="3ZC-Vf-GaC" secondAttribute="leading" id="7oj-0O-Ci9"/>
-                            <constraint firstItem="XyR-Z7-6DE" firstAttribute="top" secondItem="3ZC-Vf-GaC" secondAttribute="top" id="8hA-p7-yCw"/>
                             <constraint firstItem="qXg-o5-Gq8" firstAttribute="trailing" secondItem="3ZC-Vf-GaC" secondAttribute="trailing" id="AfY-f3-fVU"/>
                             <constraint firstItem="K0d-Im-sg8" firstAttribute="trailing" secondItem="3ZC-Vf-GaC" secondAttribute="trailing" id="Chm-Ep-ZCu"/>
                             <constraint firstItem="K0d-Im-sg8" firstAttribute="top" secondItem="uyJ-EA-Ggr" secondAttribute="top" id="HMS-GP-Nox"/>
@@ -210,9 +215,9 @@
                         <viewLayoutGuide key="safeArea" id="3ZC-Vf-GaC"/>
                     </view>
                     <connections>
+                        <outlet property="calendarContainerView" destination="K0d-Im-sg8" id="IEc-Kw-5Ss"/>
                         <outlet property="calendarView" destination="XyR-Z7-6DE" id="0v2-NO-mF0"/>
                         <outlet property="collectionView" destination="qXg-o5-Gq8" id="V9g-28-Y7p"/>
-                        <outlet property="labelContainerView" destination="K0d-Im-sg8" id="IEc-Kw-5Ss"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dB1-Qg-QUK" userLabel="First Responder" sceneMemberID="firstResponder"/>

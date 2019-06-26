@@ -22,10 +22,8 @@ struct Employee {
 class EmployeeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var amountOwedLabel: UILabel!
-    @IBOutlet weak var labelContainerView: UIView!
+    @IBOutlet weak var calendarContainerView: UIView!
     @IBOutlet weak var calendarView: FSCalendar!
-    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         
@@ -34,8 +32,8 @@ class EmployeeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        labelContainerView.setStandardShadow()
-        labelContainerView.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
+        calendarContainerView.setStandardShadow()
+        calendarContainerView.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
         setupCalendarView()
     }
     
@@ -67,21 +65,6 @@ class EmployeeViewController: UIViewController {
         
     ]
     
-//    let items: [Shift] = [
-//        Shift(start: Date(), finish: Date()),
-//        Shift(start: Date(), finish: Date()),
-//        Shift(start: Date(), finish: Date()),
-//        Shift(start: Date(), finish: Date()),
-//        Shift(start: Date(), finish: Date()),
-//        Shift(start: Date(), finish: Date()),
-//        Shift(start: Date(), finish: Date()),
-//        Shift(start: Date(), finish: Date()),
-//        Shift(start: Date(), finish: Date()),
-//        Shift(start: Date(), finish: Date()),
-//        Shift(start: Date(), finish: Date()),
-//        Shift(start: Date(), finish: Date()),
-//    ]
-    
     //TODO: When a cell is tapped, check that the date is today, if so punch the user in.
     
     
@@ -106,7 +89,6 @@ extension EmployeeViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
-        
         
         var titleLabelText = ""
         var detailLabelText = ""
