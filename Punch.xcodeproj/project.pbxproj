@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		2516AEF722C2869500475198 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516AEF622C2869500475198 /* Company.swift */; };
 		2516AEF922C286D800475198 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516AEF822C286D800475198 /* Employee.swift */; };
+		2516AEFB22C28CEB00475198 /* Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516AEFA22C28CEB00475198 /* Shifts.swift */; };
+		2516AEFD22C2951300475198 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516AEFC22C2951300475198 /* DataService.swift */; };
+		2516AF0522C2C75800475198 /* PunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516AF0422C2C75800475198 /* PunchTests.swift */; };
+		2516AF0D22C2CA2100475198 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF0C22C2CA2100475198 /* FirebaseCore.framework */; };
+		2516AF0F22C2CA4700475198 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF0E22C2CA4700475198 /* FirebaseAuth.framework */; };
+		2516AF1122C2CA4700475198 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF1022C2CA4700475198 /* FirebaseDatabase.framework */; };
+		2516AF1322C2CA4700475198 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF1222C2CA4700475198 /* FirebaseInstanceID.framework */; };
+		2516AF1522C2CA4800475198 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF1422C2CA4800475198 /* GoogleUtilities.framework */; };
+		2516AF1722C2CA4800475198 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF1622C2CA4800475198 /* GTMSessionFetcher.framework */; };
+		2516AF1922C2CA4800475198 /* leveldb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF1822C2CA4800475198 /* leveldb.framework */; };
+		2516AF1B22C2CA4800475198 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2516AF1A22C2CA4800475198 /* nanopb.framework */; };
+		2516AF1C22C2CA4800475198 /* Pods_Punch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 331EC6C1AFFCC905ACC49DE2 /* Pods_Punch.framework */; };
 		257D8E9C22C272D200E90BD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */; };
 		257D8EA322C27E2700E90BD4 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257D8EA222C27E2700E90BD4 /* AuthService.swift */; };
 		48CCB20E41B22A8DE676E758 /* Pods_Punch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 331EC6C1AFFCC905ACC49DE2 /* Pods_Punch.framework */; };
@@ -25,10 +37,33 @@
 		78CD0B1722C18216008C251C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B1622C18216008C251C /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2516AF0722C2C75800475198 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78CD0AF722C1792B008C251C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 78CD0AFE22C1792B008C251C;
+			remoteInfo = Punch;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1170A086AF9EBF46D1F1B688 /* Pods-Punch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Punch.release.xcconfig"; path = "Target Support Files/Pods-Punch/Pods-Punch.release.xcconfig"; sourceTree = "<group>"; };
 		2516AEF622C2869500475198 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		2516AEF822C286D800475198 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
+		2516AEFA22C28CEB00475198 /* Shifts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shifts.swift; sourceTree = "<group>"; };
+		2516AEFC22C2951300475198 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		2516AF0222C2C75800475198 /* PunchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PunchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2516AF0422C2C75800475198 /* PunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunchTests.swift; sourceTree = "<group>"; };
+		2516AF0622C2C75800475198 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2516AF0C22C2CA2100475198 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2516AF0E22C2CA4700475198 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2516AF1022C2CA4700475198 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2516AF1222C2CA4700475198 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2516AF1422C2CA4800475198 /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2516AF1622C2CA4800475198 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2516AF1822C2CA4800475198 /* leveldb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = leveldb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2516AF1A22C2CA4800475198 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		257D8EA222C27E2700E90BD4 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		25890DFB12F692ADE659F51F /* Pods-Punch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Punch.debug.xcconfig"; path = "Target Support Files/Pods-Punch/Pods-Punch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -49,6 +84,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2516AEFF22C2C75800475198 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2516AF0F22C2CA4700475198 /* FirebaseAuth.framework in Frameworks */,
+				2516AF1122C2CA4700475198 /* FirebaseDatabase.framework in Frameworks */,
+				2516AF1322C2CA4700475198 /* FirebaseInstanceID.framework in Frameworks */,
+				2516AF1522C2CA4800475198 /* GoogleUtilities.framework in Frameworks */,
+				2516AF1722C2CA4800475198 /* GTMSessionFetcher.framework in Frameworks */,
+				2516AF1922C2CA4800475198 /* leveldb.framework in Frameworks */,
+				2516AF1B22C2CA4800475198 /* nanopb.framework in Frameworks */,
+				2516AF1C22C2CA4800475198 /* Pods_Punch.framework in Frameworks */,
+				2516AF0D22C2CA2100475198 /* FirebaseCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		78CD0AFC22C1792B008C251C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -65,14 +116,25 @@
 			children = (
 				2516AEF622C2869500475198 /* Company.swift */,
 				2516AEF822C286D800475198 /* Employee.swift */,
+				2516AEFA22C28CEB00475198 /* Shifts.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2516AF0322C2C75800475198 /* PunchTests */ = {
+			isa = PBXGroup;
+			children = (
+				2516AF0422C2C75800475198 /* PunchTests.swift */,
+				2516AF0622C2C75800475198 /* Info.plist */,
+			);
+			path = PunchTests;
 			sourceTree = "<group>";
 		};
 		257D8EA122C27E0B00E90BD4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				257D8EA222C27E2700E90BD4 /* AuthService.swift */,
+				2516AEFC22C2951300475198 /* DataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -80,6 +142,14 @@
 		5707FBF9CD22BFC79E2E5773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2516AF0E22C2CA4700475198 /* FirebaseAuth.framework */,
+				2516AF1022C2CA4700475198 /* FirebaseDatabase.framework */,
+				2516AF1222C2CA4700475198 /* FirebaseInstanceID.framework */,
+				2516AF1422C2CA4800475198 /* GoogleUtilities.framework */,
+				2516AF1622C2CA4800475198 /* GTMSessionFetcher.framework */,
+				2516AF1822C2CA4800475198 /* leveldb.framework */,
+				2516AF1A22C2CA4800475198 /* nanopb.framework */,
+				2516AF0C22C2CA2100475198 /* FirebaseCore.framework */,
 				331EC6C1AFFCC905ACC49DE2 /* Pods_Punch.framework */,
 			);
 			name = Frameworks;
@@ -98,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				78CD0B0122C1792C008C251C /* Punch */,
+				2516AF0322C2C75800475198 /* PunchTests */,
 				78CD0B0022C1792C008C251C /* Products */,
 				643181576C7F77A151256AA1 /* Pods */,
 				5707FBF9CD22BFC79E2E5773 /* Frameworks */,
@@ -108,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				78CD0AFF22C1792C008C251C /* Punch.app */,
+				2516AF0222C2C75800475198 /* PunchTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,6 +209,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2516AF0122C2C75800475198 /* PunchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2516AF0922C2C75800475198 /* Build configuration list for PBXNativeTarget "PunchTests" */;
+			buildPhases = (
+				2516AEFE22C2C75800475198 /* Sources */,
+				2516AEFF22C2C75800475198 /* Frameworks */,
+				2516AF0022C2C75800475198 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2516AF0822C2C75800475198 /* PBXTargetDependency */,
+			);
+			name = PunchTests;
+			productName = PunchTests;
+			productReference = 2516AF0222C2C75800475198 /* PunchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		78CD0AFE22C1792B008C251C /* Punch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78CD0B1122C1792D008C251C /* Build configuration list for PBXNativeTarget "Punch" */;
@@ -166,6 +256,10 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Patrick Trudel";
 				TargetAttributes = {
+					2516AF0122C2C75800475198 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 78CD0AFE22C1792B008C251C;
+					};
 					78CD0AFE22C1792B008C251C = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
@@ -185,11 +279,19 @@
 			projectRoot = "";
 			targets = (
 				78CD0AFE22C1792B008C251C /* Punch */,
+				2516AF0122C2C75800475198 /* PunchTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2516AF0022C2C75800475198 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		78CD0AFD22C1792B008C251C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -246,14 +348,24 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2516AEFE22C2C75800475198 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2516AF0522C2C75800475198 /* PunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		78CD0AFB22C1792B008C251C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */,
+				2516AEFD22C2951300475198 /* DataService.swift in Sources */,
 				78CD0B1522C17F9B008C251C /* EmployeeViewController.swift in Sources */,
 				78CD0B0522C1792C008C251C /* LoginViewController.swift in Sources */,
 				2516AEF922C286D800475198 /* Employee.swift in Sources */,
+				2516AEFB22C28CEB00475198 /* Shifts.swift in Sources */,
 				2516AEF722C2869500475198 /* Company.swift in Sources */,
 				257D8EA322C27E2700E90BD4 /* AuthService.swift in Sources */,
 				78CD0B1722C18216008C251C /* CollectionViewCell.swift in Sources */,
@@ -265,6 +377,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2516AF0822C2C75800475198 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 78CD0AFE22C1792B008C251C /* Punch */;
+			targetProxy = 2516AF0722C2C75800475198 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		78CD0B0622C1792C008C251C /* Main.storyboard */ = {
@@ -286,6 +406,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2516AF0A22C2C75800475198 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 489ZVWUGPK;
+				INFOPLIST_FILE = PunchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = code.luizramos.PunchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Punch.app/Punch";
+			};
+			name = Debug;
+		};
+		2516AF0B22C2C75800475198 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 489ZVWUGPK;
+				INFOPLIST_FILE = PunchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = code.luizramos.PunchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Punch.app/Punch";
+			};
+			name = Release;
+		};
 		78CD0B0F22C1792D008C251C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -443,6 +603,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2516AF0922C2C75800475198 /* Build configuration list for PBXNativeTarget "PunchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2516AF0A22C2C75800475198 /* Debug */,
+				2516AF0B22C2C75800475198 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		78CD0AFA22C1792B008C251C /* Build configuration list for PBXProject "Punch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

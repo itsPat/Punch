@@ -7,13 +7,19 @@
 //
 
 import Foundation
-
+import Firebase
 public class Company {
     var id : String
     var name : String
+  var employees: [Employee1]?
 
     init(id: String, name: String) {
         self.id = id
         self.name = name
+    }
+    init(snapshot: DataSnapshot) {
+        self.id = snapshot.key
+        let snapshotValue = snapshot.value as! [String: AnyObject]
+        name = snapshotValue["name"] as! String
     }
 }
