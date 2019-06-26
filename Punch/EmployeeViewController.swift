@@ -30,21 +30,13 @@ class EmployeeViewController: UIViewController {
     override func viewDidLoad() {
         calendarSize = CGSize(width: view.frame.width * 0.8, height: view.frame.width * 0.8)
         collectionView.register(FSCalendar.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "calendarView")
-        labelContainerView.setStandardShadow()
-        labelContainerView.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
-        setupAmountOwedLabel()
-        setupCalendarView()
     }
     
     override func viewDidLayoutSubviews() {
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-    }
-    
-    func setupAmountOwedLabel() {
-        let gradientView = UIView(frame: amountOwedLabel.frame.insetBy(dx: 20, dy: 20))
-        gradientView.setGradientBackground(colorOne: CustomColors.orange, colorTwo: CustomColors.darkOrange)
-        amountOwedLabel.addSubview(gradientView)
-        amountOwedLabel.sendSubviewToBack(gradientView)
+        labelContainerView.setStandardShadow()
+        labelContainerView.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
+        setupCalendarView()
     }
     
     func setupCalendarView() {
