@@ -11,6 +11,7 @@ import Firebase
 public class Company {
     var id : String
     var name : String
+    var employeesRef :[String : String] = [:]
   var employees: [Employee1]?
 
     init(id: String, name: String) {
@@ -20,6 +21,7 @@ public class Company {
     init(snapshot: DataSnapshot) {
         self.id = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
+        employeesRef = snapshotValue["employees"] as! [String : String]
         name = snapshotValue["name"] as! String
     }
 }

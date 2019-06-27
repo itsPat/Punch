@@ -37,7 +37,21 @@ public class Employee1 {
         self.companyId = snapshotValue["companyId"] as! String
         self.email = snapshotValue["email"] as! String
         self.administratorId = snapshotValue["administratorId"] as? String
-        self.isAdministrator = snapshotValue["isAdministrator"] as! Bool
+        self.isAdministrator = snapshotValue["isAdministrator"] as? Bool ?? false
         self.hourlyRate = snapshotValue["hourlyRate"] as! Double
     }
+
+    func dictionary() -> [String: Any] {
+        let dic : [String: Any] = [
+            "id": id,
+            "name" : name,
+            "companyId" : companyId,
+            "email" : email,
+            "administratorId" : administratorId ?? "",
+            "hourlyRate" : hourlyRate,
+        ]
+
+        return dic
+    }
+
 }
