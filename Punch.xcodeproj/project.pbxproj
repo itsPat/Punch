@@ -30,6 +30,7 @@
 		D25736B122C3D3B700362F44 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736AE22C3D3B600362F44 /* Employee.swift */; };
 		D25736B222C3D3B700362F44 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736AF22C3D3B600362F44 /* Company.swift */; };
 		D25736B322C3D3B700362F44 /* Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736B022C3D3B600362F44 /* Shifts.swift */; };
+		D25736B922C52F9500362F44 /* CustomCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736B822C52F9500362F44 /* CustomCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		D25736AE22C3D3B600362F44 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		D25736AF22C3D3B600362F44 /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		D25736B022C3D3B600362F44 /* Shifts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shifts.swift; sourceTree = "<group>"; };
+		D25736B822C52F9500362F44 /* CustomCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				783D5F9122C1927900645E11 /* AdminTodayViewController.swift */,
 				783D5F9322C1970600645E11 /* AdminPayViewController.swift */,
 				78CD0B1622C18216008C251C /* CollectionViewCell.swift */,
+				D25736B822C52F9500362F44 /* CustomCollectionReusableView.swift */,
 				78CD0B0622C1792C008C251C /* Main.storyboard */,
 				78CD0B0922C1792D008C251C /* Assets.xcassets */,
 				78CD0B0B22C1792D008C251C /* LaunchScreen.storyboard */,
@@ -299,6 +302,7 @@
 				783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */,
 				D25736A622C3D38B00362F44 /* AuthService.swift in Sources */,
 				7855CD4E22C26FEC00650D7E /* Utils.swift in Sources */,
+				D25736B922C52F9500362F44 /* CustomCollectionReusableView.swift in Sources */,
 				D25736A322C3D33200362F44 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,7 +451,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DTTK359L6E;
+				DEVELOPMENT_TEAM = TL2NQXM9D4;
 				INFOPLIST_FILE = Punch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -467,7 +471,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DTTK359L6E;
+				DEVELOPMENT_TEAM = TL2NQXM9D4;
 				INFOPLIST_FILE = Punch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
