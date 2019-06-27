@@ -7,6 +7,22 @@
 //
 
 import UIKit
+import UIKit.UIGestureRecognizerSubclass
+
+// MARK: - State
+private enum State {
+    case closed
+    case open
+}
+
+extension State {
+    var opposite: State {
+        switch self {
+        case .open: return .closed
+        case .closed: return .open
+        }
+    }
+}
 
 struct Shift {
     let start: Date
