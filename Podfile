@@ -9,8 +9,13 @@ target 'Punch' do
 	pod 'Firebase/Core'
 	pod 'Firebase/Database'
 	pod 'Firebase/Auth'
-  	pod 'Firebase/Storage'
+  pod 'Firebase/Storage'
 	pod 'FSCalendar'
 	pod 'lottie-ios'
+  target 'PunchTests' do
+    inherit! :search_paths
+    pod 'Firebase'
+  end
 
 end
+

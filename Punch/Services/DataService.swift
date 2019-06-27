@@ -175,16 +175,18 @@ class DataService {
                             }
                         })
                     }
-
                 }
             }
         }
-
     }
+
 
 
     func createDBShift(uid: String, shiftData: Dictionary<String, Any>) {
         REF_WORK_SHIFT.child(uid).updateChildValues(shiftData)
+        if let employeeId = shiftData["employeeId"] as? String {
+            REF_EMPLOYEE.child(employeeId).child("shifts").updateChildValues([ uid: "Shift/\(uid)"])
+        }
     }
 
     //    func getShifById
@@ -206,6 +208,36 @@ class DataService {
 
     func updateShiftById(uid: String, shiftData: Dictionary<String, Any>) {
         REF_WORK_SHIFT.child(uid).updateChildValues(shiftData)
+    }
+
+    func getShiftsByEmployeeId(EmployeeId id: String, handler: @escaping (_ shifts: [Shift1]?) -> ()) {
+
+        REF_EMPLOYEE.child(id).observeSingleEvent(of: .value) { (snapshot) in
+            var myshifts: [Shift1] = []
+            if let employee = snapshot.value as? [String: Any] {
+                if let refernces = employee["shifts"] as? [String: String] {
+
+                    for ref in refernces.values {
+                        self.REF_BASE.child(ref).observeSingleEvent(of: .value, with: { (snapshot) in
+
+                            myshifts.append(Shift1(snapshot: snapshot))
+
+                            if refernces.values.count == myshifts.count {
+                                handler(myshifts)
+                            }
+                        })
+                    }
+                }
+            }
+        }
+    }
+
+    func setPunchInTimeWith(ShiftId shiftId: String, WithValue value: String ){
+        REF_WORK_SHIFT.child(shiftId).child("punchInTime").setValue(value)
+    }
+
+    func setPunchOutTimeWith(ShiftId shiftId: String, WithValue value: String ){
+        REF_WORK_SHIFT.child(shiftId).child("punchOutTime").setValue(value)
     }
 
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25094DD822C58A5B00573E5A /* PunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25094DD722C58A5B00573E5A /* PunchTests.swift */; };
 		2516AF2322C3EB4E00475198 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516AF2222C3EB4E00475198 /* Credential.swift */; };
 		257D8E9C22C272D200E90BD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */; };
 		48CCB20E41B22A8DE676E758 /* Pods_Punch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 331EC6C1AFFCC905ACC49DE2 /* Pods_Punch.framework */; };
@@ -35,8 +36,21 @@
 		D25736DE22C5422400362F44 /* CustomCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		25094DDA22C58A5B00573E5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78CD0AF722C1792B008C251C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 78CD0AFE22C1792B008C251C;
+			remoteInfo = Punch;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1170A086AF9EBF46D1F1B688 /* Pods-Punch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Punch.release.xcconfig"; path = "Target Support Files/Pods-Punch/Pods-Punch.release.xcconfig"; sourceTree = "<group>"; };
+		25094DD522C58A5B00573E5A /* PunchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PunchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		25094DD722C58A5B00573E5A /* PunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunchTests.swift; sourceTree = "<group>"; };
+		25094DD922C58A5B00573E5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2516AF1F22C3E79000475198 /* Punch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Punch.entitlements; sourceTree = "<group>"; };
 		2516AF2222C3EB4E00475198 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -70,6 +84,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		25094DD222C58A5B00573E5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		78CD0AFC22C1792B008C251C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -85,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25094DD622C58A5B00573E5A /* PunchTests */ = {
+			isa = PBXGroup;
+			children = (
+				25094DD722C58A5B00573E5A /* PunchTests.swift */,
+				25094DD922C58A5B00573E5A /* Info.plist */,
+			);
+			path = PunchTests;
+			sourceTree = "<group>";
+		};
 		5707FBF9CD22BFC79E2E5773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				78CD0B0122C1792C008C251C /* Punch */,
+				25094DD622C58A5B00573E5A /* PunchTests */,
 				78CD0B0022C1792C008C251C /* Products */,
 				643181576C7F77A151256AA1 /* Pods */,
 				5707FBF9CD22BFC79E2E5773 /* Frameworks */,
@@ -120,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				78CD0AFF22C1792C008C251C /* Punch.app */,
+				25094DD522C58A5B00573E5A /* PunchTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +216,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		25094DD422C58A5B00573E5A /* PunchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25094DDE22C58A5B00573E5A /* Build configuration list for PBXNativeTarget "PunchTests" */;
+			buildPhases = (
+				25094DD122C58A5B00573E5A /* Sources */,
+				25094DD222C58A5B00573E5A /* Frameworks */,
+				25094DD322C58A5B00573E5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				25094DDB22C58A5B00573E5A /* PBXTargetDependency */,
+			);
+			name = PunchTests;
+			productName = PunchTests;
+			productReference = 25094DD522C58A5B00573E5A /* PunchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		78CD0AFE22C1792B008C251C /* Punch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78CD0B1122C1792D008C251C /* Build configuration list for PBXNativeTarget "Punch" */;
@@ -215,6 +265,10 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Patrick Trudel";
 				TargetAttributes = {
+					25094DD422C58A5B00573E5A = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 78CD0AFE22C1792B008C251C;
+					};
 					78CD0AFE22C1792B008C251C = {
 						CreatedOnToolsVersion = 10.2.1;
 						SystemCapabilities = {
@@ -239,11 +293,19 @@
 			projectRoot = "";
 			targets = (
 				78CD0AFE22C1792B008C251C /* Punch */,
+				25094DD422C58A5B00573E5A /* PunchTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		25094DD322C58A5B00573E5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		78CD0AFD22C1792B008C251C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,6 +379,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		25094DD122C58A5B00573E5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25094DD822C58A5B00573E5A /* PunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		78CD0AFB22C1792B008C251C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -342,6 +412,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		25094DDB22C58A5B00573E5A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 78CD0AFE22C1792B008C251C /* Punch */;
+			targetProxy = 25094DDA22C58A5B00573E5A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		78CD0B0622C1792C008C251C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -362,6 +440,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		25094DDC22C58A5B00573E5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 489ZVWUGPK;
+				INFOPLIST_FILE = PunchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = code.luizramos.PunchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Punch.app/Punch";
+			};
+			name = Debug;
+		};
+		25094DDD22C58A5B00573E5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 489ZVWUGPK;
+				INFOPLIST_FILE = PunchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = code.luizramos.PunchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Punch.app/Punch";
+			};
+			name = Release;
+		};
 		78CD0B0F22C1792D008C251C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -523,6 +641,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		25094DDE22C58A5B00573E5A /* Build configuration list for PBXNativeTarget "PunchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25094DDC22C58A5B00573E5A /* Debug */,
+				25094DDD22C58A5B00573E5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		78CD0AFA22C1792B008C251C /* Build configuration list for PBXProject "Punch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
