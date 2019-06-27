@@ -91,6 +91,8 @@ class AuthService {
     func registerUser(withEmail email: String, andPassword password: String, userCreationComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
 
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+
+            //TODO: Implement the validation here
             //            if !(error is NSNull ){
             //                print("Error registering user \(error?.localizedDescription)  at \(#file) - \(#function) - \(#line)")
             //                if let erroCode = AuthErrorCode(rawValue: error!._code) {
@@ -105,7 +107,6 @@ class AuthService {
                 return
             }
 
-            //            let employee : Employee1?
             DataService.instance.getEmployeeByEmail(forEmail: email, handler: { (employee) in
                 let dic : [String: Any] = [
                     "id": employee.id,

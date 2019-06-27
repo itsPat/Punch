@@ -153,8 +153,6 @@ class DataService {
 
                     let employee = Employee1(snapshot: user)
                     handler(employee)
-                    //                    handler(user.childSnapshot(forPath: "Name").value as! String)
-
                 }
             }
         }
