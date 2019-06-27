@@ -18,11 +18,14 @@ class DataService {
     private var _REF_COMPANY = DB_BASE.child("Company")
     private var _REF_EMPLOYEE = DB_BASE.child("Employee")
     private var _REF_WORK_SHIFT = DB_BASE.child("Shift")
-
+    private var _REF_DBUSER = DB_BASE.child("User")
     var REF_BASE: DatabaseReference {
         return _REF_BASE
     }
 
+    var REF_DBUSER: DatabaseReference {
+        return _REF_DBUSER
+    }
     var REF_COMPANY: DatabaseReference {
         return _REF_COMPANY
     }
@@ -34,6 +37,19 @@ class DataService {
     var REF_WORK_SHIFT: DatabaseReference {
         return _REF_WORK_SHIFT
     }
+
+    //MARK : DBUSER Functions
+    func createDBUser(uid: String, userData: [String: Any]) {
+        REF_DBUSER.child(uid).updateChildValues(userData)
+    }
+
+    func getUserByUID(foruid uid: String, AndPassword password: String, handler: @escaping (_ user: Credential) -> ()){
+        REF_DBUSER.child(uid).observeSingleEvent(of: .value) { (userSnapshot) in
+            let user = Credential(snapshot: userSnapshot, password: password )
+            handler(user)
+        }
+    }
+
 
 
     func createDBCompany(uid: String, companyData: Dictionary<String, Any>) {
@@ -81,8 +97,14 @@ class DataService {
     }
 
     func createDBEmployee(uid: String, employeeData: Dictionary<String, Any>) {
+
         REF_EMPLOYEE.child(uid).updateChildValues(employeeData)
+        if let companyId = employeeData["companyId"] as? String {
+            REF_COMPANY.child(companyId).child("employees").updateChildValues([ uid: "Employee/\(uid)"])
+        }
     }
+
+
 
     func getEmployeename(forUID uid: String, handler: @escaping (_ employeeName: String) -> ()) {
 
@@ -108,6 +130,19 @@ class DataService {
         }
     }
 
+    func getEmployeeByEmail(forEmail employeeEmail: String, handler: @escaping (_ uid: Employee1) -> ()) {
+        REF_EMPLOYEE.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for user in userSnapshot {
+                if user.childSnapshot(forPath: "email").value  as! String == employeeEmail {
+                    let employee = Employee1(snapshot: user)
+                    employee.id = user.key
+                    handler(employee)
+                }
+            }
+        }
+    }
+
     func getEmployeeById(forUID uid: String, handler: @escaping (_ employeeName: Employee1?) -> ()) {
 
         REF_EMPLOYEE.observeSingleEvent(of: .value) { (userSnapshot) in
@@ -118,22 +153,43 @@ class DataService {
 
                     let employee = Employee1(snapshot: user)
                     handler(employee)
-//                    handler(user.childSnapshot(forPath: "Name").value as! String)
+                    //                    handler(user.childSnapshot(forPath: "Name").value as! String)
 
                 }
             }
         }
     }
 
+    func getEmployeesByCompanyId(companyId: String, handler: @escaping (_ employees: [Employee1]?) -> ()) {
 
+        REF_COMPANY.child(companyId).observeSingleEvent(of: .value) { (snapshot) in
+            var myEmployees: [Employee1] = []
+            if let company = snapshot.value as? [String: Any] {
+                if let refernces = company["employees"] as? [String: String] {
 
+                    for ref in refernces.values {
+                        self.REF_BASE.child(ref).observeSingleEvent(of: .value, with: { (snapshot) in
+
+                            myEmployees.append(Employee1(snapshot: snapshot))
+
+                            if refernces.values.count == myEmployees.count {
+                                handler(myEmployees)
+                            }
+                        })
+                    }
+
+                }
+            }
+        }
+
+    }
 
 
     func createDBShift(uid: String, shiftData: Dictionary<String, Any>) {
         REF_WORK_SHIFT.child(uid).updateChildValues(shiftData)
     }
 
-//    func getShifById
+    //    func getShifById
 
     func getShiftsByEmployeeId(forEmployee employeeID: String, handler: @escaping (_ uid: [Shift1]) -> ()) {
         REF_WORK_SHIFT.observeSingleEvent(of: .value) { (snapshot) in

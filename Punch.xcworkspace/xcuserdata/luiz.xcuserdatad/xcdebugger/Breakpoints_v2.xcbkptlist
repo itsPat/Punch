@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Punch/Model/Shifts.swift"
-            timestampString = "583224442.059944"
+            timestampString = "583287158.468275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Punch/LoginViewController.swift"
-            timestampString = "583263548.952859"
+            timestampString = "583347185.775097"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -38,65 +38,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Punch/LoginViewController.swift"
-            timestampString = "583263548.953298"
+            filePath = "Punch/Services/DataService.swift"
+            timestampString = "583347185.775472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "getEmployeeId(forEmployee:handler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Punch/LoginViewController.swift"
-            timestampString = "583263548.953547"
+            filePath = "Punch/AuthService.swift"
+            timestampString = "583347185.775535"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "registerUser(withEmail:andPassword:userCreationComplete:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Punch.LoginViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "Punch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luiz/Documents/LighthouseBootCamp/week08/PunchClock/Punch/Punch/LoginViewController.swift"
-                  timestampString = "583263551.12999"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "1649">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Punch.LoginViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "Punch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luiz/Documents/LighthouseBootCamp/week08/PunchClock/Punch/Punch/LoginViewController.swift"
-                  timestampString = "583263551.1320601"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "2333">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

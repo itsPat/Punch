@@ -13,10 +13,15 @@ public class Shift1 {
 
     var id : String
     var employeeId: String
+    var hourlyRate: Double
     var startTime : String
     var finishTime : String
     var punchInTime : Date?
     var punchOutTime : Date?
+
+    var amountOwed : Double {
+        return (hourWorked * hourlyRate) / 60
+    }
     var hourWorked : TimeInterval {
         if let punchInTime = self.punchInTime, let punchOutTime = self.punchOutTime {
             return punchOutTime.timeIntervalSince(punchInTime)
@@ -26,9 +31,10 @@ public class Shift1 {
     }
 
 
-    init(id: String, employeeId: String, startTime: String, finishTime: String, punchInTime: Date?, punchOutTime: Date?) {
+    init(id: String, employeeId: String, hourlyRate: Double, startTime: String, finishTime: String, punchInTime: Date?, punchOutTime: Date?) {
         self.id = id
         self.employeeId = employeeId
+        self.hourlyRate = hourlyRate
         self.startTime = startTime
         self.finishTime = finishTime
         self.punchOutTime = nil
@@ -38,6 +44,7 @@ public class Shift1 {
     func dictionary() -> [String: Any] {
         let dic : [String: Any] = [
     "employeeId": employeeId,
+    "hourlyRate" : hourlyRate,
     "startTime" : startTime,
     "finishTime" : finishTime,
     "punchOutTime" : punchOutTime ?? 0,
@@ -52,6 +59,7 @@ public class Shift1 {
         self.id = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
         self.employeeId = snapshotValue["employeeId"] as! String
+        self.hourlyRate = snapshotValue["hourlyRate"] as! Double
         self.startTime = snapshotValue["startTime"] as! String
         self.finishTime = snapshotValue["finishTime"] as! String
         if let time = snapshotValue["administratorId"] as? Double {
