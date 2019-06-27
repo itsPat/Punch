@@ -99,6 +99,8 @@ extension LoginViewController {
 
         }
 
+
+
         //        dataService.getCompanyname(forUID: self.idCompany) { (name) in
         //            print(name)
         //
