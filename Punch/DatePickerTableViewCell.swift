@@ -8,6 +8,7 @@
 
 
 import UIKit
+import Lottie
 
 protocol DatePickerDelegate: class {
     func didChangeDate(date: Date, indexPath: IndexPath)
@@ -18,6 +19,10 @@ class DatePickerTableViewCell: UITableViewCell {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var animationContainerView: UIView!
+    var animationView = AnimationView()
+    
+    var isOpen = false
     
     var indexPath: IndexPath!
     weak var delegate: DatePickerDelegate?
@@ -37,10 +42,39 @@ class DatePickerTableViewCell: UITableViewCell {
         super.awakeFromNib()
         initView()
         heightConstraint.constant = 0
+        isOpen = false
+        setupAnimationView()
         setCornerRadius()
         selectedBackgroundView?.setCornerRadius()
         setStandardShadow()
         datePicker.setDate(Date(), animated: true)
+        clipsToBounds = true
+    }
+    
+    func setupAnimationView() {
+        // For arrow UP: animationView.currentProgress = 0.5
+        // For arrow DOWN: animationView.currentProgress = 0
+        animationView = AnimationView(name: "openClose")
+        animationView.contentMode = .scaleAspectFill
+        animationView.currentProgress = isOpen ? 0.5 : 0.0
+        animationContainerView.addSubview(animationView)
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: animationView, attribute: .left, relatedBy: .equal, toItem: animationContainerView, attribute: .left, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: animationView, attribute: .right, relatedBy: .equal, toItem: animationContainerView, attribute: .right, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: animationView, attribute: .top, relatedBy: .equal, toItem: animationContainerView, attribute: .top, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: animationView, attribute: .bottom, relatedBy: .equal, toItem: animationContainerView, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+            ])
+    }
+    
+    func playAnimationView() {
+        if isOpen {
+            // Animates arrow from DOWN to UP.
+            animationView.play(fromProgress: 0.0, toProgress: 0.5, loopMode: .none, completion: nil)
+        } else {
+            // Animates arrow from UP to DOWN.
+            animationView.play(fromProgress: 0.5, toProgress: 1.0, loopMode: .none, completion: nil)
+        }
     }
     
     func toggleCalendar(active: Bool) {
@@ -50,7 +84,12 @@ class DatePickerTableViewCell: UITableViewCell {
             } else {
                 self.heightConstraint.constant = 0
             }
-        }, completion: nil)
+        }) { (complete) in
+            if complete {
+                self.isOpen = active ? true : false
+                self.playAnimationView()
+            }
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -60,15 +99,9 @@ class DatePickerTableViewCell: UITableViewCell {
     func initView() {
         datePicker.addTarget(self, action: #selector(dateDidChange), for: .valueChanged)
     }
-
-    func updateCell(date: Date, indexPath: IndexPath) {
-        datePicker.setDate(date, animated: true)
-        self.indexPath = indexPath
-    }
     
     @objc func dateDidChange(_ sender: UIDatePicker) {
-        let indexPathForDisplayDate = IndexPath(row: indexPath.row - 1, section: indexPath.section)
-        delegate?.didChangeDate(date: sender.date, indexPath: indexPathForDisplayDate)
+        delegate?.didChangeDate(date: sender.date, indexPath: indexPath)
     }
     
     func updateText(text: String, date: Date) {

@@ -44,3 +44,19 @@ extension UIView {
     }
     
 }
+
+extension Date {
+    
+    enum DateFormatType: String {
+        /// Date with hours
+        case dateWithTime = "dd-MMM-yyyy  H:mm"
+    }
+    
+    func convertToString(dateformat formatType: DateFormatType) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = formatType.rawValue
+        let newDate: String = dateFormatter.string(from: self)
+        return newDate
+    }
+    
+}

@@ -15,13 +15,14 @@
 		783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */; };
 		7850E04022C29FDE00FAECED /* Punch-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 7850E03E22C29F0200FAECED /* Punch-Bridging-Header.h */; };
 		7855CD4E22C26FEC00650D7E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7855CD4D22C26FEC00650D7E /* Utils.swift */; };
+		7869F45122C66FCE00A8982C /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 7869F45022C66FCE00A8982C /* success.json */; };
+		7869F45322C66FDA00A8982C /* openClose.json in Resources */ = {isa = PBXBuildFile; fileRef = 7869F45222C66FDA00A8982C /* openClose.json */; };
 		788D2AA022C27F6300638CC7 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2A9F22C27F6300638CC7 /* FirebaseAuth.framework */; };
 		788D2AA222C27F6300638CC7 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA122C27F6300638CC7 /* FirebaseCore.framework */; };
 		788D2AA422C27F6300638CC7 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA322C27F6300638CC7 /* FirebaseDatabase.framework */; };
 		788D2AA622C27F6300638CC7 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA522C27F6300638CC7 /* FirebaseInstanceID.framework */; };
 		78C2B9CF22C544F600A95733 /* AddShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C2B9CE22C544F600A95733 /* AddShiftViewController.swift */; };
 		78C2B9D422C571C800A95733 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C2B9D222C571C800A95733 /* DatePickerTableViewCell.swift */; };
-		78C2B9D522C571C800A95733 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C2B9D322C571C800A95733 /* DateTableViewCell.swift */; };
 		78C2B9DA22C5757600A95733 /* DatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C2B9D922C5757600A95733 /* DatePickerTableViewCell.xib */; };
 		78CD0B0322C1792C008C251C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B0222C1792C008C251C /* AppDelegate.swift */; };
 		78CD0B0522C1792C008C251C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B0422C1792C008C251C /* LoginViewController.swift */; };
@@ -51,13 +52,14 @@
 		783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHistoryViewController.swift; sourceTree = "<group>"; };
 		7850E03E22C29F0200FAECED /* Punch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Punch-Bridging-Header.h"; sourceTree = "<group>"; };
 		7855CD4D22C26FEC00650D7E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		7869F45022C66FCE00A8982C /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
+		7869F45222C66FDA00A8982C /* openClose.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = openClose.json; sourceTree = "<group>"; };
 		788D2A9F22C27F6300638CC7 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		788D2AA122C27F6300638CC7 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		788D2AA322C27F6300638CC7 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		788D2AA522C27F6300638CC7 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78C2B9CE22C544F600A95733 /* AddShiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShiftViewController.swift; sourceTree = "<group>"; };
 		78C2B9D222C571C800A95733 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
-		78C2B9D322C571C800A95733 /* DateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		78C2B9D922C5757600A95733 /* DatePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerTableViewCell.xib; sourceTree = "<group>"; };
 		78CD0AFF22C1792C008C251C /* Punch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Punch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CD0B0222C1792C008C251C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		7869F44F22C66FBD00A8982C /* LottieAnimations */ = {
+			isa = PBXGroup;
+			children = (
+				7869F45022C66FCE00A8982C /* success.json */,
+				7869F45222C66FDA00A8982C /* openClose.json */,
+			);
+			path = LottieAnimations;
+			sourceTree = "<group>";
+		};
 		78C2B9D622C573E400A95733 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				2516AF1F22C3E79000475198 /* Punch.entitlements */,
+				7869F44F22C66FBD00A8982C /* LottieAnimations */,
 				78C2B9D622C573E400A95733 /* Xibs */,
 				D25736A722C3D39500362F44 /* Model */,
 				D25736A422C3D33E00362F44 /* Services */,
@@ -157,7 +169,6 @@
 				783D5F9322C1970600645E11 /* AdminPayViewController.swift */,
 				78C2B9CE22C544F600A95733 /* AddShiftViewController.swift */,
 				78C2B9D222C571C800A95733 /* DatePickerTableViewCell.swift */,
-				78C2B9D322C571C800A95733 /* DateTableViewCell.swift */,
 				78CD0B1622C18216008C251C /* CollectionViewCell.swift */,
 				78CD0B0622C1792C008C251C /* Main.storyboard */,
 				78CD0B0922C1792D008C251C /* Assets.xcassets */,
@@ -271,8 +282,10 @@
 				78C2B9DA22C5757600A95733 /* DatePickerTableViewCell.xib in Resources */,
 				78CD0B0D22C1792D008C251C /* LaunchScreen.storyboard in Resources */,
 				78CD0B0A22C1792D008C251C /* Assets.xcassets in Resources */,
+				7869F45322C66FDA00A8982C /* openClose.json in Resources */,
 				78CD0B0822C1792C008C251C /* Main.storyboard in Resources */,
 				257D8E9C22C272D200E90BD4 /* GoogleService-Info.plist in Resources */,
+				7869F45122C66FCE00A8982C /* success.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +363,6 @@
 				78CD0B1722C18216008C251C /* CollectionViewCell.swift in Sources */,
 				783D5F9222C1927900645E11 /* AdminTodayViewController.swift in Sources */,
 				2516AF2322C3EB4E00475198 /* Credential.swift in Sources */,
-				78C2B9D522C571C800A95733 /* DateTableViewCell.swift in Sources */,
 				D25736DC22C5420C00362F44 /* KeyChainManager.swift in Sources */,
 				78CD0B0322C1792C008C251C /* AppDelegate.swift in Sources */,
 				D25736B322C3D3B700362F44 /* Shifts.swift in Sources */,

@@ -19,34 +19,18 @@ class AddShiftViewController: UIViewController {
 //        [(title: "Start Date", employees: [Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600)])]
         
     ]
-    
-    var inputTexts: [String] = ["Start Date", "End date"]
-    var inputDates: [Date] = []
-    var selectedRowIndex = -1
+    var selectedRowSection = -1 // only one selected cell allowed.
     var cellIsSelected = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        addInitailValues()
         view.setGradientBackground(colorOne: CustomColors.orange, colorTwo: CustomColors.darkOrange)
     }
     
     func setupTableView() {
         tableView.backgroundColor = .clear
         tableView.register(UINib(nibName: DatePickerTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: DatePickerTableViewCell.reuseIdentifier())
-    }
-    
-    func addInitailValues() {
-        inputDates = Array(repeating: Date(), count: inputTexts.count)
-    }
-    
-    func indexPathToInsertDatePicker(indexPath: IndexPath) -> IndexPath {
-        if let datePickerIndexPath = datePickerIndexPath, datePickerIndexPath.row < indexPath.row {
-            return indexPath
-        } else {
-            return IndexPath(row: indexPath.row + 1, section: indexPath.section)
-        }
     }
 
 }
@@ -66,6 +50,7 @@ extension AddShiftViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let datePickerCell = tableView.dequeueReusableCell(withIdentifier:   DatePickerTableViewCell.reuseIdentifier()) as!  DatePickerTableViewCell
         datePickerCell.delegate = self
+        datePickerCell.indexPath = indexPath
         datePickerCell.updateText(text: dataSource[indexPath.section][indexPath.row].0, date: dataSource[indexPath.section][indexPath.row].1 as! Date)
         return datePickerCell
     }
@@ -78,28 +63,31 @@ extension AddShiftViewController: UITableViewDataSource {
 extension AddShiftViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == selectedRowIndex {
+        if indexPath.section == selectedRowSection {
             let cell = tableView.cellForRow(at: indexPath) as! DatePickerTableViewCell
-            cell.toggleCalendar(active: true)
-            cell.indexPath = indexPath
+            if !cell.isOpen {
+                cell.toggleCalendar(active: true)
+            }
             return 280
         }
         
         if let cell = tableView.cellForRow(at: indexPath) as? DatePickerTableViewCell {
-            cell.toggleCalendar(active: false)
+            if cell.isOpen {
+                cell.toggleCalendar(active: false)
+            }
         }
         return 64
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if selectedRowIndex != indexPath.row {
+        if selectedRowSection != indexPath.section {
             self.cellIsSelected = true
-            self.selectedRowIndex = indexPath.row
+            self.selectedRowSection = indexPath.section
             
         } else {
             self.cellIsSelected = false
-            self.selectedRowIndex = -1
+            self.selectedRowSection = -1
         }
         
         self.tableView.beginUpdates()
@@ -110,8 +98,9 @@ extension AddShiftViewController: UITableViewDelegate {
 extension AddShiftViewController: DatePickerDelegate {
     
     func didChangeDate(date: Date, indexPath: IndexPath) {
-        inputDates[selectedRowIndex] = date
-        tableView.reloadRows(at: [indexPath], with: .none)
+        dataSource[indexPath.section][indexPath.row].1 = date
+        let cell = tableView.cellForRow(at: indexPath) as! DatePickerTableViewCell
+        cell.updateText(text: dataSource[indexPath.section][indexPath.row].0, date: dataSource[indexPath.section][indexPath.row].1 as! Date)
     }
     
 }
