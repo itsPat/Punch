@@ -16,7 +16,7 @@ class AddShiftViewController: UIViewController {
     var dataSource: [[(String, Any)]] = [
         [(title: "Start Date", date: Date())],
         [(title: "End Date", date: Date())],
-        [(title: "Start Date", employees: [
+        [(title: "Employee", employees: [
             Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
             Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
             Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
@@ -36,6 +36,7 @@ class AddShiftViewController: UIViewController {
     func setupTableView() {
         tableView.backgroundColor = .clear
         tableView.register(UINib(nibName: DatePickerTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: DatePickerTableViewCell.reuseIdentifier())
+        tableView.register(UINib(nibName: EmployeeTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: EmployeeTableViewCell.reuseIdentifier())
     }
 
 }
@@ -43,6 +44,22 @@ class AddShiftViewController: UIViewController {
 // MARK: UITABLEVIEW DATASOURCE
 
 extension AddShiftViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Start Date"
+        case 1:
+            return "End Date"
+        case 2:
+            return "Employee"
+        case 3:
+            return "Save Shift"
+        default:
+            break
+        }
+        return nil
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return dataSource.count
@@ -56,18 +73,15 @@ extension AddShiftViewController: UITableViewDataSource {
         
         switch indexPath.section {
         case 0,1:
-            // Date Picker Cells.
             let datePickerCell = tableView.dequeueReusableCell(withIdentifier:   DatePickerTableViewCell.reuseIdentifier()) as!  DatePickerTableViewCell
             datePickerCell.delegate = self
             datePickerCell.indexPath = indexPath
             datePickerCell.updateText(text: dataSource[indexPath.section][indexPath.row].0, date: dataSource[indexPath.section][indexPath.row].1 as! Date)
             return datePickerCell
-//        case 2:
-//            let datePickerCell = tableView.dequeueReusableCell(withIdentifier:   DatePickerTableViewCell.reuseIdentifier()) as!  DatePickerTableViewCell
-//            datePickerCell.delegate = self
-//            datePickerCell.indexPath = indexPath
-//            datePickerCell.updateText(text: dataSource[indexPath.section][indexPath.row].0, date: dataSource[indexPath.section][indexPath.row].1 as! Date)
-//            return datePickerCell
+        case 2:
+            let employeeCell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.reuseIdentifier()) as! EmployeeTableViewCell
+            employeeCell.titleLabel.text = dataSource[indexPath.section][indexPath.row].0
+            return employeeCell
         default:
             break // Confirm Button Cell.
         }
@@ -84,6 +98,7 @@ extension AddShiftViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == selectedRowSection {
+            // Index path must be less than 2 to cast as DatePickerTableViewCell
             let cell = tableView.cellForRow(at: indexPath) as! DatePickerTableViewCell
             if !cell.isOpen {
                 cell.toggleCalendar(active: true)
@@ -101,28 +116,31 @@ extension AddShiftViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
         case 0,1:
-            break // Date Pickers
+            // DATE PICKERS
+            if selectedRowSection != indexPath.section {
+                cellIsSelected = true
+                selectedRowSection = indexPath.section
+                
+            } else {
+                cellIsSelected = false
+                selectedRowSection = -1
+            }
+            tableView.beginUpdates()
+            tableView.endUpdates()
         case 2:
-            break // Employees.
+            // EMPLOYEES
+            if let cell = tableView.cellForRow(at: indexPath) as? EmployeeTableViewCell {
+                cell.accessoryType = cell.accessoryType == .checkmark ? .none : .checkmark
+                selectedRowSection = -1 // Hide the date pickers if open.
+            }
         default:
-            break // Button to save
+            // SAVE BUTTON
+            break // Button to save dismiss vc and
         }
         
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-        if selectedRowSection != indexPath.section {
-            self.cellIsSelected = true
-            self.selectedRowSection = indexPath.section
-            
-        } else {
-            self.cellIsSelected = false
-            self.selectedRowSection = -1
-        }
-        
-        self.tableView.beginUpdates()
-        self.tableView.endUpdates()
     }
 }
 

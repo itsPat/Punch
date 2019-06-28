@@ -46,7 +46,6 @@ class DatePickerTableViewCell: UITableViewCell {
         setupAnimationView()
         setCornerRadius()
         selectedBackgroundView?.setCornerRadius()
-        setStandardShadow()
         datePicker.setDate(Date(), animated: true)
         clipsToBounds = true
     }

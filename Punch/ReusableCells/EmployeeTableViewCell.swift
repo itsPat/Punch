@@ -10,6 +10,8 @@ import UIKit
 
 class EmployeeTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
     // Reuser identifier
     class func reuseIdentifier() -> String {
         return "EmployeeTableViewCellIdentifier"
@@ -22,7 +24,9 @@ class EmployeeTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setCornerRadius()
+        selectedBackgroundView?.setCornerRadius()
+        clipsToBounds = true
     }
     
 

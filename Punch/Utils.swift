@@ -19,7 +19,7 @@ struct CustomColors {
 extension UIView {
     
     func setCornerRadius() {
-        layer.cornerRadius = frame.height * 0.1
+        layer.cornerRadius = frame.height * 0.2
         clipsToBounds = true
     }
     
