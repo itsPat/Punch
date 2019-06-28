@@ -9,21 +9,6 @@
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-//// MARK: - State
-//private enum State {
-//    case closed
-//    case open
-//}
-//
-//extension State {
-//    var opposite: State {
-//        switch self {
-//        case .open: return .closed
-//        case .closed: return .open
-//        }
-//    }
-//}
-
 //MARK: - Structs
 
 struct Shift {
@@ -44,8 +29,6 @@ class EmployeeViewController: InterfaceViewController {
     
     // MARK: - Constants
     
-    private let popupOffset: CGFloat = 440
-    
     let items: [Shift] = [
         Shift(start: Date(), finish: Date()),
         Shift(start: Date(), finish: Date()),
@@ -65,7 +48,7 @@ class EmployeeViewController: InterfaceViewController {
     
     private lazy var calendarView: FSCalendar = {
         let calendarView = FSCalendar()
-        calendarView.backgroundColor = UIColor.white
+        calendarView.backgroundColor = UIColor.clear
         return calendarView
     }()
     
@@ -126,6 +109,7 @@ class EmployeeViewController: InterfaceViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        self.view.backgroundColor = UIColor.white
         layout()
         panRecognier.addTarget(self, action: #selector(panned))
         handleOverlayView.addGestureRecognizer(panRecognier)
@@ -264,10 +248,6 @@ extension EmployeeViewController: UICollectionViewDelegateFlowLayout {
 
 extension EmployeeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count

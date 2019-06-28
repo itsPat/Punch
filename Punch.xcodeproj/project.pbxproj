@@ -142,6 +142,7 @@
 		78C2B9D622C573E400A95733 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				D257373422C6944400362F44 /* CustomCell.xib */,
 				78C2B9D922C5757600A95733 /* DatePickerTableViewCell.xib */,
 				78DB040222C690340015AB6F /* EmployeeTableViewCell.xib */,
 			);
@@ -172,8 +173,6 @@
 				D257373222C6944400362F44 /* GradientView.swift */,
 				D257373322C6944400362F44 /* Spring.swift */,
 				2516AF1F22C3E79000475198 /* Punch.entitlements */,
-				D257373422C6944400362F44 /* CustomCell.xib */,
-				D257373622C6944400362F44 /* CustomCell.swift */,
 				7869F44F22C66FBD00A8982C /* LottieAnimations */,
 				78C2B9D622C573E400A95733 /* Xibs */,
 				D25736A722C3D39500362F44 /* Model */,
@@ -209,6 +208,7 @@
 		78DB040122C68FEA0015AB6F /* ReusableCells */ = {
 			isa = PBXGroup;
 			children = (
+				D257373622C6944400362F44 /* CustomCell.swift */,
 				D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */,
 				78CD0B1622C18216008C251C /* CollectionViewCell.swift */,
 				78C2B9D222C571C800A95733 /* DatePickerTableViewCell.swift */,
