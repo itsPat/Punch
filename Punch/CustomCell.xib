@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomCell" id="ioh-P4-GMi" customClass="CustomCell" customModule="Punch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgI-Mi-pVs" userLabel="containerView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tcF-hR-EIZ">
+                                <rect key="frame" x="12" y="12" width="390" height="76"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pat Trudel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kG-YI-Neb">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="38"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:00 - 16:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9O0-fh-JOX">
+                                        <rect key="frame" x="0.0" y="38" width="390" height="38"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tcF-hR-EIZ" firstAttribute="top" secondItem="wgI-Mi-pVs" secondAttribute="top" constant="12" id="12R-zh-yGg"/>
+                            <constraint firstItem="tcF-hR-EIZ" firstAttribute="leading" secondItem="wgI-Mi-pVs" secondAttribute="leading" constant="12" id="Mt8-Qa-gh4"/>
+                            <constraint firstAttribute="trailing" secondItem="tcF-hR-EIZ" secondAttribute="trailing" constant="12" id="po1-ga-E2d"/>
+                            <constraint firstAttribute="bottom" secondItem="tcF-hR-EIZ" secondAttribute="bottom" constant="12" id="vWD-TX-xit"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="wgI-Mi-pVs" firstAttribute="leading" secondItem="ioh-P4-GMi" secondAttribute="leading" id="5XD-0p-Qwd"/>
+                <constraint firstItem="wgI-Mi-pVs" firstAttribute="top" secondItem="ioh-P4-GMi" secondAttribute="top" id="Is0-fW-lNi"/>
+                <constraint firstAttribute="bottom" secondItem="wgI-Mi-pVs" secondAttribute="bottom" id="c96-D1-sqa"/>
+                <constraint firstAttribute="trailing" secondItem="wgI-Mi-pVs" secondAttribute="trailing" id="lyc-kc-DC4"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="NrH-cF-3P6"/>
+            <connections>
+                <outlet property="dayLabel" destination="0kG-YI-Neb" id="YWR-x1-aNz"/>
+                <outlet property="timeLabel" destination="9O0-fh-JOX" id="foX-vX-kW4"/>
+            </connections>
+            <point key="canvasLocation" x="220.80000000000001" y="254.57271364317842"/>
+        </collectionViewCell>
+    </objects>
+</document>

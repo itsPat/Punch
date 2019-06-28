@@ -33,8 +33,5 @@ class CustomCollectionReusableView: UICollectionReusableView {
         calendar.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 18)
         calendar.appearance.titleFont = UIFont.boldSystemFont(ofSize: 12)
         calendar.backgroundColor = UIColor.clear
-        //            calendar.layer.cornerRadius = calendar.frame.width * 0.05
-        //            calendar.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
-        //            calendar.setStandardShadow()
     }
 }

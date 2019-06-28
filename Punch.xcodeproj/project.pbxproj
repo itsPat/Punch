@@ -33,6 +33,11 @@
 		D25736B322C3D3B700362F44 /* Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736B022C3D3B600362F44 /* Shifts.swift */; };
 		D25736DC22C5420C00362F44 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736DB22C5420C00362F44 /* KeyChainManager.swift */; };
 		D25736DE22C5422400362F44 /* CustomCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */; };
+		D25736E922C66E6600362F44 /* InterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736E822C66E6600362F44 /* InterfaceViewController.swift */; };
+		D25736EB22C66ECD00362F44 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736EA22C66ECD00362F44 /* GradientView.swift */; };
+		D25736ED22C6713300362F44 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736EC22C6713300362F44 /* Spring.swift */; };
+		D25736F222C6857A00362F44 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736F022C6857A00362F44 /* CustomCell.swift */; };
+		D25736F322C6857A00362F44 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D25736F122C6857A00362F44 /* CustomCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +72,11 @@
 		D25736B022C3D3B600362F44 /* Shifts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shifts.swift; sourceTree = "<group>"; };
 		D25736DB22C5420C00362F44 /* KeyChainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionReusableView.swift; sourceTree = "<group>"; };
+		D25736E822C66E6600362F44 /* InterfaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceViewController.swift; sourceTree = "<group>"; };
+		D25736EA22C66ECD00362F44 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		D25736EC22C6713300362F44 /* Spring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
+		D25736F022C6857A00362F44 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		D25736F122C6857A00362F44 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,10 +141,15 @@
 				D25736A722C3D39500362F44 /* Model */,
 				D25736A422C3D33E00362F44 /* Services */,
 				78CD0B0222C1792C008C251C /* AppDelegate.swift */,
+				D25736EC22C6713300362F44 /* Spring.swift */,
 				257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */,
 				78CD0B0422C1792C008C251C /* LoginViewController.swift */,
 				D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */,
 				78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */,
+				D25736F022C6857A00362F44 /* CustomCell.swift */,
+				D25736F122C6857A00362F44 /* CustomCell.xib */,
+				D25736EA22C66ECD00362F44 /* GradientView.swift */,
+				D25736E822C66E6600362F44 /* InterfaceViewController.swift */,
 				783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */,
 				783D5F9122C1927900645E11 /* AdminTodayViewController.swift */,
 				783D5F9322C1970600645E11 /* AdminPayViewController.swift */,
@@ -248,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D25736F322C6857A00362F44 /* CustomCell.xib in Resources */,
 				78CD0B0D22C1792D008C251C /* LaunchScreen.storyboard in Resources */,
 				78CD0B0A22C1792D008C251C /* Assets.xcassets in Resources */,
 				78CD0B0822C1792C008C251C /* Main.storyboard in Resources */,
@@ -323,16 +339,20 @@
 			files = (
 				783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */,
 				78CD0B1522C17F9B008C251C /* EmployeeViewController.swift in Sources */,
+				D25736F222C6857A00362F44 /* CustomCell.swift in Sources */,
 				D25736B122C3D3B700362F44 /* Employee.swift in Sources */,
 				78CD0B0522C1792C008C251C /* LoginViewController.swift in Sources */,
 				78CD0B1722C18216008C251C /* CollectionViewCell.swift in Sources */,
 				783D5F9222C1927900645E11 /* AdminTodayViewController.swift in Sources */,
 				2516AF2322C3EB4E00475198 /* Credential.swift in Sources */,
+				D25736ED22C6713300362F44 /* Spring.swift in Sources */,
 				D25736DC22C5420C00362F44 /* KeyChainManager.swift in Sources */,
+				D25736EB22C66ECD00362F44 /* GradientView.swift in Sources */,
 				78CD0B0322C1792C008C251C /* AppDelegate.swift in Sources */,
 				D25736B322C3D3B700362F44 /* Shifts.swift in Sources */,
 				D25736DE22C5422400362F44 /* CustomCollectionReusableView.swift in Sources */,
 				D25736B222C3D3B700362F44 /* Company.swift in Sources */,
+				D25736E922C66E6600362F44 /* InterfaceViewController.swift in Sources */,
 				783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */,
 				D25736A622C3D38B00362F44 /* AuthService.swift in Sources */,
 				7855CD4E22C26FEC00650D7E /* Utils.swift in Sources */,

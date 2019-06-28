@@ -9,20 +9,20 @@
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-// MARK: - State
-private enum State {
-    case closed
-    case open
-}
-
-extension State {
-    var opposite: State {
-        switch self {
-        case .open: return .closed
-        case .closed: return .open
-        }
-    }
-}
+//// MARK: - State
+//private enum State {
+//    case closed
+//    case open
+//}
+//
+//extension State {
+//    var opposite: State {
+//        switch self {
+//        case .open: return .closed
+//        case .closed: return .open
+//        }
+//    }
+//}
 
 //MARK: - Structs
 
@@ -37,7 +37,7 @@ struct Employee {
     let amountOwed: Int
 }
 
-class EmployeeViewController: UIViewController {
+class EmployeeViewController: InterfaceViewController {
     //MARK: - Outlets
     @IBOutlet weak var calendarBottomConstraintView: UIView!
     @IBOutlet weak var calendarContainerView: UIView!
@@ -65,6 +65,7 @@ class EmployeeViewController: UIViewController {
     
     private lazy var calendarView: FSCalendar = {
         let calendarView = FSCalendar()
+        calendarView.backgroundColor = UIColor.white
         return calendarView
     }()
     
@@ -75,44 +76,50 @@ class EmployeeViewController: UIViewController {
         return view
     }()
     
-    private lazy var popupView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        view.layer.shadowColor = CustomColors.blue.cgColor
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowRadius = 10
+    private lazy var momentumView: GradientView = {
+        let view = GradientView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(white: 0.3, alpha: 1)
+        view.topColor = CustomColors.blue
+        view.bottomColor = CustomColors.darkBlue
+        view.cornerRadius = 30
         return view
     }()
     
-    private lazy var closedTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Upcoming Shifts"
-        label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.medium)
-        label.textColor = CustomColors.blue
-        label.textAlignment = .center
-        return label
+    private lazy var handleView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        view.layer.cornerRadius = 3
+        return view
     }()
     
-    private lazy var openTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Upcoming Shifts"
-        label.font = UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.heavy)
-        label.textColor = .black
-        label.textAlignment = .center
-        label.alpha = 0
-        label.transform = CGAffineTransform(scaleX: 0.65, y: 0.65).concatenating(CGAffineTransform(translationX: 0, y: -15))
-        return label
+    private lazy var handleOverlayView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.clear
+        return view
     }()
     
     private lazy var collectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 60, height: 30)
-        let view = UICollectionView(frame: (CGRect(x: 0, y: 0, width: self.popupView.frame.size.width - 10, height: self.popupView.frame.height)), collectionViewLayout:layout)
-        view.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
+        let view = UICollectionView(frame: (CGRect(x: 0, y: 0, width: self.momentumView.frame.size.width - 10, height: self.momentumView.frame.height)), collectionViewLayout:layout)
+        view.backgroundColor = UIColor.clear
+        view.isUserInteractionEnabled = true
+        view.register(UINib.init(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "CustomCell")
         return view
     }()
+    
+    private let panRecognier = InstantPanGestureRecognizer()
+    
+    private var animator = UIViewPropertyAnimator()
+    
+    private var isOpen = false
+    private var animationProgress: CGFloat = 0
+    
+    private var closedTransform = CGAffineTransform.identity
     
     //MARK: - VC Lifecycle
     override func viewDidLoad() {
@@ -120,7 +127,9 @@ class EmployeeViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         layout()
-        popupView.addGestureRecognizer(panRecognizer)
+        panRecognier.addTarget(self, action: #selector(panned))
+        handleOverlayView.addGestureRecognizer(panRecognier)
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -154,192 +163,91 @@ class EmployeeViewController: UIViewController {
         overlayView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         overlayView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        popupView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(popupView)
-        popupView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        popupView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        bottomConstraint = popupView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: popupOffset)
-        bottomConstraint.isActive = true
-        popupView.heightAnchor.constraint(equalToConstant: 700).isActive = true
+        view.addSubview(momentumView)
+        momentumView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        momentumView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        momentumView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 80).isActive = true
+        momentumView.topAnchor.constraint(equalTo: calendarContainerView.bottomAnchor, constant: 40).isActive = true
         
-        closedTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        popupView.addSubview(closedTitleLabel)
-        closedTitleLabel.leadingAnchor.constraint(equalTo: popupView.leadingAnchor).isActive = true
-        closedTitleLabel.trailingAnchor.constraint(equalTo: popupView.trailingAnchor).isActive = true
-        closedTitleLabel.topAnchor.constraint(equalTo: popupView.topAnchor, constant: 20).isActive = true
+        momentumView.addSubview(handleView)
+        handleView.topAnchor.constraint(equalTo: momentumView.topAnchor, constant: 10).isActive = true
+        handleView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        handleView.heightAnchor.constraint(equalToConstant: 7).isActive = true
+        handleView.centerXAnchor.constraint(equalTo: momentumView.centerXAnchor).isActive = true
         
-        openTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        popupView.addSubview(openTitleLabel)
-        openTitleLabel.leadingAnchor.constraint(equalTo: popupView.leadingAnchor).isActive = true
-        openTitleLabel.trailingAnchor.constraint(equalTo: popupView.trailingAnchor).isActive = true
-        openTitleLabel.topAnchor.constraint(equalTo: popupView.topAnchor, constant: 30).isActive = true
+        
+        closedTransform = CGAffineTransform(translationX: 0, y: view.bounds.height * 0.6)
+        momentumView.transform = closedTransform
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        popupView.addSubview(collectionView)
-        collectionView.leadingAnchor.constraint(equalTo: popupView.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: popupView.trailingAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: popupView.bottomAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: openTitleLabel.bottomAnchor, constant: 20).isActive = true
+        momentumView.addSubview(collectionView)
+        collectionView.leadingAnchor.constraint(equalTo: momentumView.leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: handleView.bottomAnchor, constant: 15).isActive = true
+        collectionView.setCornerRadius()
+        
+        momentumView.addSubview(handleOverlayView)
+        handleOverlayView.topAnchor.constraint(equalTo: momentumView.topAnchor, constant: 10).isActive = true
+        handleOverlayView.leadingAnchor.constraint(equalTo: momentumView.leadingAnchor).isActive = true
+        handleOverlayView.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor).isActive = true
+        handleOverlayView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 10).isActive = true
     }
     
     // MARK: - Animation
     
-    /// The current state of the animation. This variable is changed only when an animation completes.
-    private var currentState: State = .closed
-    
-    /// All of the currently running animators.
-    private var runningAnimators = [UIViewPropertyAnimator]()
-    
-    /// The progress of each animator. This array is parallel to the `runningAnimators` array.
-    private var animationProgress = [CGFloat]()
-    
-    private lazy var panRecognizer: InstantPanGestureRecognizer = {
-        let recognizer = InstantPanGestureRecognizer()
-        recognizer.addTarget(self, action: #selector(popupViewPanned(recognizer:)))
-        return recognizer
-    }()
-    
-    /// Animates the transition, if the animation is not already running.
-    private func animateTransitionIfNeeded(to state: State, duration: TimeInterval) {
-        
-        // ensure that the animators array is empty (which implies new animations need to be created)
-        guard runningAnimators.isEmpty else { return }
-        
-        // an animator for the transition
-        let transitionAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1, animations: {
-            switch state {
-            case .open:
-                self.bottomConstraint.constant = 0
-                self.popupView.layer.cornerRadius = 20
-                self.overlayView.alpha = 0.5
-                self.closedTitleLabel.transform = CGAffineTransform(scaleX: 1.6, y: 1.6).concatenating(CGAffineTransform(translationX: 0, y: 15))
-                self.openTitleLabel.transform = .identity
-            case .closed:
-                self.bottomConstraint.constant = self.popupOffset
-                self.popupView.layer.cornerRadius = 0
-                self.overlayView.alpha = 0
-                self.closedTitleLabel.transform = .identity
-                self.openTitleLabel.transform = CGAffineTransform(scaleX: 0.65, y: 0.65).concatenating(CGAffineTransform(translationX: 0, y: -15))
-            }
-            self.view.layoutIfNeeded()
-        })
-        
-        // the transition completion block
-        transitionAnimator.addCompletion { position in
-            
-            // update the state
-            switch position {
-            case .start:
-                self.currentState = state.opposite
-            case .end:
-                self.currentState = state
-            case .current:
-                ()
-            }
-            
-            // manually reset the constraint positions
-            switch self.currentState {
-            case .open:
-                self.bottomConstraint.constant = 0
-            case .closed:
-                self.bottomConstraint.constant = self.popupOffset
-            }
-            
-            // remove all running animators
-            self.runningAnimators.removeAll()
-            
-        }
-        
-        // an animator for the title that is transitioning into view
-        let inTitleAnimator = UIViewPropertyAnimator(duration: duration, curve: .easeIn, animations: {
-            switch state {
-            case .open:
-                self.openTitleLabel.alpha = 1
-            case .closed:
-                self.closedTitleLabel.alpha = 1
-            }
-        })
-        inTitleAnimator.scrubsLinearly = false
-        
-        // an animator for the title that is transitioning out of view
-        let outTitleAnimator = UIViewPropertyAnimator(duration: duration, curve: .easeOut, animations: {
-            switch state {
-            case .open:
-                self.closedTitleLabel.alpha = 0
-            case .closed:
-                self.openTitleLabel.alpha = 0
-            }
-        })
-        outTitleAnimator.scrubsLinearly = false
-        
-        // start all animators
-        transitionAnimator.startAnimation()
-        inTitleAnimator.startAnimation()
-        outTitleAnimator.startAnimation()
-        
-        // keep track of all running animators
-        runningAnimators.append(transitionAnimator)
-        runningAnimators.append(inTitleAnimator)
-        runningAnimators.append(outTitleAnimator)
-        
-    }
-    
-    @objc private func popupViewPanned(recognizer: UIPanGestureRecognizer) {
+    @objc private func panned(recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
         case .began:
-            
-            // start the animations
-            animateTransitionIfNeeded(to: currentState.opposite, duration: 1)
-            
-            // pause all animations, since the next event may be a pan changed
-            runningAnimators.forEach { $0.pauseAnimation() }
-            
-            // keep track of each animator's progress
-            animationProgress = runningAnimators.map { $0.fractionComplete }
-            
+            startAnimationIfNeeded()
+            animator.pauseAnimation()
+            animationProgress = animator.fractionComplete
         case .changed:
-            
-            // variable setup
-            let translation = recognizer.translation(in: popupView)
-            var fraction = -translation.y / popupOffset
-            
-            // adjust the fraction for the current state and reversed state
-            if currentState == .open { fraction *= -1 }
-            if runningAnimators[0].isReversed { fraction *= -1 }
-            
-            // apply the new fraction
-            for (index, animator) in runningAnimators.enumerated() {
-                animator.fractionComplete = fraction + animationProgress[index]
-            }
-            
-        case .ended:
-            
-            // variable setup
-            let yVelocity = recognizer.velocity(in: popupView).y
-            let shouldClose = yVelocity > 0
-            
-            // if there is no motion, continue all animations and exit early
+            var fraction = -recognizer.translation(in: momentumView).y / closedTransform.ty
+            if isOpen { fraction *= -1 }
+            if animator.isReversed { fraction *= -1 }
+            animator.fractionComplete = fraction + animationProgress
+        // todo: rubberbanding
+        case .ended, .cancelled:
+            let yVelocity = recognizer.velocity(in: momentumView).y
+            let shouldClose = yVelocity > 0 // todo: should use projection instead
             if yVelocity == 0 {
-                runningAnimators.forEach { $0.continueAnimation(withTimingParameters: nil, durationFactor: 0) }
+                animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
                 break
             }
-            
-            // reverse the animations based on their current state and pan motion
-            switch currentState {
-            case .open:
-                if !shouldClose && !runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
-                if shouldClose && runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
-            case .closed:
-                if shouldClose && !runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
-                if !shouldClose && runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
+            if isOpen {
+                if !shouldClose && !animator.isReversed { animator.isReversed.toggle() }
+                if shouldClose && animator.isReversed { animator.isReversed.toggle() }
+            } else {
+                if shouldClose && !animator.isReversed { animator.isReversed.toggle() }
+                if !shouldClose && animator.isReversed { animator.isReversed.toggle() }
             }
-            
-            // continue all animations
-            runningAnimators.forEach { $0.continueAnimation(withTimingParameters: nil, durationFactor: 0) }
-            
-        default:
-            ()
+            let fractionRemaining = 1 - animator.fractionComplete
+            let distanceRemaining = fractionRemaining * closedTransform.ty
+            if distanceRemaining == 0 {
+                animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+                break
+            }
+            let relativeVelocity = min(abs(yVelocity) / distanceRemaining, 30)
+            let timingParameters = UISpringTimingParameters(damping: 0.8, response: 0.3, initialVelocity: CGVector(dx: relativeVelocity, dy: relativeVelocity))
+            let preferredDuration = UIViewPropertyAnimator(duration: 0, timingParameters: timingParameters).duration
+            let durationFactor = CGFloat(preferredDuration / animator.duration)
+            animator.continueAnimation(withTimingParameters: timingParameters, durationFactor: durationFactor)
+        default: break
         }
+    }
+    
+    private func startAnimationIfNeeded() {
+        if animator.isRunning { return }
+        let timingParameters = UISpringTimingParameters(damping: 1, response: 0.4)
+        animator = UIViewPropertyAnimator(duration: 0, timingParameters: timingParameters)
+        animator.addAnimations {
+            self.momentumView.transform = self.isOpen ? self.closedTransform : .identity
+        }
+        animator.addCompletion { position in
+            if position == .end { self.isOpen.toggle() }
+        }
+        animator.startAnimation()
     }
     
 }
@@ -354,7 +262,8 @@ extension EmployeeViewController: UICollectionViewDelegateFlowLayout {
 
 //MARK: - UICollection View Data Source
 
-extension EmployeeViewController: UICollectionViewDataSource {
+extension EmployeeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -365,7 +274,7 @@ extension EmployeeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as? CustomCell else { return UICollectionViewCell() }
         
         var titleLabelText = ""
         var detailLabelText = ""
@@ -376,12 +285,14 @@ extension EmployeeViewController: UICollectionViewDataSource {
         detailLabelText = "\(formatToHourMinutesString(date: item.start)) - \(formatToHourMinutesString(date: item.finish))"
         
         
-        cell.textLabel.text = titleLabelText
-        cell.subtitleLabel.text = detailLabelText
+        cell.dayLabel.text = titleLabelText
+        cell.timeLabel.text = detailLabelText
         cell.setCornerRadius()
-        cell.setStandardShadow()
+        cell.layer.backgroundColor = UIColor.white.cgColor
+//        cell.setStandardShadow()
         return cell
     }
+    
     
     
     //MARK: - Helper Methods
@@ -418,9 +329,9 @@ extension EmployeeViewController: FSCalendarDelegate, FSCalendarDataSource {
 class InstantPanGestureRecognizer: UIPanGestureRecognizer {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
-        if (self.state == UIGestureRecognizer.State.began) { return }
         super.touchesBegan(touches, with: event)
-        self.state = UIGestureRecognizer.State.began
+        self.state = .began
     }
     
 }
+
