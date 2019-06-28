@@ -386,7 +386,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="g1n-We-Kke">
-                                <rect key="frame" x="37.666666666666657" y="0.0" width="300" height="406"/>
+                                <rect key="frame" x="37.666666666666657" y="0.0" width="300" height="812"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dateCell" id="hHP-xF-AfW">
@@ -414,7 +414,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="g1n-We-Kke" firstAttribute="height" secondItem="k5u-6t-lMt" secondAttribute="height" multiplier="0.5" id="8HK-7L-Qfh"/>
+                            <constraint firstItem="g1n-We-Kke" firstAttribute="height" secondItem="k5u-6t-lMt" secondAttribute="height" id="8HK-7L-Qfh"/>
                             <constraint firstItem="g1n-We-Kke" firstAttribute="width" secondItem="k5u-6t-lMt" secondAttribute="width" multiplier="0.8" id="d0f-DS-Tnk"/>
                             <constraint firstItem="g1n-We-Kke" firstAttribute="top" secondItem="k5u-6t-lMt" secondAttribute="top" id="s1l-cv-8bz"/>
                             <constraint firstItem="g1n-We-Kke" firstAttribute="centerX" secondItem="k5u-6t-lMt" secondAttribute="centerX" id="si6-7n-OmF"/>

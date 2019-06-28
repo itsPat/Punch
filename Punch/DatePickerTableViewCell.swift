@@ -16,9 +16,12 @@ protocol DatePickerDelegate: class {
 class DatePickerTableViewCell: UITableViewCell {
 
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     var indexPath: IndexPath!
     weak var delegate: DatePickerDelegate?
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
     // Reuser identifier
     class func reuseIdentifier() -> String {
@@ -30,20 +33,28 @@ class DatePickerTableViewCell: UITableViewCell {
         return "DatePickerTableViewCell"
     }
     
-    // Cell height
-    class func cellHeight() -> CGFloat {
-        return 162.0
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         initView()
+        heightConstraint.constant = 0
+        setStandardShadow()
+        setCornerRadius()
+        selectedBackgroundView?.setCornerRadius()
+        datePicker.setDate(Date(), animated: true)
+    }
+    
+    func toggleCalendar(active: Bool) {
+        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            if active {
+                self.heightConstraint.constant = 190
+            } else {
+                self.heightConstraint.constant = 0
+            }
+        }, completion: nil)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func initView() {
@@ -58,6 +69,11 @@ class DatePickerTableViewCell: UITableViewCell {
     @objc func dateDidChange(_ sender: UIDatePicker) {
         let indexPathForDisplayDate = IndexPath(row: indexPath.row - 1, section: indexPath.section)
         delegate?.didChangeDate(date: sender.date, indexPath: indexPathForDisplayDate)
+    }
+    
+    func updateText(text: String, date: Date) {
+        label.text = text
+        dateLabel.text = date.convertToString(dateformat: .dateWithTime)
     }
 
 }

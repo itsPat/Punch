@@ -12,8 +12,18 @@ class AddShiftViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var datePickerIndexPath: IndexPath?
+    
+    var dataSource: [[Any]] = [
+        [("Start Date", Date())],
+        [("End Date", Date())],
+        [("Start Date", [Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600)])]
+        
+    ]
+    
     var inputTexts: [String] = ["Start Date", "End date"]
     var inputDates: [Date] = []
+    var selectedRowIndex = -1
+    var cellIsSelected = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +34,6 @@ class AddShiftViewController: UIViewController {
     
     func setupTableView() {
         tableView.backgroundColor = .clear
-        tableView.register(UINib(nibName: DateTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: DateTableViewCell.reuseIdentifier())
         tableView.register(UINib(nibName: DatePickerTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: DatePickerTableViewCell.reuseIdentifier())
     }
     
@@ -47,29 +56,14 @@ class AddShiftViewController: UIViewController {
 extension AddShiftViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // If datePicker is already present, we add one extra cell for that
-        if datePickerIndexPath != nil {
-            return inputTexts.count + 1
-        } else {
-            return inputTexts.count
-        }
+        return inputTexts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if datePickerIndexPath == indexPath {
-            let datePickerCell = tableView.dequeueReusableCell(withIdentifier:   DatePickerTableViewCell.reuseIdentifier()) as!  DatePickerTableViewCell
-            datePickerCell.updateCell(date: inputDates[indexPath.row - 1], indexPath: indexPath)
-            datePickerCell.delegate = self
-            datePickerCell.setCornerRadius()
-            datePickerCell.setStandardShadow()
-            return datePickerCell
-        } else {
-            let dateCell = tableView.dequeueReusableCell(withIdentifier: DateTableViewCell.reuseIdentifier()) as! DateTableViewCell
-            dateCell.updateText(text: inputTexts[indexPath.row], date:  inputDates[indexPath.row])
-            dateCell.setCornerRadius()
-            dateCell.setStandardShadow()
-            return dateCell
-        }
+        let datePickerCell = tableView.dequeueReusableCell(withIdentifier:   DatePickerTableViewCell.reuseIdentifier()) as!  DatePickerTableViewCell
+        datePickerCell.delegate = self
+        datePickerCell.updateText(text: inputTexts[indexPath.row], date: inputDates[indexPath.row])
+        return datePickerCell
     }
     
     
@@ -78,30 +72,42 @@ extension AddShiftViewController: UITableViewDataSource {
 // MARK: UITABLEVIEW DELEGATE
 
 extension AddShiftViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.beginUpdates()
-        if let
-            datePickerIndexPath = datePickerIndexPath,
-            datePickerIndexPath.row - 1 == indexPath.row {
-            tableView.deleteRows(at: [datePickerIndexPath], with: .none)
-            self.datePickerIndexPath = nil
-        } else {
-            if let datePickerIndexPath = datePickerIndexPath {
-                tableView.deleteRows(at: [datePickerIndexPath], with: .none)
-            }
-            datePickerIndexPath = indexPathToInsertDatePicker(indexPath: indexPath)
-            tableView.insertRows(at: [datePickerIndexPath!], with: .top)
-            
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == selectedRowIndex {
+            let cell = tableView.cellForRow(at: indexPath) as! DatePickerTableViewCell
+            cell.toggleCalendar(active: true)
+            cell.indexPath = indexPath
+            return 280
         }
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? DatePickerTableViewCell {
+            cell.toggleCalendar(active: false)
+        }
+        return 64
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        tableView.endUpdates()
+        datePickerIndexPath = indexPathToInsertDatePicker(indexPath: indexPath)
+        if selectedRowIndex != indexPath.row {
+            self.cellIsSelected = true
+            self.selectedRowIndex = indexPath.row
+            
+        } else {
+            self.cellIsSelected = false
+            self.selectedRowIndex = -1
+        }
+        
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
     }
 }
 
 extension AddShiftViewController: DatePickerDelegate {
     
     func didChangeDate(date: Date, indexPath: IndexPath) {
-        inputDates[indexPath.row] = date
+        inputDates[selectedRowIndex] = date
         tableView.reloadRows(at: [indexPath], with: .none)
     }
     
