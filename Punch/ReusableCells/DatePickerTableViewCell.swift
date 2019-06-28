@@ -51,6 +51,7 @@ class DatePickerTableViewCell: UITableViewCell {
         clipsToBounds = true
     }
     
+    
     func setupAnimationView() {
         // For arrow UP: animationView.currentProgress = 0.5
         // For arrow DOWN: animationView.currentProgress = 0
@@ -60,10 +61,10 @@ class DatePickerTableViewCell: UITableViewCell {
         animationContainerView.addSubview(animationView)
         animationView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: animationView, attribute: .left, relatedBy: .equal, toItem: animationContainerView, attribute: .left, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: animationView, attribute: .right, relatedBy: .equal, toItem: animationContainerView, attribute: .right, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: animationView, attribute: .top, relatedBy: .equal, toItem: animationContainerView, attribute: .top, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: animationView, attribute: .bottom, relatedBy: .equal, toItem: animationContainerView, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: animationView, attribute: .centerX, relatedBy: .equal, toItem: animationContainerView, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: animationView, attribute: .width, relatedBy: .equal, toItem: animationContainerView, attribute: .width, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: animationView, attribute: .centerY, relatedBy: .equal, toItem: animationContainerView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: animationView, attribute: .height, relatedBy: .equal, toItem: animationContainerView, attribute: .height, multiplier: 1.0, constant: 0.0)
             ])
     }
     

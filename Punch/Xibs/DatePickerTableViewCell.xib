@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dL8-Kx-vAE" userLabel="animationContainerView">
-                    <rect key="frame" x="0.0" y="226.5" width="375" height="53.5"/>
+                    <rect key="frame" x="0.0" y="234.5" width="375" height="37.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TXq-vg-6lk">
@@ -45,10 +45,10 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="TXq-vg-6lk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="AfN-2N-3sN"/>
-                <constraint firstAttribute="bottom" secondItem="dL8-Kx-vAE" secondAttribute="bottom" id="BmB-jq-PLm"/>
+                <constraint firstAttribute="bottom" secondItem="dL8-Kx-vAE" secondAttribute="bottom" constant="8" id="BmB-jq-PLm"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dL8-Kx-vAE" secondAttribute="trailing" id="Cec-uu-Mu0"/>
                 <constraint firstItem="TXq-vg-6lk" firstAttribute="top" secondItem="wdd-aI-S8e" secondAttribute="bottom" constant="8" id="KYm-Hz-Sqe"/>
-                <constraint firstItem="dL8-Kx-vAE" firstAttribute="top" secondItem="TXq-vg-6lk" secondAttribute="bottom" id="Qom-bv-XOu"/>
+                <constraint firstItem="dL8-Kx-vAE" firstAttribute="top" secondItem="TXq-vg-6lk" secondAttribute="bottom" constant="8" id="Qom-bv-XOu"/>
                 <constraint firstItem="aGT-fl-9o1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="WyW-12-rFD"/>
                 <constraint firstItem="aGT-fl-9o1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wdd-aI-S8e" secondAttribute="trailing" constant="8" id="ZMh-nY-NiJ"/>
                 <constraint firstItem="TXq-vg-6lk" firstAttribute="top" secondItem="aGT-fl-9o1" secondAttribute="bottom" constant="8" id="cE6-Yr-Yab"/>

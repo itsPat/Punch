@@ -161,15 +161,8 @@
 				D25736A422C3D33E00362F44 /* Services */,
 				78CD0B0222C1792C008C251C /* AppDelegate.swift */,
 				257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */,
-				78CD0B0422C1792C008C251C /* LoginViewController.swift */,
-				D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */,
-				78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */,
-				783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */,
-				783D5F9122C1927900645E11 /* AdminTodayViewController.swift */,
-				783D5F9322C1970600645E11 /* AdminPayViewController.swift */,
-				78C2B9CE22C544F600A95733 /* AddShiftViewController.swift */,
-				78C2B9D222C571C800A95733 /* DatePickerTableViewCell.swift */,
-				78CD0B1622C18216008C251C /* CollectionViewCell.swift */,
+				78DB040022C68FD40015AB6F /* ViewControllers */,
+				78DB040122C68FEA0015AB6F /* ReusableCells */,
 				78CD0B0622C1792C008C251C /* Main.storyboard */,
 				78CD0B0922C1792D008C251C /* Assets.xcassets */,
 				78CD0B0B22C1792D008C251C /* LaunchScreen.storyboard */,
@@ -178,6 +171,29 @@
 				7850E03E22C29F0200FAECED /* Punch-Bridging-Header.h */,
 			);
 			path = Punch;
+			sourceTree = "<group>";
+		};
+		78DB040022C68FD40015AB6F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				78CD0B0422C1792C008C251C /* LoginViewController.swift */,
+				78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */,
+				783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */,
+				783D5F9122C1927900645E11 /* AdminTodayViewController.swift */,
+				783D5F9322C1970600645E11 /* AdminPayViewController.swift */,
+				78C2B9CE22C544F600A95733 /* AddShiftViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		78DB040122C68FEA0015AB6F /* ReusableCells */ = {
+			isa = PBXGroup;
+			children = (
+				D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */,
+				78C2B9D222C571C800A95733 /* DatePickerTableViewCell.swift */,
+				78CD0B1622C18216008C251C /* CollectionViewCell.swift */,
+			);
+			path = ReusableCells;
 			sourceTree = "<group>";
 		};
 		D25736A422C3D33E00362F44 /* Services */ = {
