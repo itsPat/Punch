@@ -37,9 +37,9 @@ class DatePickerTableViewCell: UITableViewCell {
         super.awakeFromNib()
         initView()
         heightConstraint.constant = 0
-        setStandardShadow()
         setCornerRadius()
         selectedBackgroundView?.setCornerRadius()
+        setStandardShadow()
         datePicker.setDate(Date(), animated: true)
     }
     

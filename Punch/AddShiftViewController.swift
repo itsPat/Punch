@@ -13,10 +13,10 @@ class AddShiftViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var datePickerIndexPath: IndexPath?
     
-    var dataSource: [[Any]] = [
-        [("Start Date", Date())],
-        [("End Date", Date())],
-        [("Start Date", [Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600)])]
+    var dataSource: [[(String, Any)]] = [
+        [(title: "Start Date", date: Date())],
+        [(title: "End Date", date: Date())],
+//        [(title: "Start Date", employees: [Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600)])]
         
     ]
     
@@ -55,14 +55,18 @@ class AddShiftViewController: UIViewController {
 
 extension AddShiftViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return dataSource.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return inputTexts.count
+        return section == 2 ? dataSource[section].count : 1 // Only need 1 row except for employees section.
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let datePickerCell = tableView.dequeueReusableCell(withIdentifier:   DatePickerTableViewCell.reuseIdentifier()) as!  DatePickerTableViewCell
         datePickerCell.delegate = self
-        datePickerCell.updateText(text: inputTexts[indexPath.row], date: inputDates[indexPath.row])
+        datePickerCell.updateText(text: dataSource[indexPath.section][indexPath.row].0, date: dataSource[indexPath.section][indexPath.row].1 as! Date)
         return datePickerCell
     }
     
@@ -89,7 +93,6 @@ extension AddShiftViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        datePickerIndexPath = indexPathToInsertDatePicker(indexPath: indexPath)
         if selectedRowIndex != indexPath.row {
             self.cellIsSelected = true
             self.selectedRowIndex = indexPath.row

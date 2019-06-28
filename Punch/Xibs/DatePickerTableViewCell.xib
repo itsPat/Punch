@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TXq-vg-6lk">
-                    <rect key="frame" x="0.0" y="70" width="375" height="190"/>
+                    <rect key="frame" x="0.0" y="90" width="375" height="190"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="190" id="sf0-6u-9mx"/>
                     </constraints>
@@ -26,13 +26,13 @@
                     </date>
                 </datePicker>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdd-aI-S8e">
-                    <rect key="frame" x="20" y="8" width="44.5" height="54"/>
+                    <rect key="frame" x="20" y="8" width="44.5" height="74"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGT-fl-9o1" userLabel="dateLabel">
-                    <rect key="frame" x="313" y="8" width="42" height="54"/>
+                    <rect key="frame" x="313" y="8" width="42" height="74"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                 <constraint firstItem="wdd-aI-S8e" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="caB-Yk-9Fn"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aGT-fl-9o1" secondAttribute="trailing" constant="20" id="fec-6P-abZ"/>
                 <constraint firstItem="wdd-aI-S8e" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="rPb-R4-Pza"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="TXq-vg-6lk" secondAttribute="bottom" constant="20" id="ymM-Ve-cdr"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="TXq-vg-6lk" secondAttribute="bottom" id="ymM-Ve-cdr"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
