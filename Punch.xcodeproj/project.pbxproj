@@ -15,10 +15,15 @@
 		783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */; };
 		7850E04022C29FDE00FAECED /* Punch-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 7850E03E22C29F0200FAECED /* Punch-Bridging-Header.h */; };
 		7855CD4E22C26FEC00650D7E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7855CD4D22C26FEC00650D7E /* Utils.swift */; };
+		7869F45122C66FCE00A8982C /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 7869F45022C66FCE00A8982C /* success.json */; };
+		7869F45322C66FDA00A8982C /* openClose.json in Resources */ = {isa = PBXBuildFile; fileRef = 7869F45222C66FDA00A8982C /* openClose.json */; };
 		788D2AA022C27F6300638CC7 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2A9F22C27F6300638CC7 /* FirebaseAuth.framework */; };
 		788D2AA222C27F6300638CC7 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA122C27F6300638CC7 /* FirebaseCore.framework */; };
 		788D2AA422C27F6300638CC7 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA322C27F6300638CC7 /* FirebaseDatabase.framework */; };
 		788D2AA622C27F6300638CC7 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA522C27F6300638CC7 /* FirebaseInstanceID.framework */; };
+		78C2B9CF22C544F600A95733 /* AddShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C2B9CE22C544F600A95733 /* AddShiftViewController.swift */; };
+		78C2B9D422C571C800A95733 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C2B9D222C571C800A95733 /* DatePickerTableViewCell.swift */; };
+		78C2B9DA22C5757600A95733 /* DatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C2B9D922C5757600A95733 /* DatePickerTableViewCell.xib */; };
 		78CD0B0322C1792C008C251C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B0222C1792C008C251C /* AppDelegate.swift */; };
 		78CD0B0522C1792C008C251C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B0422C1792C008C251C /* LoginViewController.swift */; };
 		78CD0B0822C1792C008C251C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CD0B0622C1792C008C251C /* Main.storyboard */; };
@@ -26,6 +31,8 @@
 		78CD0B0D22C1792D008C251C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CD0B0B22C1792D008C251C /* LaunchScreen.storyboard */; };
 		78CD0B1522C17F9B008C251C /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */; };
 		78CD0B1722C18216008C251C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD0B1622C18216008C251C /* CollectionViewCell.swift */; };
+		78DB040322C690340015AB6F /* EmployeeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78DB040222C690340015AB6F /* EmployeeTableViewCell.xib */; };
+		78DB040722C690F40015AB6F /* EmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DB040622C690F40015AB6F /* EmployeeTableViewCell.swift */; };
 		D25736A322C3D33200362F44 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736A222C3D33200362F44 /* DataService.swift */; };
 		D25736A622C3D38B00362F44 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736A522C3D38B00362F44 /* AuthService.swift */; };
 		D25736B122C3D3B700362F44 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736AE22C3D3B600362F44 /* Employee.swift */; };
@@ -33,11 +40,6 @@
 		D25736B322C3D3B700362F44 /* Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736B022C3D3B600362F44 /* Shifts.swift */; };
 		D25736DC22C5420C00362F44 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736DB22C5420C00362F44 /* KeyChainManager.swift */; };
 		D25736DE22C5422400362F44 /* CustomCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */; };
-		D25736E922C66E6600362F44 /* InterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736E822C66E6600362F44 /* InterfaceViewController.swift */; };
-		D25736EB22C66ECD00362F44 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736EA22C66ECD00362F44 /* GradientView.swift */; };
-		D25736ED22C6713300362F44 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736EC22C6713300362F44 /* Spring.swift */; };
-		D25736F222C6857A00362F44 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736F022C6857A00362F44 /* CustomCell.swift */; };
-		D25736F322C6857A00362F44 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D25736F122C6857A00362F44 /* CustomCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,10 +54,15 @@
 		783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHistoryViewController.swift; sourceTree = "<group>"; };
 		7850E03E22C29F0200FAECED /* Punch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Punch-Bridging-Header.h"; sourceTree = "<group>"; };
 		7855CD4D22C26FEC00650D7E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		7869F45022C66FCE00A8982C /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
+		7869F45222C66FDA00A8982C /* openClose.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = openClose.json; sourceTree = "<group>"; };
 		788D2A9F22C27F6300638CC7 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		788D2AA122C27F6300638CC7 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		788D2AA322C27F6300638CC7 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		788D2AA522C27F6300638CC7 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78C2B9CE22C544F600A95733 /* AddShiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShiftViewController.swift; sourceTree = "<group>"; };
+		78C2B9D222C571C800A95733 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
+		78C2B9D922C5757600A95733 /* DatePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerTableViewCell.xib; sourceTree = "<group>"; };
 		78CD0AFF22C1792C008C251C /* Punch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Punch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CD0B0222C1792C008C251C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78CD0B0422C1792C008C251C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +72,8 @@
 		78CD0B0E22C1792D008C251C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewController.swift; sourceTree = "<group>"; };
 		78CD0B1622C18216008C251C /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		78DB040222C690340015AB6F /* EmployeeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmployeeTableViewCell.xib; sourceTree = "<group>"; };
+		78DB040622C690F40015AB6F /* EmployeeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTableViewCell.swift; sourceTree = "<group>"; };
 		D25736A222C3D33200362F44 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		D25736A522C3D38B00362F44 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Punch/AuthService.swift; sourceTree = SOURCE_ROOT; };
 		D25736AE22C3D3B600362F44 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
@@ -72,11 +81,6 @@
 		D25736B022C3D3B600362F44 /* Shifts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shifts.swift; sourceTree = "<group>"; };
 		D25736DB22C5420C00362F44 /* KeyChainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionReusableView.swift; sourceTree = "<group>"; };
-		D25736E822C66E6600362F44 /* InterfaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceViewController.swift; sourceTree = "<group>"; };
-		D25736EA22C66ECD00362F44 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
-		D25736EC22C6713300362F44 /* Spring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
-		D25736F022C6857A00362F44 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		D25736F122C6857A00362F44 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		7869F44F22C66FBD00A8982C /* LottieAnimations */ = {
+			isa = PBXGroup;
+			children = (
+				7869F45022C66FCE00A8982C /* success.json */,
+				7869F45222C66FDA00A8982C /* openClose.json */,
+			);
+			path = LottieAnimations;
+			sourceTree = "<group>";
+		};
+		78C2B9D622C573E400A95733 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				78C2B9D922C5757600A95733 /* DatePickerTableViewCell.xib */,
+				78DB040222C690340015AB6F /* EmployeeTableViewCell.xib */,
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
 		78CD0AF622C1792B008C251C = {
 			isa = PBXGroup;
 			children = (
@@ -138,22 +160,14 @@
 			isa = PBXGroup;
 			children = (
 				2516AF1F22C3E79000475198 /* Punch.entitlements */,
+				7869F44F22C66FBD00A8982C /* LottieAnimations */,
+				78C2B9D622C573E400A95733 /* Xibs */,
 				D25736A722C3D39500362F44 /* Model */,
 				D25736A422C3D33E00362F44 /* Services */,
 				78CD0B0222C1792C008C251C /* AppDelegate.swift */,
-				D25736EC22C6713300362F44 /* Spring.swift */,
 				257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */,
-				78CD0B0422C1792C008C251C /* LoginViewController.swift */,
-				D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */,
-				78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */,
-				D25736F022C6857A00362F44 /* CustomCell.swift */,
-				D25736F122C6857A00362F44 /* CustomCell.xib */,
-				D25736EA22C66ECD00362F44 /* GradientView.swift */,
-				D25736E822C66E6600362F44 /* InterfaceViewController.swift */,
-				783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */,
-				783D5F9122C1927900645E11 /* AdminTodayViewController.swift */,
-				783D5F9322C1970600645E11 /* AdminPayViewController.swift */,
-				78CD0B1622C18216008C251C /* CollectionViewCell.swift */,
+				78DB040022C68FD40015AB6F /* ViewControllers */,
+				78DB040122C68FEA0015AB6F /* ReusableCells */,
 				78CD0B0622C1792C008C251C /* Main.storyboard */,
 				78CD0B0922C1792D008C251C /* Assets.xcassets */,
 				78CD0B0B22C1792D008C251C /* LaunchScreen.storyboard */,
@@ -162,6 +176,30 @@
 				7850E03E22C29F0200FAECED /* Punch-Bridging-Header.h */,
 			);
 			path = Punch;
+			sourceTree = "<group>";
+		};
+		78DB040022C68FD40015AB6F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				78CD0B0422C1792C008C251C /* LoginViewController.swift */,
+				78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */,
+				783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */,
+				783D5F9122C1927900645E11 /* AdminTodayViewController.swift */,
+				783D5F9322C1970600645E11 /* AdminPayViewController.swift */,
+				78C2B9CE22C544F600A95733 /* AddShiftViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		78DB040122C68FEA0015AB6F /* ReusableCells */ = {
+			isa = PBXGroup;
+			children = (
+				D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */,
+				78CD0B1622C18216008C251C /* CollectionViewCell.swift */,
+				78C2B9D222C571C800A95733 /* DatePickerTableViewCell.swift */,
+				78DB040622C690F40015AB6F /* EmployeeTableViewCell.swift */,
+			);
+			path = ReusableCells;
 			sourceTree = "<group>";
 		};
 		D25736A422C3D33E00362F44 /* Services */ = {
@@ -263,11 +301,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D25736F322C6857A00362F44 /* CustomCell.xib in Resources */,
+				78C2B9DA22C5757600A95733 /* DatePickerTableViewCell.xib in Resources */,
 				78CD0B0D22C1792D008C251C /* LaunchScreen.storyboard in Resources */,
 				78CD0B0A22C1792D008C251C /* Assets.xcassets in Resources */,
+				7869F45322C66FDA00A8982C /* openClose.json in Resources */,
 				78CD0B0822C1792C008C251C /* Main.storyboard in Resources */,
+				78DB040322C690340015AB6F /* EmployeeTableViewCell.xib in Resources */,
 				257D8E9C22C272D200E90BD4 /* GoogleService-Info.plist in Resources */,
+				7869F45122C66FCE00A8982C /* success.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,24 +380,23 @@
 			files = (
 				783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */,
 				78CD0B1522C17F9B008C251C /* EmployeeViewController.swift in Sources */,
-				D25736F222C6857A00362F44 /* CustomCell.swift in Sources */,
 				D25736B122C3D3B700362F44 /* Employee.swift in Sources */,
+				78DB040722C690F40015AB6F /* EmployeeTableViewCell.swift in Sources */,
 				78CD0B0522C1792C008C251C /* LoginViewController.swift in Sources */,
+				78C2B9CF22C544F600A95733 /* AddShiftViewController.swift in Sources */,
 				78CD0B1722C18216008C251C /* CollectionViewCell.swift in Sources */,
 				783D5F9222C1927900645E11 /* AdminTodayViewController.swift in Sources */,
 				2516AF2322C3EB4E00475198 /* Credential.swift in Sources */,
-				D25736ED22C6713300362F44 /* Spring.swift in Sources */,
 				D25736DC22C5420C00362F44 /* KeyChainManager.swift in Sources */,
-				D25736EB22C66ECD00362F44 /* GradientView.swift in Sources */,
 				78CD0B0322C1792C008C251C /* AppDelegate.swift in Sources */,
 				D25736B322C3D3B700362F44 /* Shifts.swift in Sources */,
 				D25736DE22C5422400362F44 /* CustomCollectionReusableView.swift in Sources */,
 				D25736B222C3D3B700362F44 /* Company.swift in Sources */,
-				D25736E922C66E6600362F44 /* InterfaceViewController.swift in Sources */,
 				783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */,
 				D25736A622C3D38B00362F44 /* AuthService.swift in Sources */,
 				7855CD4E22C26FEC00650D7E /* Utils.swift in Sources */,
 				D25736A322C3D33200362F44 /* DataService.swift in Sources */,
+				78C2B9D422C571C800A95733 /* DatePickerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,7 +545,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Punch/Punch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TL2NQXM9D4;
+				DEVELOPMENT_TEAM = DTTK359L6E;
 				INFOPLIST_FILE = Punch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -526,7 +566,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Punch/Punch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TL2NQXM9D4;
+				DEVELOPMENT_TEAM = DTTK359L6E;
 				INFOPLIST_FILE = Punch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DatePickerTableViewCell" customModule="Punch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dL8-Kx-vAE" userLabel="animationContainerView">
+                    <rect key="frame" x="0.0" y="234.5" width="375" height="37.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TXq-vg-6lk">
+                    <rect key="frame" x="20" y="36.5" width="335" height="190"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="190" id="sf0-6u-9mx"/>
+                    </constraints>
+                    <date key="date" timeIntervalSinceReferenceDate="583366103.58581698">
+                        <!--2019-06-27 22:08:23 +0000-->
+                    </date>
+                </datePicker>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdd-aI-S8e">
+                    <rect key="frame" x="20" y="8" width="44.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGT-fl-9o1" userLabel="dateLabel">
+                    <rect key="frame" x="313" y="8" width="42" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="TXq-vg-6lk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="AfN-2N-3sN"/>
+                <constraint firstAttribute="bottom" secondItem="dL8-Kx-vAE" secondAttribute="bottom" constant="8" id="BmB-jq-PLm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dL8-Kx-vAE" secondAttribute="trailing" id="Cec-uu-Mu0"/>
+                <constraint firstItem="TXq-vg-6lk" firstAttribute="top" secondItem="wdd-aI-S8e" secondAttribute="bottom" constant="8" id="KYm-Hz-Sqe"/>
+                <constraint firstItem="dL8-Kx-vAE" firstAttribute="top" secondItem="TXq-vg-6lk" secondAttribute="bottom" constant="8" id="Qom-bv-XOu"/>
+                <constraint firstItem="aGT-fl-9o1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="WyW-12-rFD"/>
+                <constraint firstItem="aGT-fl-9o1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wdd-aI-S8e" secondAttribute="trailing" constant="8" id="ZMh-nY-NiJ"/>
+                <constraint firstItem="TXq-vg-6lk" firstAttribute="top" secondItem="aGT-fl-9o1" secondAttribute="bottom" constant="8" id="cE6-Yr-Yab"/>
+                <constraint firstItem="wdd-aI-S8e" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="caB-Yk-9Fn"/>
+                <constraint firstItem="dL8-Kx-vAE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fc3-eU-dKz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aGT-fl-9o1" secondAttribute="trailing" constant="20" id="fec-6P-abZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TXq-vg-6lk" secondAttribute="trailing" constant="20" id="kqK-6P-PML"/>
+                <constraint firstItem="wdd-aI-S8e" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="rPb-R4-Pza"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="animationContainerView" destination="dL8-Kx-vAE" id="kEY-nN-9gD"/>
+                <outlet property="dateLabel" destination="aGT-fl-9o1" id="J2t-AK-bF3"/>
+                <outlet property="datePicker" destination="TXq-vg-6lk" id="8k5-YF-gdS"/>
+                <outlet property="heightConstraint" destination="sf0-6u-9mx" id="UV4-S4-LnF"/>
+                <outlet property="label" destination="wdd-aI-S8e" id="iSh-rq-2PH"/>
+            </connections>
+            <point key="canvasLocation" x="53.600000000000001" y="72.863568215892059"/>
+        </view>
+    </objects>
+</document>
