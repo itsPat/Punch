@@ -62,17 +62,17 @@ extension AddShiftViewController: UITableViewDataSource {
             datePickerCell.indexPath = indexPath
             datePickerCell.updateText(text: dataSource[indexPath.section][indexPath.row].0, date: dataSource[indexPath.section][indexPath.row].1 as! Date)
             return datePickerCell
-        case 2:
-            let datePickerCell = tableView.dequeueReusableCell(withIdentifier:   DatePickerTableViewCell.reuseIdentifier()) as!  DatePickerTableViewCell
-            datePickerCell.delegate = self
-            datePickerCell.indexPath = indexPath
-            datePickerCell.updateText(text: dataSource[indexPath.section][indexPath.row].0, date: dataSource[indexPath.section][indexPath.row].1 as! Date)
-            return datePickerCell
+//        case 2:
+//            let datePickerCell = tableView.dequeueReusableCell(withIdentifier:   DatePickerTableViewCell.reuseIdentifier()) as!  DatePickerTableViewCell
+//            datePickerCell.delegate = self
+//            datePickerCell.indexPath = indexPath
+//            datePickerCell.updateText(text: dataSource[indexPath.section][indexPath.row].0, date: dataSource[indexPath.section][indexPath.row].1 as! Date)
+//            return datePickerCell
         default:
             break // Confirm Button Cell.
         }
         
-        
+        return UITableViewCell()
     }
     
     
