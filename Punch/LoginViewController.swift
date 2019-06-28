@@ -128,19 +128,7 @@ extension LoginViewController {
         //        }
     }
 
-    func test_CreateShiftForEmployee(){
-        let uid = UUID().uuidString
-        let formatter = DateFormatter()
-
-        formatter.dateFormat = "YYYY-dd-MM HH:mm a"
-        let employeeId = "3DD24250-1DA6-4C03-8AD4-DC0DA2009271"
-        let punchInTime = "2019-26-06 9:30 AM"
-        let punchOutTime = "2019-26-06 4:30 PM"
-        let shift1 = Shift1(id:uid , employeeId: employeeId , hourlyRate: 60.0, startTime: "9:00 AM", finishTime: "4:30 PM", punchInTime: "2019-27-06 9:3 AM" , punchOutTime: "2019-27-06 4:30 PM")
-        DataService.instance.createDBShift(uid: UUID().uuidString, shiftData: shift1.dictionary())
-
-
-    }
+    
 
     func test_set_Punch() {
         let formatter = DateFormatter()

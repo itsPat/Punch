@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Punch/Model/Shifts.swift"
-            timestampString = "583370852.593151"
+            timestampString = "583372800.241088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Punch/Services/DataService.swift"
-            timestampString = "583370852.59322"
+            timestampString = "583372800.241158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Punch/LoginViewController.swift"
-            timestampString = "583370852.593424"
+            timestampString = "583372800.2413321"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "test2()"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Punch/LoginViewController.swift"
-            timestampString = "583370852.593807"
+            timestampString = "583372800.241398"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "test2()"
             landmarkType = "7">
             <Locations>
@@ -90,11 +90,11 @@
                   moduleName = "Punch"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/luiz/Documents/LighthouseBootCamp/week08/PunchClock/Punch/Punch/LoginViewController.swift"
-                  timestampString = "583370852.869715"
+                  timestampString = "583372800.263073"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
+                  startingLineNumber = "161"
+                  endingLineNumber = "161"
                   offsetFromSymbolStart = "154">
                </Location>
                <Location
@@ -105,11 +105,11 @@
                   moduleName = "Punch"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/luiz/Documents/LighthouseBootCamp/week08/PunchClock/Punch/Punch/LoginViewController.swift"
-                  timestampString = "583370852.871313"
+                  timestampString = "583372800.266274"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
+                  startingLineNumber = "161"
+                  endingLineNumber = "161"
                   offsetFromSymbolStart = "16">
                </Location>
             </Locations>
