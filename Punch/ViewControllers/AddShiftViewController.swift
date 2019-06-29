@@ -13,19 +13,18 @@ class AddShiftViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var datePickerIndexPath: IndexPath?
     
-    var dataSource: [[(String, Any)]] = [
-        [(title: "Start Date", date: Date())],
-        [(title: "End Date", date: Date())],
-        [(title: "Employee", employees: [
+    var dataSource: [[Any]] = [
+        [Date()],
+        [Date()],
+        [
             Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
             Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
             Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
             Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            ])]
-        
+        ],
+        ["Save Button"]
     ]
     var selectedRowSection = -1 // only one selected cell allowed.
-    var cellIsSelected = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +36,8 @@ class AddShiftViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.register(UINib(nibName: DatePickerTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: DatePickerTableViewCell.reuseIdentifier())
         tableView.register(UINib(nibName: EmployeeTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: EmployeeTableViewCell.reuseIdentifier())
+        tableView.register(UINib(nibName: SaveShiftTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: SaveShiftTableViewCell.reuseIdentifier())
+        tableView.showsVerticalScrollIndicator = false
     }
 
 }
@@ -73,19 +74,23 @@ extension AddShiftViewController: UITableViewDataSource {
         
         switch indexPath.section {
         case 0,1:
+            guard let date = dataSource[indexPath.section][indexPath.row] as? Date else { return UITableViewCell() }
             let datePickerCell = tableView.dequeueReusableCell(withIdentifier:   DatePickerTableViewCell.reuseIdentifier()) as!  DatePickerTableViewCell
             datePickerCell.delegate = self
             datePickerCell.indexPath = indexPath
-            datePickerCell.updateText(text: dataSource[indexPath.section][indexPath.row].0, date: dataSource[indexPath.section][indexPath.row].1 as! Date)
+            datePickerCell.updateText(date: date)
             return datePickerCell
         case 2:
+            guard let employee = dataSource[indexPath.section][indexPath.row] as? Employee else { return UITableViewCell() }
             let employeeCell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.reuseIdentifier()) as! EmployeeTableViewCell
-            employeeCell.titleLabel.text = dataSource[indexPath.section][indexPath.row].0
+            employeeCell.titleLabel.text = employee.name
             return employeeCell
+        case 3:
+            let saveButtonCell = tableView.dequeueReusableCell(withIdentifier: SaveShiftTableViewCell.reuseIdentifier()) as! SaveShiftTableViewCell
+            return saveButtonCell
         default:
-            break // Confirm Button Cell.
+            break
         }
-        
         return UITableViewCell()
     }
     
@@ -111,7 +116,7 @@ extension AddShiftViewController: UITableViewDelegate {
                 cell.toggleCalendar(active: false)
             }
         }
-        return 80
+        return 90
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -121,11 +126,9 @@ extension AddShiftViewController: UITableViewDelegate {
         case 0,1:
             // DATE PICKERS
             if selectedRowSection != indexPath.section {
-                cellIsSelected = true
                 selectedRowSection = indexPath.section
                 
             } else {
-                cellIsSelected = false
                 selectedRowSection = -1
             }
             tableView.beginUpdates()
@@ -138,18 +141,35 @@ extension AddShiftViewController: UITableViewDelegate {
             }
         default:
             // SAVE BUTTON
+            print("Save button tapped.")
             break // Button to save dismiss vc and
         }
         
     }
 }
 
+//MARK: DATE PICKER DELEGATE.
 extension AddShiftViewController: DatePickerDelegate {
     
     func didChangeDate(date: Date, indexPath: IndexPath) {
-        dataSource[indexPath.section][indexPath.row].1 = date
+        dataSource[indexPath.section][indexPath.row] = date
         let cell = tableView.cellForRow(at: indexPath) as! DatePickerTableViewCell
-        cell.updateText(text: dataSource[indexPath.section][indexPath.row].0, date: dataSource[indexPath.section][indexPath.row].1 as! Date)
+        cell.updateText(date: date)
+        if indexPath.section == 0 {
+            // If they set the start date, we automagically set the end date to 8 hours later.
+            guard let datePlus8Hours = Calendar.current.date(byAdding: .hour, value: 8, to: date) else { return }
+            guard let endDateCell = tableView.cellForRow(at: IndexPath(row: indexPath.row, section: indexPath.section + 1)) as? DatePickerTableViewCell else { return }
+            endDateCell.updateText(date: datePlus8Hours)
+            print("SUBMITTING DATE OBJECT ✅ \n \(date.timeIntervalSince1970) SUBMITTED DATE OBJECT ✅ \n ")
+        }
     }
     
+}
+
+//MARK: FIREBASE CALLS.
+extension AddShiftViewController {
+    func submitShifts() {
+        // Check all the selected employee cells, make a shift object for each of those employees with the same date object.
+//        DataService.instance.createDBShift(uid: UUID().uuidString, shiftData: [<#T##Dictionary<String, Any>#>])
+    }
 }

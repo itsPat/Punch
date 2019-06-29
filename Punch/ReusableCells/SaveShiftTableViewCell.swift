@@ -8,27 +8,29 @@
 
 import UIKit
 
-class EmployeeTableViewCell: UITableViewCell {
+class SaveShiftTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     var initialSize: CGSize?
     
     // Reuser identifier
     class func reuseIdentifier() -> String {
-        return "EmployeeTableViewCellIdentifier"
+        return "SaveShiftTableViewCellIdentifier"
     }
     
     // Nib name
     class func nibName() -> String {
-        return "EmployeeTableViewCell"
+        return "SaveShiftTableViewCell"
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         setCornerRadius()
+        setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
         selectedBackgroundView?.setCornerRadius()
         clipsToBounds = true
-        tintColor = CustomColors.darkBlue
+        tintColor = .white
+        accessoryType = .checkmark
     }
     
     override func layoutSubviews() {

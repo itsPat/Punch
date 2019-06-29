@@ -78,18 +78,24 @@ class DatePickerTableViewCell: UITableViewCell {
     }
     
     func toggleCalendar(active: Bool) {
-        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-            if active {
-                self.heightConstraint.constant = 190
-            } else {
-                self.heightConstraint.constant = 0
-            }
-        }) { (complete) in
-            if complete {
-                self.isOpen = active ? true : false
-                self.playAnimationView()
-            }
-        }
+        
+        self.heightConstraint.constant = active ? 190 : 0
+        self.isOpen = active ? true : false
+        self.playAnimationView()
+        
+        
+//        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+//            if active {
+//                self.heightConstraint.constant = 190
+//            } else {
+//                self.heightConstraint.constant = 0
+//            }
+//        }) { (complete) in
+//            if complete {
+//                self.isOpen = active ? true : false
+//                self.playAnimationView()
+//            }
+//        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -104,8 +110,7 @@ class DatePickerTableViewCell: UITableViewCell {
         delegate?.didChangeDate(date: sender.date, indexPath: indexPath)
     }
     
-    func updateText(text: String, date: Date) {
-        label.text = text
+    func updateText(date: Date) {
         dateLabel.text = date.convertToString(dateformat: .dateWithTime)
     }
 
