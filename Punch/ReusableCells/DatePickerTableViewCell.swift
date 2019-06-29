@@ -19,7 +19,6 @@ class DatePickerTableViewCell: UITableViewCell {
     // Remove constraint && Reset them depending on if the calendar isOpen or not.
 
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var animationContainerView: UIView!
     var animationView = AnimationView()

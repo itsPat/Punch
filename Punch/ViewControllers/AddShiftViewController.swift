@@ -102,9 +102,8 @@ extension AddShiftViewController: UITableViewDataSource {
 extension AddShiftViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == selectedRowSection {
-            // Index path must be less than 2 to cast as DatePickerTableViewCell
-            let cell = tableView.cellForRow(at: indexPath) as! DatePickerTableViewCell
+        if indexPath.section == selectedRowSection,
+            let cell = tableView.cellForRow(at: indexPath) as? DatePickerTableViewCell {
             if !cell.isOpen {
                 cell.toggleCalendar(active: true)
             }
