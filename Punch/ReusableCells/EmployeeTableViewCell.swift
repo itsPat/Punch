@@ -41,9 +41,7 @@ class EmployeeTableViewCell: UITableViewCell {
         guard let initialSize = initialSize else { return }
         frame.size = CGSize(width: initialSize.width, height: initialSize.height - 16)
     }
-    
-    
-    
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

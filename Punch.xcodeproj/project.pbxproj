@@ -28,6 +28,7 @@
 		788D2AA222C27F6300638CC7 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA122C27F6300638CC7 /* FirebaseCore.framework */; };
 		788D2AA422C27F6300638CC7 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA322C27F6300638CC7 /* FirebaseDatabase.framework */; };
 		788D2AA622C27F6300638CC7 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA522C27F6300638CC7 /* FirebaseInstanceID.framework */; };
+		78BBF45F22C799AE00A1AA19 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BBF45E22C799AE00A1AA19 /* LocationManager.swift */; };
 		78C2B9CF22C544F600A95733 /* AddShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C2B9CE22C544F600A95733 /* AddShiftViewController.swift */; };
 		78C2B9D422C571C800A95733 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C2B9D222C571C800A95733 /* DatePickerTableViewCell.swift */; };
 		78C2B9DA22C5757600A95733 /* DatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C2B9D922C5757600A95733 /* DatePickerTableViewCell.xib */; };
@@ -74,6 +75,7 @@
 		788D2AA122C27F6300638CC7 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		788D2AA322C27F6300638CC7 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		788D2AA522C27F6300638CC7 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78BBF45E22C799AE00A1AA19 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		78C2B9CE22C544F600A95733 /* AddShiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShiftViewController.swift; sourceTree = "<group>"; };
 		78C2B9D222C571C800A95733 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		78C2B9D922C5757600A95733 /* DatePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerTableViewCell.xib; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				D25736A522C3D38B00362F44 /* AuthService.swift */,
 				D25736DB22C5420C00362F44 /* KeyChainManager.swift */,
 				D25736A222C3D33200362F44 /* DataService.swift */,
+				78BBF45E22C799AE00A1AA19 /* LocationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 			files = (
 				783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */,
 				78819C2522C6988200E5E3CA /* Spring.swift in Sources */,
+				78BBF45F22C799AE00A1AA19 /* LocationManager.swift in Sources */,
 				78CD0B1522C17F9B008C251C /* EmployeeViewController.swift in Sources */,
 				D25736B122C3D3B700362F44 /* Employee.swift in Sources */,
 				78DB040722C690F40015AB6F /* EmployeeTableViewCell.swift in Sources */,
@@ -573,7 +577,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Punch/Punch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DTTK359L6E;
+				DEVELOPMENT_TEAM = TL2NQXM9D4;
 				INFOPLIST_FILE = Punch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -594,7 +598,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Punch/Punch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DTTK359L6E;
+				DEVELOPMENT_TEAM = TL2NQXM9D4;
 				INFOPLIST_FILE = Punch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -13,7 +13,7 @@ class AdminHistoryViewController: InterfaceViewController {
     
     //MARK: - Outlets
     @IBOutlet weak var calendarBottomConstraintView: UIView!
-    @IBOutlet weak var topConstraintView: UIView!
+    @IBOutlet weak var titleContainer: UIView!
     
     //MARK: - Constants
     
@@ -24,6 +24,13 @@ class AdminHistoryViewController: InterfaceViewController {
     private lazy var calendarView: FSCalendar = {
         let calendarView = FSCalendar()
         calendarView.backgroundColor = UIColor.clear
+        calendarView.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 24)
+        calendarView.appearance.titleDefaultColor = CustomColors.blue
+        calendarView.appearance.titleFont = UIFont.boldSystemFont(ofSize: 16)
+        calendarView.appearance.titleTodayColor = CustomColors.blue
+        calendarView.appearance.selectionColor = CustomColors.blue
+        calendarView.appearance.todayColor = CustomColors.orange
+        
         return calendarView
     }()
     
@@ -66,7 +73,7 @@ class AdminHistoryViewController: InterfaceViewController {
         let view = UICollectionView(frame: (CGRect(x: 0, y: 0, width: self.momentumView.frame.size.width - 10, height: self.momentumView.frame.height)), collectionViewLayout:layout)
         view.backgroundColor = UIColor.clear
         view.isUserInteractionEnabled = true
-        view.register(UINib.init(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "CustomCell")
+        view.register(UINib(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "CustomCell")
         return view
     }()
     
@@ -87,11 +94,10 @@ class AdminHistoryViewController: InterfaceViewController {
         DataService.instance.getEmployeesByCompanyId(companyId: "7C5A37CA-A6E9-47D6-A69E-CA4144B75AA7") { (employees) in
             guard let employees = employees else { return }
             self.items = employees
+            self.collectionView.reloadData()
         }
         collectionView.delegate = self
         collectionView.dataSource = self
-        self.view.backgroundColor = UIColor.white
-        layout()
         panRecognier.addTarget(self, action: #selector(panned))
         handleOverlayView.addGestureRecognizer(panRecognier)
         
@@ -99,6 +105,7 @@ class AdminHistoryViewController: InterfaceViewController {
     
     override func viewDidLayoutSubviews() {
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        layout()
     }
     
     //TODO: When a cell is tapped, check that the date is today, if so punch the user in.
@@ -113,11 +120,13 @@ class AdminHistoryViewController: InterfaceViewController {
     
     private func layout() {
         
+        self.view.backgroundColor = UIColor.white
+        
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(calendarView)
         calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        calendarView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        calendarView.topAnchor.constraint(equalTo: titleContainer.bottomAnchor).isActive = true
         calendarView.bottomAnchor.constraint(equalTo: calendarBottomConstraintView.topAnchor).isActive = true
         //        calendarView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1)
         
@@ -132,7 +141,7 @@ class AdminHistoryViewController: InterfaceViewController {
         momentumView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         momentumView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         momentumView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 80).isActive = true
-        momentumView.topAnchor.constraint(equalTo: topConstraintView.bottomAnchor, constant: 40).isActive = true
+        momentumView.topAnchor.constraint(equalTo: titleContainer.bottomAnchor, constant: 40).isActive = true
         
         momentumView.addSubview(handleView)
         handleView.topAnchor.constraint(equalTo: momentumView.topAnchor, constant: 10).isActive = true
@@ -150,13 +159,15 @@ class AdminHistoryViewController: InterfaceViewController {
         collectionView.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: momentumView.bottomAnchor).isActive = true
         collectionView.topAnchor.constraint(equalTo: handleView.bottomAnchor, constant: 15).isActive = true
-        collectionView.setCornerRadius()
         
         momentumView.addSubview(handleOverlayView)
         handleOverlayView.topAnchor.constraint(equalTo: momentumView.topAnchor, constant: 10).isActive = true
         handleOverlayView.leadingAnchor.constraint(equalTo: momentumView.leadingAnchor).isActive = true
         handleOverlayView.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor).isActive = true
         handleOverlayView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 10).isActive = true
+        
+        titleContainer.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
+        titleContainer.setStandardShadow()
     }
     
     // MARK: - Animation
