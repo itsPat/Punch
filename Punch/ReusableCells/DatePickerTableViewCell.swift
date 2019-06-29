@@ -15,6 +15,8 @@ protocol DatePickerDelegate: class {
 }
 
 class DatePickerTableViewCell: UITableViewCell {
+    
+    // Remove constraint && Reset them depending on if the calendar isOpen or not.
 
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var label: UILabel!
@@ -68,34 +70,14 @@ class DatePickerTableViewCell: UITableViewCell {
     }
     
     func playAnimationView() {
-        if isOpen {
-            // Animates arrow from DOWN to UP.
-            animationView.play(fromProgress: 0.0, toProgress: 0.5, loopMode: .none, completion: nil)
-        } else {
-            // Animates arrow from UP to DOWN.
-            animationView.play(fromProgress: 0.5, toProgress: 1.0, loopMode: .none, completion: nil)
-        }
+        animationView.transform = isOpen ? CGAffineTransform.identity : CGAffineTransform(scaleX: 1, y: -1)
+        animationView.play(fromProgress: 0.0, toProgress: 0.5, loopMode: .none, completion: nil)
     }
     
     func toggleCalendar(active: Bool) {
-        
         self.heightConstraint.constant = active ? 190 : 0
         self.isOpen = active ? true : false
         self.playAnimationView()
-        
-        
-//        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-//            if active {
-//                self.heightConstraint.constant = 190
-//            } else {
-//                self.heightConstraint.constant = 0
-//            }
-//        }) { (complete) in
-//            if complete {
-//                self.isOpen = active ? true : false
-//                self.playAnimationView()
-//            }
-//        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
