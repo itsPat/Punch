@@ -31,6 +31,11 @@ class AddShiftViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         view.setGradientBackground(colorOne: CustomColors.orange, colorTwo: CustomColors.darkOrange)
+        testLocationManager()
+    }
+    
+    func testLocationManager() {
+        LocationManager.shared.setupLocationManager()
     }
     
     func setupTableView() {
