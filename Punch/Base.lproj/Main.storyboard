@@ -260,7 +260,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUH-fK-7Ac">
-                                <rect key="frame" x="0.0" y="323" width="375" height="406"/>
+                                <rect key="frame" x="0.0" y="404.33333333333326" width="375" height="324.66666666666674"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gp0-pL-siz" userLabel="titleContainer">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="130.66666666666666"/>
@@ -293,7 +293,7 @@
                             <constraint firstItem="tAu-vE-Eai" firstAttribute="top" secondItem="gp0-pL-siz" secondAttribute="bottom" id="2N1-hU-17z"/>
                             <constraint firstItem="GUH-fK-7Ac" firstAttribute="bottom" secondItem="cfE-0w-SId" secondAttribute="bottom" id="4zw-xX-ixP"/>
                             <constraint firstItem="gp0-pL-siz" firstAttribute="top" secondItem="vZb-nc-fOk" secondAttribute="top" id="D2I-Fv-x6W"/>
-                            <constraint firstItem="GUH-fK-7Ac" firstAttribute="height" secondItem="vZb-nc-fOk" secondAttribute="height" multiplier="0.5" id="LF8-4c-7sQ"/>
+                            <constraint firstItem="GUH-fK-7Ac" firstAttribute="height" secondItem="vZb-nc-fOk" secondAttribute="height" multiplier="0.4" id="LF8-4c-7sQ"/>
                             <constraint firstItem="tAu-vE-Eai" firstAttribute="centerX" secondItem="vZb-nc-fOk" secondAttribute="centerX" id="PJT-Pe-BQx"/>
                             <constraint firstItem="gp0-pL-siz" firstAttribute="leading" secondItem="vZb-nc-fOk" secondAttribute="leading" id="VdX-q1-SlZ"/>
                             <constraint firstItem="GUH-fK-7Ac" firstAttribute="leading" secondItem="cfE-0w-SId" secondAttribute="leading" id="gDz-Jg-l9P"/>
