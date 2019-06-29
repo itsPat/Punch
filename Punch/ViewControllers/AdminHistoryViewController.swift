@@ -11,6 +11,7 @@ import UIKit.UIGestureRecognizerSubclass
 
 class AdminHistoryViewController: InterfaceViewController {
     
+    @IBOutlet weak var textLabel: UILabel!
     //MARK: - Outlets
     @IBOutlet weak var calendarBottomConstraintView: UIView!
     @IBOutlet weak var titleContainer: UIView!
@@ -24,12 +25,16 @@ class AdminHistoryViewController: InterfaceViewController {
     private lazy var calendarView: FSCalendar = {
         let calendarView = FSCalendar()
         calendarView.backgroundColor = UIColor.clear
+        calendarView.appearance.headerTitleColor = CustomColors.orange
         calendarView.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 24)
-        calendarView.appearance.titleDefaultColor = CustomColors.blue
+        calendarView.appearance.titleDefaultColor = UIColor.white
         calendarView.appearance.titleFont = UIFont.boldSystemFont(ofSize: 16)
-        calendarView.appearance.titleTodayColor = CustomColors.blue
-        calendarView.appearance.selectionColor = CustomColors.blue
-        calendarView.appearance.todayColor = CustomColors.orange
+        calendarView.appearance.titleTodayColor = UIColor.white
+        calendarView.appearance.selectionColor = UIColor.white
+        calendarView.appearance.titleSelectionColor = CustomColors.blue
+        calendarView.appearance.todayColor = UIColor.orange
+        calendarView.appearance.weekdayTextColor = UIColor.white
+        calendarView.appearance.weekdayFont = UIFont.boldSystemFont(ofSize: 16)
         
         return calendarView
     }()
@@ -45,8 +50,8 @@ class AdminHistoryViewController: InterfaceViewController {
         let view = GradientView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(white: 0.3, alpha: 1)
-        view.topColor = CustomColors.blue
-        view.bottomColor = CustomColors.darkBlue
+        view.topColor = UIColor.groupTableViewBackground
+        view.bottomColor = UIColor.groupTableViewBackground
         view.cornerRadius = 30
         return view
     }()
@@ -54,15 +59,17 @@ class AdminHistoryViewController: InterfaceViewController {
     private lazy var handleView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        view.backgroundColor = UIColor.groupTableViewBackground
+        view.backgroundColor?.withAlphaComponent(0.5)
         view.layer.cornerRadius = 3
+        view.layer.zPosition = 1
         return view
     }()
     
     private lazy var handleOverlayView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.clear
+        view.backgroundColor = UIColor.white
         return view
     }()
     
@@ -120,13 +127,13 @@ class AdminHistoryViewController: InterfaceViewController {
     
     private func layout() {
         
-        self.view.backgroundColor = UIColor.white
+        self.view.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
         
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(calendarView)
         calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        calendarView.topAnchor.constraint(equalTo: titleContainer.bottomAnchor).isActive = true
+        calendarView.topAnchor.constraint(equalTo: titleContainer.bottomAnchor, constant: 10).isActive = true
         calendarView.bottomAnchor.constraint(equalTo: calendarBottomConstraintView.topAnchor).isActive = true
         //        calendarView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1)
         
@@ -161,13 +168,15 @@ class AdminHistoryViewController: InterfaceViewController {
         collectionView.topAnchor.constraint(equalTo: handleView.bottomAnchor, constant: 15).isActive = true
         
         momentumView.addSubview(handleOverlayView)
-        handleOverlayView.topAnchor.constraint(equalTo: momentumView.topAnchor, constant: 10).isActive = true
+        handleOverlayView.topAnchor.constraint(equalTo: momentumView.topAnchor).isActive = true
         handleOverlayView.leadingAnchor.constraint(equalTo: momentumView.leadingAnchor).isActive = true
         handleOverlayView.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor).isActive = true
         handleOverlayView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 10).isActive = true
         
-        titleContainer.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
-        titleContainer.setStandardShadow()
+        titleContainer.backgroundColor = UIColor.clear
+        textLabel.textColor = CustomColors.orange
+        
+//        titleContainer.setStandardShadow()
     }
     
     // MARK: - Animation
