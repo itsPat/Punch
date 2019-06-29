@@ -103,6 +103,8 @@ class LoginViewController: UIViewController {
         signInButton.setCornerRadius()
         signInButton.setGradientBackground(colorOne: CustomColors.orange, colorTwo: CustomColors.darkOrange)
         signInButton.setStandardShadow()
+        userTextField.setCornerRadius()
+        passTextField.setCornerRadius()
     }
 }
 
