@@ -18,9 +18,18 @@ class CustomCell: UICollectionViewCell {
         // Initialization code
     }
     
-    public func configure(with model: Shift) {
-        dayLabel.text = "\(model.finish)"
-        timeLabel.text = model.start.description
+    public func configure(with model: Shift1) {
+        let startTime = model.startTime
+        let finishTime = model.finishTime
+        dayLabel.text = finishTime
+        timeLabel.text = startTime + " - " + finishTime
+        print(Date())
+    }
+    
+    public func configure(with employee: Employee1) {
+        let hrlyRate = employee.hourlyRate
+        dayLabel.text = employee.name
+        timeLabel.text = "\(hrlyRate)"
     }
     
 }

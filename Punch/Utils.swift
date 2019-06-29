@@ -16,6 +16,21 @@ struct CustomColors {
     static let gray = UIColor(red: 111/255, green: 113/255, blue: 121/255, alpha: 1.0)
 }
 
+//MARK: - Helper Methods
+
+public func formatToDateString(date: Date) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE, MMMM dd"
+    return dateFormatter.string(from: date)
+}
+
+public func formatToHourMinutesString(date: Date) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "HH:mm"
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+    return dateFormatter.string(from: date)
+}
+
 extension UIView {
     
     func setCornerRadius() {

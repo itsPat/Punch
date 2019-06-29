@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
       //                print(employee.name)
       //            }
       //        }
-      
+        DataService.instance.createDBCompany(uid: UUID().uuidString, companyData: ["name" : " test"])
       let formatter = DateFormatter()
       formatter.dateFormat = "YYYY-dd-MM HH:mm a"
       let date1 = formatter.date(from: "2019-26-06 9:30 AM")?.timeIntervalSince1970 as! Double

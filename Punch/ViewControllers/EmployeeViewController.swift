@@ -9,21 +9,6 @@
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-//// MARK: - State
-//private enum State {
-//    case closed
-//    case open
-//}
-//
-//extension State {
-//    var opposite: State {
-//        switch self {
-//        case .open: return .closed
-//        case .closed: return .open
-//        }
-//    }
-//}
-
 //MARK: - Structs
 
 struct Shift {
@@ -42,30 +27,15 @@ class EmployeeViewController: InterfaceViewController {
     @IBOutlet weak var calendarBottomConstraintView: UIView!
     @IBOutlet weak var calendarContainerView: UIView!
     
-    // MARK: - Constants
+    // MARK: - vars
     
-    private let popupOffset: CGFloat = 440
-    
-    let items: [Shift] = [
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-        Shift(start: Date(), finish: Date()),
-    ]
+    var items: [Shift1] = []
     
     // MARK: - Views
     
     private lazy var calendarView: FSCalendar = {
         let calendarView = FSCalendar()
-        calendarView.backgroundColor = UIColor.white
+        calendarView.backgroundColor = UIColor.clear
         return calendarView
     }()
     
@@ -108,7 +78,7 @@ class EmployeeViewController: InterfaceViewController {
         let view = UICollectionView(frame: (CGRect(x: 0, y: 0, width: self.momentumView.frame.size.width - 10, height: self.momentumView.frame.height)), collectionViewLayout:layout)
         view.backgroundColor = UIColor.clear
         view.isUserInteractionEnabled = true
-        view.register(UINib.init(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "CustomCell")
+        view.register(UINib(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "CustomCell")
         return view
     }()
     
@@ -124,8 +94,13 @@ class EmployeeViewController: InterfaceViewController {
     //MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        DataService.instance.getShiftsByEmployeeId(forEmployee: "F1ABF468-78D3-49CC-BD0C-6937625D8F06") { (shifts) in
+            self.items = shifts
+            self.collectionView.reloadData()
+        }
         collectionView.delegate = self
         collectionView.dataSource = self
+        self.view.backgroundColor = UIColor.white
         layout()
         panRecognier.addTarget(self, action: #selector(panned))
         handleOverlayView.addGestureRecognizer(panRecognier)
@@ -265,10 +240,6 @@ extension EmployeeViewController: UICollectionViewDelegateFlowLayout {
 extension EmployeeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
@@ -276,17 +247,20 @@ extension EmployeeViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as? CustomCell else { return UICollectionViewCell() }
         
-        var titleLabelText = ""
-        var detailLabelText = ""
+//        var titleLabelText = ""
+//        var detailLabelText = ""
         
         // The Upcoming shifts for this employee.
         let item = items[indexPath.row]
-        titleLabelText = formatToDateString(date: item.start)
-        detailLabelText = "\(formatToHourMinutesString(date: item.start)) - \(formatToHourMinutesString(date: item.finish))"
-        
-        
-        cell.dayLabel.text = titleLabelText
-        cell.timeLabel.text = detailLabelText
+//        guard let punchInTime = item.punchInTime else { return UICollectionViewCell()}
+//        let punchOutTime = item.finishTime
+//        titleLabelText = formatToDateString(date: punchInTime)
+//        detailLabelText = "\(formatToHourMinutesString(date: punchInTime)) - " + punchOutTime
+//
+//
+//        cell.dayLabel.text = titleLabelText
+//        cell.timeLabel.text = detailLabelText
+        cell.configure(with: item)
         cell.setCornerRadius()
         cell.layer.backgroundColor = UIColor.white.cgColor
 //        cell.setStandardShadow()
@@ -295,20 +269,7 @@ extension EmployeeViewController: UICollectionViewDataSource, UICollectionViewDe
     
     
     
-    //MARK: - Helper Methods
     
-    func formatToDateString(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE, MMMM dd"
-        return dateFormatter.string(from: date)
-    }
-    
-    func formatToHourMinutesString(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        return dateFormatter.string(from: date)
-    }
     
 }
 
