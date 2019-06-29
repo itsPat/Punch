@@ -14,9 +14,16 @@
 		783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9322C1970600645E11 /* AdminPayViewController.swift */; };
 		783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */; };
 		7850E04022C29FDE00FAECED /* Punch-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 7850E03E22C29F0200FAECED /* Punch-Bridging-Header.h */; };
+		78515C0822C6D00600DBA4E4 /* openClose.json in Resources */ = {isa = PBXBuildFile; fileRef = 78515C0722C6D00600DBA4E4 /* openClose.json */; };
+		78515C0C22C6D74300DBA4E4 /* SaveShiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78515C0B22C6D74300DBA4E4 /* SaveShiftTableViewCell.swift */; };
+		78515C0E22C6D83800DBA4E4 /* SaveShiftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78515C0D22C6D83800DBA4E4 /* SaveShiftTableViewCell.xib */; };
 		7855CD4E22C26FEC00650D7E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7855CD4D22C26FEC00650D7E /* Utils.swift */; };
 		7869F45122C66FCE00A8982C /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 7869F45022C66FCE00A8982C /* success.json */; };
-		7869F45322C66FDA00A8982C /* openClose.json in Resources */ = {isa = PBXBuildFile; fileRef = 7869F45222C66FDA00A8982C /* openClose.json */; };
+		78819C2422C6988200E5E3CA /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78819C2022C6988100E5E3CA /* CustomCell.swift */; };
+		78819C2522C6988200E5E3CA /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78819C2122C6988100E5E3CA /* Spring.swift */; };
+		78819C2722C6988200E5E3CA /* InterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78819C2322C6988200E5E3CA /* InterfaceViewController.swift */; };
+		78819C2A22C6993A00E5E3CA /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78819C2822C6993A00E5E3CA /* CustomCell.xib */; };
+		78819C2B22C6993A00E5E3CA /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78819C2922C6993A00E5E3CA /* GradientView.swift */; };
 		788D2AA022C27F6300638CC7 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2A9F22C27F6300638CC7 /* FirebaseAuth.framework */; };
 		788D2AA222C27F6300638CC7 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA122C27F6300638CC7 /* FirebaseCore.framework */; };
 		788D2AA422C27F6300638CC7 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788D2AA322C27F6300638CC7 /* FirebaseDatabase.framework */; };
@@ -40,11 +47,6 @@
 		D25736B322C3D3B700362F44 /* Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736B022C3D3B600362F44 /* Shifts.swift */; };
 		D25736DC22C5420C00362F44 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736DB22C5420C00362F44 /* KeyChainManager.swift */; };
 		D25736DE22C5422400362F44 /* CustomCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */; };
-		D257373722C6944400362F44 /* InterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D257373522C6944400362F44 /* InterfaceViewController.swift */; };
-		D257373822C6944400362F44 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D257373322C6944400362F44 /* Spring.swift */; };
-		D257373922C6944400362F44 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D257373622C6944400362F44 /* CustomCell.swift */; };
-		D257373A22C6944400362F44 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D257373222C6944400362F44 /* GradientView.swift */; };
-		D257373B22C696CF00362F44 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D257373422C6944400362F44 /* CustomCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,9 +60,16 @@
 		783D5F9322C1970600645E11 /* AdminPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPayViewController.swift; sourceTree = "<group>"; };
 		783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHistoryViewController.swift; sourceTree = "<group>"; };
 		7850E03E22C29F0200FAECED /* Punch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Punch-Bridging-Header.h"; sourceTree = "<group>"; };
+		78515C0722C6D00600DBA4E4 /* openClose.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = openClose.json; sourceTree = "<group>"; };
+		78515C0B22C6D74300DBA4E4 /* SaveShiftTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveShiftTableViewCell.swift; sourceTree = "<group>"; };
+		78515C0D22C6D83800DBA4E4 /* SaveShiftTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaveShiftTableViewCell.xib; sourceTree = "<group>"; };
 		7855CD4D22C26FEC00650D7E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		7869F45022C66FCE00A8982C /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
-		7869F45222C66FDA00A8982C /* openClose.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = openClose.json; sourceTree = "<group>"; };
+		78819C2022C6988100E5E3CA /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		78819C2122C6988100E5E3CA /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
+		78819C2322C6988200E5E3CA /* InterfaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceViewController.swift; sourceTree = "<group>"; };
+		78819C2822C6993A00E5E3CA /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		78819C2922C6993A00E5E3CA /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		788D2A9F22C27F6300638CC7 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		788D2AA122C27F6300638CC7 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		788D2AA322C27F6300638CC7 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,11 +95,6 @@
 		D25736B022C3D3B600362F44 /* Shifts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shifts.swift; sourceTree = "<group>"; };
 		D25736DB22C5420C00362F44 /* KeyChainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionReusableView.swift; sourceTree = "<group>"; };
-		D257373222C6944400362F44 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GradientView.swift; path = /Users/Russ/Documents/Projects/LHL/Final/Punch/Punch/GradientView.swift; sourceTree = "<absolute>"; };
-		D257373322C6944400362F44 /* Spring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Spring.swift; path = /Users/Russ/Documents/Projects/LHL/Final/Punch/Punch/Spring.swift; sourceTree = "<absolute>"; };
-		D257373422C6944400362F44 /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CustomCell.xib; path = /Users/Russ/Documents/Projects/LHL/Final/Punch/Punch/CustomCell.xib; sourceTree = "<absolute>"; };
-		D257373522C6944400362F44 /* InterfaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InterfaceViewController.swift; path = /Users/Russ/Documents/Projects/LHL/Final/Punch/Punch/InterfaceViewController.swift; sourceTree = "<absolute>"; };
-		D257373622C6944400362F44 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomCell.swift; path = /Users/Russ/Documents/Projects/LHL/Final/Punch/Punch/CustomCell.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				7869F45022C66FCE00A8982C /* success.json */,
-				7869F45222C66FDA00A8982C /* openClose.json */,
+				78515C0722C6D00600DBA4E4 /* openClose.json */,
 			);
 			path = LottieAnimations;
 			sourceTree = "<group>";
@@ -142,7 +146,7 @@
 		78C2B9D622C573E400A95733 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
-				D257373422C6944400362F44 /* CustomCell.xib */,
+				78515C0D22C6D83800DBA4E4 /* SaveShiftTableViewCell.xib */,
 				78C2B9D922C5757600A95733 /* DatePickerTableViewCell.xib */,
 				78DB040222C690340015AB6F /* EmployeeTableViewCell.xib */,
 			);
@@ -170,8 +174,10 @@
 		78CD0B0122C1792C008C251C /* Punch */ = {
 			isa = PBXGroup;
 			children = (
-				D257373222C6944400362F44 /* GradientView.swift */,
-				D257373322C6944400362F44 /* Spring.swift */,
+				78819C2822C6993A00E5E3CA /* CustomCell.xib */,
+				78819C2922C6993A00E5E3CA /* GradientView.swift */,
+				78819C2022C6988100E5E3CA /* CustomCell.swift */,
+				78819C2122C6988100E5E3CA /* Spring.swift */,
 				2516AF1F22C3E79000475198 /* Punch.entitlements */,
 				7869F44F22C66FBD00A8982C /* LottieAnimations */,
 				78C2B9D622C573E400A95733 /* Xibs */,
@@ -194,7 +200,7 @@
 		78DB040022C68FD40015AB6F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D257373522C6944400362F44 /* InterfaceViewController.swift */,
+				78819C2322C6988200E5E3CA /* InterfaceViewController.swift */,
 				78CD0B0422C1792C008C251C /* LoginViewController.swift */,
 				78CD0B1422C17F9B008C251C /* EmployeeViewController.swift */,
 				783D5F9522C19C7B00645E11 /* AdminHistoryViewController.swift */,
@@ -208,11 +214,11 @@
 		78DB040122C68FEA0015AB6F /* ReusableCells */ = {
 			isa = PBXGroup;
 			children = (
-				D257373622C6944400362F44 /* CustomCell.swift */,
 				D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */,
 				78CD0B1622C18216008C251C /* CollectionViewCell.swift */,
 				78C2B9D222C571C800A95733 /* DatePickerTableViewCell.swift */,
 				78DB040622C690F40015AB6F /* EmployeeTableViewCell.swift */,
+				78515C0B22C6D74300DBA4E4 /* SaveShiftTableViewCell.swift */,
 			);
 			path = ReusableCells;
 			sourceTree = "<group>";
@@ -317,14 +323,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				78C2B9DA22C5757600A95733 /* DatePickerTableViewCell.xib in Resources */,
+				78515C0E22C6D83800DBA4E4 /* SaveShiftTableViewCell.xib in Resources */,
 				78CD0B0D22C1792D008C251C /* LaunchScreen.storyboard in Resources */,
 				78CD0B0A22C1792D008C251C /* Assets.xcassets in Resources */,
-				7869F45322C66FDA00A8982C /* openClose.json in Resources */,
 				78CD0B0822C1792C008C251C /* Main.storyboard in Resources */,
 				78DB040322C690340015AB6F /* EmployeeTableViewCell.xib in Resources */,
-				D257373B22C696CF00362F44 /* CustomCell.xib in Resources */,
+				78819C2A22C6993A00E5E3CA /* CustomCell.xib in Resources */,
 				257D8E9C22C272D200E90BD4 /* GoogleService-Info.plist in Resources */,
 				7869F45122C66FCE00A8982C /* success.json in Resources */,
+				78515C0822C6D00600DBA4E4 /* openClose.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,13 +402,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				783D5F9622C19C7B00645E11 /* AdminHistoryViewController.swift in Sources */,
-				D257373A22C6944400362F44 /* GradientView.swift in Sources */,
+				78819C2522C6988200E5E3CA /* Spring.swift in Sources */,
 				78CD0B1522C17F9B008C251C /* EmployeeViewController.swift in Sources */,
-				D257373922C6944400362F44 /* CustomCell.swift in Sources */,
 				D25736B122C3D3B700362F44 /* Employee.swift in Sources */,
 				78DB040722C690F40015AB6F /* EmployeeTableViewCell.swift in Sources */,
 				78CD0B0522C1792C008C251C /* LoginViewController.swift in Sources */,
 				78C2B9CF22C544F600A95733 /* AddShiftViewController.swift in Sources */,
+				78515C0C22C6D74300DBA4E4 /* SaveShiftTableViewCell.swift in Sources */,
 				78CD0B1722C18216008C251C /* CollectionViewCell.swift in Sources */,
 				783D5F9222C1927900645E11 /* AdminTodayViewController.swift in Sources */,
 				2516AF2322C3EB4E00475198 /* Credential.swift in Sources */,
@@ -409,14 +416,15 @@
 				78CD0B0322C1792C008C251C /* AppDelegate.swift in Sources */,
 				D25736B322C3D3B700362F44 /* Shifts.swift in Sources */,
 				D25736DE22C5422400362F44 /* CustomCollectionReusableView.swift in Sources */,
+				78819C2B22C6993A00E5E3CA /* GradientView.swift in Sources */,
 				D25736B222C3D3B700362F44 /* Company.swift in Sources */,
 				783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */,
+				78819C2722C6988200E5E3CA /* InterfaceViewController.swift in Sources */,
 				D25736A622C3D38B00362F44 /* AuthService.swift in Sources */,
-				D257373722C6944400362F44 /* InterfaceViewController.swift in Sources */,
 				7855CD4E22C26FEC00650D7E /* Utils.swift in Sources */,
 				D25736A322C3D33200362F44 /* DataService.swift in Sources */,
 				78C2B9D422C571C800A95733 /* DatePickerTableViewCell.swift in Sources */,
-				D257373822C6944400362F44 /* Spring.swift in Sources */,
+				78819C2422C6988200E5E3CA /* CustomCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

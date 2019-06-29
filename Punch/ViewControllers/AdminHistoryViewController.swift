@@ -7,39 +7,17 @@
 //
 
 import UIKit
+import UIKit.UIGestureRecognizerSubclass
 
-class AdminHistoryViewController: UIViewController {
+class AdminHistoryViewController: InterfaceViewController {
     
     //MARK: - Outlets
     @IBOutlet weak var calendarBottomConstraintView: UIView!
-    
     @IBOutlet weak var topConstraintView: UIView!
     
     //MARK: - Constants
     
-    let items: [Employee] = [
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-    ]
+    var items: [Employee1] = []
     
     
     //MARK: - Views
@@ -106,6 +84,10 @@ class AdminHistoryViewController: UIViewController {
     //MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        DataService.instance.getEmployeesByCompanyId(companyId: "7C5A37CA-A6E9-47D6-A69E-CA4144B75AA7") { (employees) in
+            guard let employees = employees else { return }
+            self.items = employees
+        }
         collectionView.delegate = self
         collectionView.dataSource = self
         self.view.backgroundColor = UIColor.white
@@ -235,7 +217,7 @@ class AdminHistoryViewController: UIViewController {
     
 }
 
-//MARK: - UICollection View Data Source
+//MARK: - UICollection View Flow Layout
 
 
 extension AdminHistoryViewController: UICollectionViewDelegateFlowLayout {
@@ -253,12 +235,25 @@ extension AdminHistoryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
-        cell.titleLabel.text = items[indexPath.item].name
-        cell.detailLabel.text = items[indexPath.item].shift.first!.start.description
-        cell.setStandardShadow()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as? CustomCell else { return UICollectionViewCell() }
+        
+//        var titleLabelText = ""
+//        var detailLabelText = ""
+        
+        // The Upcoming shifts for this employee.
+        let item = items[indexPath.row]
+        cell.configure(with: item)
+//        let name = item.name
+//        let hrlyRate = item.hourlyRate
+//        titleLabelText = name
+//        detailLabelText = "\(hrlyRate)"
+//
+//
+//        cell.dayLabel.text = titleLabelText
+//        cell.timeLabel.text = detailLabelText
         cell.setCornerRadius()
-        cell.setStandardShadow()
+        cell.layer.backgroundColor = UIColor.white.cgColor
+        //        cell.setStandardShadow()
         return cell
     }
     
