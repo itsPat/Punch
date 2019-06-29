@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import os.log
 
 let DB_BASE = Database.database().reference()
 class DataService {
@@ -145,16 +146,17 @@ class DataService {
 
     func getEmployeeById(forUID uid: String, handler: @escaping (_ employeeName: Employee1?) -> ()) {
 
-        REF_EMPLOYEE.observeSingleEvent(of: .value) { (userSnapshot) in
-            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
-
-            for user in userSnapshot {
-                if user.key == uid {
-
-                    let employee = Employee1(snapshot: user)
-                    handler(employee)
-                }
-            }
+        REF_EMPLOYEE.child(uid).observeSingleEvent(of: .value) { (userSnapshot) in
+            handler(Employee1(snapshot: userSnapshot))
+            //            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            //
+            //            for user in userSnapshot {
+            //                if user.key == uid {
+            //
+            //                    let employee = Employee1(snapshot: user)
+            //                    handler(employee)
+            //                }
+            //            }
         }
     }
 
@@ -167,24 +169,25 @@ class DataService {
 
                     for ref in refernces.values {
                         self.REF_BASE.child(ref).observeSingleEvent(of: .value, with: { (snapshot) in
-
-                            myEmployees.append(Employee1(snapshot: snapshot))
-
+                            let employee = Employee1(snapshot: snapshot)
+                            myEmployees.append(employee)
                             if refernces.values.count == myEmployees.count {
+                                os_log("Testing %@", myEmployees)
                                 handler(myEmployees)
+
                             }
                         })
                     }
-
                 }
             }
         }
-
     }
-
 
     func createDBShift(uid: String, shiftData: Dictionary<String, Any>) {
         REF_WORK_SHIFT.child(uid).updateChildValues(shiftData)
+        if let employeeId = shiftData["employeeId"] as? String {
+            REF_EMPLOYEE.child(employeeId).child("shifts").updateChildValues([ uid: "Shift/\(uid)"])
+        }
     }
 
     //    func getShifById
@@ -204,8 +207,79 @@ class DataService {
         }
     }
 
+
+
     func updateShiftById(uid: String, shiftData: Dictionary<String, Any>) {
         REF_WORK_SHIFT.child(uid).updateChildValues(shiftData)
+    }
+
+    func getShiftsByEmployeeId(EmployeeId id: String, handler: @escaping (_ shifts: [Shift1]?) -> ()) {
+
+        REF_EMPLOYEE.child(id).observeSingleEvent(of: .value) { (snapshot) in
+            var myshifts: [Shift1] = []
+            if let employee = snapshot.value as? [String: Any] {
+                if let refernces = employee["shifts"] as? [String: String] {
+
+                    for ref in refernces.values {
+                        self.REF_BASE.child(ref).observeSingleEvent(of: .value, with: { (snapshot) in
+
+                            myshifts.append(Shift1(snapshot: snapshot))
+
+                            if refernces.values.count == myshifts.count {
+
+                                handler(myshifts)
+                            }
+                        })
+                    }
+                }
+            }
+        }
+    }
+
+
+    func getAllEmployeeWithShiftByCompany(companyId: String, handler: @escaping (_ employees : [Employee1]?) ->  () ) {
+        getEmployeesByCompanyId(companyId: companyId) { (employeesNet) in
+            guard let employeesNet = employeesNet else {
+                print("Error loading employees - \(#file) - \(#function) - \(#line)")
+                return
+            }
+            for employeeNet in employeesNet {
+                self.REF_EMPLOYEE.child(employeeNet.id).child("shifts").observeSingleEvent(of: .value) { (snapshot) in
+                    var myshifts: [Shift1] = []
+                    if let shiftsref = snapshot.value as? [String: Any] {
+                        if let refernces = shiftsref["shifts"] as? [String: String] {
+
+                            for ref in refernces.values {
+                                self.REF_BASE.child(ref).observeSingleEvent(of: .value, with: { (snapshot) in
+
+                                    myshifts.append(Shift1(snapshot: snapshot))
+
+                                    if refernces.values.count == myshifts.count {
+                                        employeeNet.shifts? = myshifts
+                                        //                                      handler(myshifts)
+                                    }
+                                })
+                            }
+                        }
+                    }
+                    handler(employeesNet)
+                    //                 if employeesNet.count ==
+                    print(employeesNet)
+
+                }
+            }
+            //            handler(employees)
+        }
+    }
+
+    //    func getShiftByDate
+
+    func setPunchInTimeWith(ShiftId shiftId: String, WithValue value: String ){
+        REF_WORK_SHIFT.child(shiftId).child("punchInTime").setValue(value)
+    }
+
+    func setPunchOutTimeWith(ShiftId shiftId: String, WithValue value: String ){
+        REF_WORK_SHIFT.child(shiftId).child("punchOutTime").setValue(value)
     }
 
 }
