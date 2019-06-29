@@ -275,8 +275,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZa-tk-cnD" userLabel="titleContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Shift" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4a8-x2-jmA">
+                                        <rect key="frame" x="0.0" y="53.666666666666664" width="375" height="26.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="4a8-x2-jmA" secondAttribute="trailing" id="Dkv-nd-umd"/>
+                                    <constraint firstItem="4a8-x2-jmA" firstAttribute="leading" secondItem="cZa-tk-cnD" secondAttribute="leading" id="KVc-fG-Jyc"/>
+                                    <constraint firstAttribute="bottom" secondItem="4a8-x2-jmA" secondAttribute="bottom" constant="20" id="n0s-IF-cte"/>
+                                    <constraint firstAttribute="height" constant="100" id="q0z-EV-IHu"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="g1n-We-Kke">
-                                <rect key="frame" x="37.666666666666657" y="70.333333333333314" width="300" height="812"/>
+                                <rect key="frame" x="37.666666666666657" y="100" width="300" height="812"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dateCell" id="hHP-xF-AfW">
@@ -301,26 +319,21 @@
                                     <outlet property="delegate" destination="mY2-Sx-6hz" id="abX-16-EZF"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Shift" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4a8-x2-jmA">
-                                <rect key="frame" x="0.0" y="44" width="375" height="26.333333333333329"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xnp-wp-Pfj" firstAttribute="trailing" secondItem="4a8-x2-jmA" secondAttribute="trailing" id="3jK-G6-IwN"/>
                             <constraint firstItem="g1n-We-Kke" firstAttribute="height" secondItem="k5u-6t-lMt" secondAttribute="height" id="8HK-7L-Qfh"/>
-                            <constraint firstItem="g1n-We-Kke" firstAttribute="top" secondItem="4a8-x2-jmA" secondAttribute="bottom" id="GLZ-SJ-ofs"/>
-                            <constraint firstItem="4a8-x2-jmA" firstAttribute="top" secondItem="xnp-wp-Pfj" secondAttribute="top" id="LMF-3J-iZy"/>
+                            <constraint firstItem="g1n-We-Kke" firstAttribute="top" secondItem="cZa-tk-cnD" secondAttribute="bottom" id="8Ir-j0-GiG"/>
+                            <constraint firstItem="cZa-tk-cnD" firstAttribute="top" secondItem="k5u-6t-lMt" secondAttribute="top" id="MOD-6d-9ce"/>
+                            <constraint firstItem="cZa-tk-cnD" firstAttribute="leading" secondItem="xnp-wp-Pfj" secondAttribute="leading" id="cPx-j0-Kxr"/>
                             <constraint firstItem="g1n-We-Kke" firstAttribute="width" secondItem="k5u-6t-lMt" secondAttribute="width" multiplier="0.8" id="d0f-DS-Tnk"/>
-                            <constraint firstItem="4a8-x2-jmA" firstAttribute="leading" secondItem="xnp-wp-Pfj" secondAttribute="leading" id="p0D-BI-OdV"/>
+                            <constraint firstItem="cZa-tk-cnD" firstAttribute="trailing" secondItem="xnp-wp-Pfj" secondAttribute="trailing" id="pMw-Qb-VSL"/>
                             <constraint firstItem="g1n-We-Kke" firstAttribute="centerX" secondItem="k5u-6t-lMt" secondAttribute="centerX" id="si6-7n-OmF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xnp-wp-Pfj"/>
                     </view>
                     <connections>
+                        <outlet property="headerContainerView" destination="cZa-tk-cnD" id="PHj-IU-z9Q"/>
                         <outlet property="tableView" destination="g1n-We-Kke" id="keI-78-DWr"/>
                     </connections>
                 </viewController>

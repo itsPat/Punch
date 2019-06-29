@@ -12,6 +12,7 @@ class AddShiftViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var datePickerIndexPath: IndexPath?
+    @IBOutlet weak var headerContainerView: UIView!
     
     var dataSource: [[Any]] = [
         [Date()],
@@ -38,6 +39,8 @@ class AddShiftViewController: UIViewController {
         tableView.register(UINib(nibName: EmployeeTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: EmployeeTableViewCell.reuseIdentifier())
         tableView.register(UINib(nibName: SaveShiftTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: SaveShiftTableViewCell.reuseIdentifier())
         tableView.showsVerticalScrollIndicator = false
+        headerContainerView.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
+        headerContainerView.setStandardShadow()
     }
 
 }
