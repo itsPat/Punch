@@ -174,7 +174,7 @@ class AdminHistoryViewController: InterfaceViewController {
         handleOverlayView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 10).isActive = true
         
         titleContainer.backgroundColor = UIColor.clear
-        textLabel.textColor = CustomColors.orange
+        textLabel.textColor = UIColor.white
         
 //        titleContainer.setStandardShadow()
     }
