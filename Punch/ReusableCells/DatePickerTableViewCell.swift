@@ -51,6 +51,13 @@ class DatePickerTableViewCell: UITableViewCell {
         clipsToBounds = true
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        if isOpen {
+            toggleCalendar(active: false)
+        }
+    }
+    
     
     func setupAnimationView() {
         // For arrow UP: animationView.currentProgress = 0.5
