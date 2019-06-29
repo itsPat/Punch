@@ -43,15 +43,15 @@ public class Shift1 {
 
     func dictionary() -> [String: Any] {
         let dic : [String: Any] = [
-    "employeeId": employeeId,
-    "hourlyRate" : hourlyRate,
-    "startTime" : startTime,
-    "finishTime" : finishTime,
-    "punchOutTime" : punchOutTime ?? 0,
-    "punchInTime" : punchInTime ?? 0
+            "employeeId": employeeId,
+            "hourlyRate" : hourlyRate,
+            "startTime" : startTime,
+            "finishTime" : finishTime,
+            "punchOutTime" : punchOutTime ?? 0,
+            "punchInTime" : punchInTime ?? 0
         ]
 
-    return dic
+        return dic
     }
 
     init(snapshot: DataSnapshot) {

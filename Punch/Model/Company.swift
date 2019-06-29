@@ -12,7 +12,7 @@ public class Company {
     var id : String
     var name : String
     var employeesRef :[String : String] = [:]
-  var employees: [Employee1]?
+    var employees: [Employee1]?
 
     init(id: String, name: String) {
         self.id = id
@@ -23,5 +23,9 @@ public class Company {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         employeesRef = snapshotValue["employees"] as! [String : String]
         name = snapshotValue["name"] as! String
+    }
+
+    func dictionary () -> [String: Any]{
+        return ["name" : self.name]
     }
 }
