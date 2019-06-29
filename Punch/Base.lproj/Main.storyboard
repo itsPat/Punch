@@ -294,7 +294,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="g1n-We-Kke">
-                                <rect key="frame" x="37.666666666666657" y="100" width="300" height="812"/>
+                                <rect key="frame" x="37.666666666666657" y="100" width="300" height="712"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dateCell" id="hHP-xF-AfW">
@@ -322,9 +322,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="g1n-We-Kke" firstAttribute="height" secondItem="k5u-6t-lMt" secondAttribute="height" id="8HK-7L-Qfh"/>
                             <constraint firstItem="g1n-We-Kke" firstAttribute="top" secondItem="cZa-tk-cnD" secondAttribute="bottom" id="8Ir-j0-GiG"/>
                             <constraint firstItem="cZa-tk-cnD" firstAttribute="top" secondItem="k5u-6t-lMt" secondAttribute="top" id="MOD-6d-9ce"/>
+                            <constraint firstAttribute="bottom" secondItem="g1n-We-Kke" secondAttribute="bottom" id="Ni5-Ne-HhN"/>
                             <constraint firstItem="cZa-tk-cnD" firstAttribute="leading" secondItem="xnp-wp-Pfj" secondAttribute="leading" id="cPx-j0-Kxr"/>
                             <constraint firstItem="g1n-We-Kke" firstAttribute="width" secondItem="k5u-6t-lMt" secondAttribute="width" multiplier="0.8" id="d0f-DS-Tnk"/>
                             <constraint firstItem="cZa-tk-cnD" firstAttribute="trailing" secondItem="xnp-wp-Pfj" secondAttribute="trailing" id="pMw-Qb-VSL"/>
