@@ -22,6 +22,18 @@ class AddShiftViewController: UIViewController {
             Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
             Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
             Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
+            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
+            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
+            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
+            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
+            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
+            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
+            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
+            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
+            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
+            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
+            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
+            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
         ],
         ["Save Button"]
     ]
@@ -48,8 +60,6 @@ class AddShiftViewController: UIViewController {
         tableView.register(UINib(nibName: EmployeeTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: EmployeeTableViewCell.reuseIdentifier())
         tableView.register(UINib(nibName: SaveShiftTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: SaveShiftTableViewCell.reuseIdentifier())
         tableView.showsVerticalScrollIndicator = false
-        headerContainerView.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
-        headerContainerView.setStandardShadow()
     }
 
 }
@@ -65,9 +75,7 @@ extension AddShiftViewController: UITableViewDataSource {
         case 1:
             return "End Date"
         case 2:
-            return "Employee"
-        case 3:
-            return "Save Shift"
+            return "Employees"
         default:
             break
         }
@@ -113,6 +121,12 @@ extension AddShiftViewController: UITableViewDataSource {
 
 extension AddShiftViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let view = view as? UITableViewHeaderFooterView {
+            view.textLabel?.textColor = CustomColors.darkBlue
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == selectedRowSection,
             let cell = tableView.cellForRow(at: indexPath) as? DatePickerTableViewCell {
@@ -152,7 +166,11 @@ extension AddShiftViewController: UITableViewDelegate {
             }
         default:
             // SAVE BUTTON
-            print("Save button tapped.")
+            let loadingView = LoadingView(frame: .zero)
+            view.addSubview(loadingView)
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (_) in
+                loadingView.complete()
+            }
             break // Button to save dismiss vc and
         }
         
