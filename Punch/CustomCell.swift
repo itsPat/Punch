@@ -27,9 +27,14 @@ class CustomCell: UICollectionViewCell {
     }
     
     public func configure(with employee: Employee1) {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
+        formatter.numberStyle = .currency
         let hrlyRate = employee.hourlyRate
+        if let formattedHrlyRate = formatter.string(from: hrlyRate as NSNumber) {
+            timeLabel.text = "Hourly Rate: \(formattedHrlyRate)"
+        }
         dayLabel.text = employee.name
-        timeLabel.text = "\(hrlyRate)"
     }
     
 }

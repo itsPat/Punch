@@ -9,7 +9,10 @@
 import UIKit
 
 class AdminPayViewController: UIViewController {
-
+    @IBOutlet weak var titleContainerView: UIView!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     let items: [Employee] = [
         Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
         Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
@@ -34,6 +37,12 @@ class AdminPayViewController: UIViewController {
         Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
     ]
     
+    
+    override func viewDidLayoutSubviews() {
+        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        titleContainerView.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
+        titleContainerView.setStandardShadow()
+    }
     
 }
 
