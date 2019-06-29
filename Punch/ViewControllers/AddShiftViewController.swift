@@ -75,7 +75,7 @@ extension AddShiftViewController: UITableViewDataSource {
         case 1:
             return "End Date"
         case 2:
-            return "Employee"
+            return "Employees"
         default:
             break
         }
