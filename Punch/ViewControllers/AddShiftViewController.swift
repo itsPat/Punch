@@ -176,6 +176,10 @@ extension AddShiftViewController: UITableViewDelegate {
             Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (_) in
                 loadingView.complete()
             }
+            
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (_) in
+                self.dismiss(animated: true, completion: nil)
+            }
             break // Button to save dismiss vc and
         }
         
