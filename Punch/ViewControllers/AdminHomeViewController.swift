@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AdminTodayViewController: UIViewController {
+class AdminHomeViewController: UIViewController {
     
     //MARK: - Outlets
     @IBOutlet weak var calendarBottomConstraintView: UIView!
@@ -82,7 +82,6 @@ class AdminTodayViewController: UIViewController {
         view.register(UINib(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "CustomCell")
         return view
     }()
-    
     
     //MARK: - Animation
     private let panRecognier = InstantPanGestureRecognizer()
@@ -172,7 +171,7 @@ class AdminTodayViewController: UIViewController {
         handleOverlayView.leadingAnchor.constraint(equalTo: momentumView.leadingAnchor).isActive = true
         handleOverlayView.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor).isActive = true
         handleOverlayView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 10).isActive = true
-        
+                
         titleContainer.backgroundColor = UIColor.clear
         textLabel.textColor = UIColor.white
     }
@@ -238,7 +237,7 @@ class AdminTodayViewController: UIViewController {
 //MARK: - UICollection View Flow Layout
 
 
-extension AdminTodayViewController: UICollectionViewDelegateFlowLayout {
+extension AdminHomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width * 0.8, height: view.frame.width * 0.2)
     }
@@ -246,7 +245,7 @@ extension AdminTodayViewController: UICollectionViewDelegateFlowLayout {
 
 //MARK: - UICollection View Data Source
 
-extension AdminTodayViewController: UICollectionViewDataSource {
+extension AdminHomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
