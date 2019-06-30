@@ -106,7 +106,6 @@ extension AddShiftViewController: UITableViewDataSource {
             let employeeCell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.reuseIdentifier()) as! EmployeeTableViewCell
             employeeCell.titleLabel.text = employee.name
             employeeCell.showCheckmark = isSeleted
-            print("SETTING UP CELL @ INDEX PATH.ROW \(indexPath.row), ISSELECTED = \(isSeleted)")
             return employeeCell
         case 3:
             let saveButtonCell = tableView.dequeueReusableCell(withIdentifier: SaveShiftTableViewCell.reuseIdentifier()) as! SaveShiftTableViewCell
@@ -167,8 +166,6 @@ extension AddShiftViewController: UITableViewDelegate {
             var tuple = dataSource[2][indexPath.row] as! (employee: Employee, isSelected: Bool)
             tuple.isSelected = !tuple.isSelected
             dataSource[2][indexPath.row] = tuple
-            
-            print("Set is selected to \(tuple.isSelected)")
             selectedRowSection = -1 // Hide the date pickers if open.
             tableView.reloadRows(at: [indexPath], with: .none)
         default:

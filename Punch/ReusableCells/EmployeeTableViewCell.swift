@@ -15,7 +15,6 @@ class EmployeeTableViewCell: UITableViewCell {
     var initialSize: CGSize?
     var showCheckmark = true {
         didSet {
-            print("Setting showCheckmark to \(self.showCheckmark)")
             checkmarkLabel.isHidden = !self.showCheckmark
         }
     }
