@@ -29,8 +29,6 @@ class SaveShiftTableViewCell: UITableViewCell {
         setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
         selectedBackgroundView?.setCornerRadius()
         clipsToBounds = true
-        tintColor = .white
-        accessoryType = .checkmark
     }
     
     override func layoutSubviews() {

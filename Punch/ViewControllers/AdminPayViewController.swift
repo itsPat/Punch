@@ -14,27 +14,19 @@ class AdminPayViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let items: [Employee] = [
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-        Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
+        Employee(name: "Pat Trudel", amountOwed: 1600),
+        Employee(name: "Pat Trudel", amountOwed: 1600),
+        Employee(name: "Pat Trudel", amountOwed: 1600),
+        Employee(name: "Pat Trudel", amountOwed: 1600),
+        Employee(name: "Pat Trudel", amountOwed: 1600),
+        Employee(name: "Pat Trudel", amountOwed: 1600),
+        Employee(name: "Pat Trudel", amountOwed: 1600),
+        Employee(name: "Pat Trudel", amountOwed: 1600),
+        Employee(name: "Pat Trudel", amountOwed: 1600),
+        Employee(name: "Pat Trudel", amountOwed: 1600),
+        Employee(name: "Pat Trudel", amountOwed: 1600),
+        Employee(name: "Pat Trudel", amountOwed: 1600),
+        
     ]
     
     

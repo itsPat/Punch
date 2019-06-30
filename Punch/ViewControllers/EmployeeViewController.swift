@@ -18,7 +18,6 @@ struct Shift {
 
 struct Employee {
     let name: String
-    let shift: [Shift]
     let amountOwed: Int
 }
 

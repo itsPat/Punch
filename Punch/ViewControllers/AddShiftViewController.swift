@@ -18,22 +18,24 @@ class AddShiftViewController: UIViewController {
         [Date()],
         [Date()],
         [
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
-            Employee(name: "Pat Trudel", shift: [Shift(start: Date(), finish: Date())], amountOwed: 1600),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false)
+            
         ],
         ["Save Button"]
     ]
@@ -41,7 +43,6 @@ class AddShiftViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupTableView()
         view.setGradientBackground(colorOne: CustomColors.orange, colorTwo: CustomColors.darkOrange)
         testLocationManager()
     }
@@ -101,9 +102,11 @@ extension AddShiftViewController: UITableViewDataSource {
             datePickerCell.updateText(date: date)
             return datePickerCell
         case 2:
-            guard let employee = dataSource[indexPath.section][indexPath.row] as? Employee else { return UITableViewCell() }
+            guard let (employee,isSeleted) = dataSource[indexPath.section][indexPath.row] as? (Employee,Bool) else { return UITableViewCell() }
             let employeeCell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.reuseIdentifier()) as! EmployeeTableViewCell
             employeeCell.titleLabel.text = employee.name
+            employeeCell.showCheckmark = isSeleted
+            print("SETTING UP CELL @ INDEX PATH.ROW \(indexPath.row), ISSELECTED = \(isSeleted)")
             return employeeCell
         case 3:
             let saveButtonCell = tableView.dequeueReusableCell(withIdentifier: SaveShiftTableViewCell.reuseIdentifier()) as! SaveShiftTableViewCell
@@ -160,12 +163,17 @@ extension AddShiftViewController: UITableViewDelegate {
             tableView.endUpdates()
         case 2:
             // EMPLOYEES
-            if let cell = tableView.cellForRow(at: indexPath) as? EmployeeTableViewCell {
-                cell.accessoryType = cell.accessoryType == .checkmark ? .none : .checkmark
-                selectedRowSection = -1 // Hide the date pickers if open.
-            }
+            
+            var tuple = dataSource[2][indexPath.row] as! (employee: Employee, isSelected: Bool)
+            tuple.isSelected = !tuple.isSelected
+            dataSource[2][indexPath.row] = tuple
+            
+            print("Set is selected to \(tuple.isSelected)")
+            selectedRowSection = -1 // Hide the date pickers if open.
+            tableView.reloadRows(at: [indexPath], with: .none)
         default:
             // SAVE BUTTON
+            submitShifts()
             let loadingView = LoadingView(frame: .zero)
             view.addSubview(loadingView)
             Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (_) in
@@ -189,7 +197,6 @@ extension AddShiftViewController: DatePickerDelegate {
             guard let datePlus8Hours = Calendar.current.date(byAdding: .hour, value: 8, to: date) else { return }
             guard let endDateCell = tableView.cellForRow(at: IndexPath(row: indexPath.row, section: indexPath.section + 1)) as? DatePickerTableViewCell else { return }
             endDateCell.updateText(date: datePlus8Hours)
-            print("SUBMITTING DATE OBJECT ✅ \n \(date.timeIntervalSince1970) SUBMITTED DATE OBJECT ✅ \n ")
         }
     }
     
@@ -198,7 +205,25 @@ extension AddShiftViewController: DatePickerDelegate {
 //MARK: FIREBASE CALLS.
 extension AddShiftViewController {
     func submitShifts() {
-        // Check all the selected employee cells, make a shift object for each of those employees with the same date object.
-//        DataService.instance.createDBShift(uid: UUID().uuidString, shiftData: [<#T##Dictionary<String, Any>#>])
+        
+        guard let startDate = dataSource[0].first as? Date else { return }
+        guard let endDate = dataSource[1].first as? Date else { return }
+        guard let employees = dataSource[2] as? [(Employee,Bool)] else { return }
+        
+        for (employee,isSelected) in employees {
+            if isSelected {
+                #warning("REPLACE THIS WITH THE REAL (EMPLOYEE.ID) ONCE ITS SETUP.")
+                let employeeID = "F1ABF468-78D3-49CC-BD0C-6937625D8F06"
+                DataService.instance.createDBShift(uid: UUID().uuidString, shiftData: [
+                    "employeeId": "\(employeeID)",
+                    "finishTime": "\(endDate.timeIntervalSince1970)",
+                    "hourlyRate": 420,
+                    "punchInTime": "\(startDate.timeIntervalSince1970)",
+                    "punchOutTime": "\(endDate.timeIntervalSince1970)",
+                    "startTime": "\(startDate.timeIntervalSince1970)"
+                    ])
+                print("SUBMITTING SHIFT TO FIREBASE ✅")
+            }
+        }
     }
 }

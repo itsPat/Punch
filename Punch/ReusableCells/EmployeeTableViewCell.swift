@@ -11,7 +11,14 @@ import UIKit
 class EmployeeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var checkmarkLabel: UILabel!
     var initialSize: CGSize?
+    var showCheckmark = true {
+        didSet {
+            print("Setting showCheckmark to \(self.showCheckmark)")
+            checkmarkLabel.isHidden = !self.showCheckmark
+        }
+    }
     
     // Reuser identifier
     class func reuseIdentifier() -> String {
@@ -28,7 +35,6 @@ class EmployeeTableViewCell: UITableViewCell {
         setCornerRadius()
         selectedBackgroundView?.setCornerRadius()
         clipsToBounds = true
-        tintColor = CustomColors.darkBlue
     }
     
     override func layoutSubviews() {
