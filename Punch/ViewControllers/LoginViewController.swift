@@ -8,6 +8,7 @@
 
 import UIKit
 import LocalAuthentication
+import Firebase
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var userTextField: UITextField!
@@ -76,7 +77,8 @@ class LoginViewController: UIViewController {
       //        }
 
 //        testgetAllEmployeeWithShiftByCompany()
-        testgetAllEmployeeShiftsByCompany()
+//        testgetAllEmployeeShiftsByCompany()
+        deleteTestCompany()
     }
     
     @IBAction func signInTapped(_ sender: Any) {
@@ -129,11 +131,25 @@ extension LoginViewController {
     func testgetAllEmployeeShiftsByCompany() {
         let dataService = DataService.instance
         let uidLightHouse = "7C5A37CA-A6E9-47D6-A69E-CA4144B75AA7"
-        dataService.getAllEmployeeWithShiftByCompany(comId: uidLightHouse) { (employees) in
+        dataService.getAllEmployeeWithShiftByCompany(companyId: uidLightHouse) { (employees) in
             DispatchQueue.main.async {
                 print(employees)
             }
         }
+    }
+
+    func deleteTestCompany() {
+        let data = DataService.instance
+//        let list = ["F673E6A1-8965-41E5-BC38-A6E57904D931" ,
+//                    "F8631EDD-001E-4EF8-80B8-D3ACA91D5520" ,
+//                    "FB72E947-3A8B-46D2-8516-FFCE10EFD685" ,
+//                    "FC399C6F-1FE9-4271-80B5-486F433610D8" ,
+//                    "FE860387-50DA-4FD4-884C-61FAD0CA005D" ,
+//                    "FFA0279C-D3A3-4300-AA17-496073A425B5"]
+//        for item in list {
+//            Database.database().reference().child("Company").child(item).removeValue()
+//        }
+
     }
 }
 

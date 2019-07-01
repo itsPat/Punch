@@ -31,10 +31,12 @@ class ShiftManager {
         var selectecShift : [Shift1] = []
         //        print(shifts[0].punchInTime)
         for shift in shifts {
-            guard let shiftDate = shift.punchInTime else {
+            guard let shiftTimeInterval = shift.punchInTime else {
                 print("Empty shift")
                 continue
             }
+            let shiftDate = Date(timeIntervalSince1970: shiftTimeInterval)
+
             let shiftDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: shiftDate)
 
             guard let shiftYear = shiftDateComponents.year,
@@ -71,9 +73,10 @@ class ShiftManager {
         }
 
         for shift in shifts {
-            guard let shiftDate = shift.punchInTime else {
+            guard let shiftTimeInterval = shift.punchInTime else {
                 continue
             }
+            let shiftDate = Date(timeIntervalSince1970: shiftTimeInterval)
             if shiftDate.greaterThanOrEqual(otherDate: fromDate) && shiftDate.lessThanOrEqual(otherDate: toDate){
                 selectedShifts.append(shift)
             }
