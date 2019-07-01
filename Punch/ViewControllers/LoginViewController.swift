@@ -74,6 +74,9 @@ class LoginViewController: UIViewController {
       //                print(shift.id, shift.employeeId)
       //            }
       //        }
+
+//        testgetAllEmployeeWithShiftByCompany()
+        testgetAllEmployeeShiftsByCompany()
     }
     
     @IBAction func signInTapped(_ sender: Any) {
@@ -111,6 +114,27 @@ class LoginViewController: UIViewController {
     }
 }
 
+extension LoginViewController {
+    func testgetAllEmployeeWithShiftByCompany() {
+        let dataService : EmployeeDataServiceProtocol = DataService.instance
+        let uidLightHouse = "7C5A37CA-A6E9-47D6-A69E-CA4144B75AA7"
+        dataService.getAllEmployeeWithShiftByCompany(companyId: uidLightHouse) { (employees) in
 
+            DispatchQueue.main.async {
+                print(employees)
+            }
+        }
+    }
+
+    func testgetAllEmployeeShiftsByCompany() {
+        let dataService = DataService.instance
+        let uidLightHouse = "7C5A37CA-A6E9-47D6-A69E-CA4144B75AA7"
+        dataService.getAllEmployeeWithShiftByCompany(comId: uidLightHouse) { (employees) in
+            DispatchQueue.main.async {
+                print(employees)
+            }
+        }
+    }
+}
 
 

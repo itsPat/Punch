@@ -61,10 +61,10 @@ public class Shift1 {
     init(snapshot: DataSnapshot) {
 
         self.id = snapshot.key
-        let snapshotValue = snapshot.value as! [String: AnyObject]
+        let snapshotValue = snapshot.value as! [String: Any]
         self.employeeId = snapshotValue["employeeId"] as! String
         self.hourlyRate = snapshotValue["hourlyRate"] as! Double
-        self.isPaid = snapshotValue["isPaid"] as! Bool
+        self.isPaid = snapshotValue["isPaid"] as? Bool ?? false
         self.startTime = snapshotValue["startTime"] as! String
         self.finishTime = snapshotValue["finishTime"] as! String
         if let time = snapshotValue["punchInTime"] as? Double {

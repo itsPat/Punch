@@ -161,7 +161,7 @@ class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, Shif
         }
     }
 
-     func changeValueOfAmountOwedWith(EmployeeId employeeId: String, value: Double){
+    func changeValueOfAmountOwedWith(EmployeeId employeeId: String, value: Double){
         REF_EMPLOYEE.child(employeeId).setValue(value, forKey: "amountOwed")
     }
 
@@ -206,13 +206,16 @@ class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, Shif
             for shif in snapshot {
 
                 if shif.childSnapshot(forPath: "employeeId").value  as! String == employeeID {
-                    shifts.append(Shift1(snapshot: shif))
+                    let shiftObject = Shift1(snapshot: shif) 
+                    shifts.append( shiftObject)
 
                 }
             }
             handler(shifts)
         }
     }
+
+    
 
     func updateShiftById(uid: String, shiftData: Dictionary<String, Any>) {
         REF_WORK_SHIFT.child(uid).updateChildValues(shiftData)
@@ -227,6 +230,16 @@ class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, Shif
 
                     for ref in refernces.values {
                         self.REF_BASE.child(ref).observeSingleEvent(of: .value, with: { (snapshot) in
+
+                            guard snapshot.exists() else {
+                                print("Snapshot is null \(#file) - \(#function) -\(#line)")
+                                return
+                            }
+                            if snapshot.value is NSNull {
+                                print("Snapshot is null \(#file) - \(#function) -\(#line)")
+                                return
+                            }
+
 
                             myshifts.append(Shift1(snapshot: snapshot))
 
@@ -267,15 +280,24 @@ class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, Shif
                             }
                         }
                     }
+
+                    for employee in employeesNet {
+                        guard let shifts = employee.shifts else {
+                            continue
+                        }
+                        print(employee.name, shifts)
+                    }
                     handler(employeesNet)
                     //                 if employeesNet.count ==
-                    print(employeesNet)
+
 
                 }
             }
 
         }
     }
+
+
 
 
     func setPunchInTimeWith(ShiftId shiftId: String, WithValue value: String ){
