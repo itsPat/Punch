@@ -253,25 +253,16 @@ extension AdminHomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as? CustomCell else { return UICollectionViewCell() }
-        
-        //        var titleLabelText = ""
-        //        var detailLabelText = ""
-        
-        // The Upcoming shifts for this employee.
+        // The employees on shift for selected date
         let item = items[indexPath.row]
         cell.configure(with: item)
-        //        let name = item.name
-        //        let hrlyRate = item.hourlyRate
-        //        titleLabelText = name
-        //        detailLabelText = "\(hrlyRate)"
-        //
-        //
-        //        cell.dayLabel.text = titleLabelText
-        //        cell.timeLabel.text = detailLabelText
         cell.setCornerRadius()
         cell.layer.backgroundColor = UIColor.white.cgColor
-        //        cell.setStandardShadow()
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //TODO: display info about employee - create segue, present modally
     }
     
 }

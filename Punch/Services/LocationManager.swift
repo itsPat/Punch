@@ -78,7 +78,7 @@ extension LocationManager: CLLocationManagerDelegate {
         // If so approve the punch in. If not tell the user they are too far away.
         if let location = locations.first {
             currentLocation = location
-            
+//            getDistanceImKMBetweenCoordinates(coordinate1: currentLocation?.coordinate, coordinate2:)
             let region = CLCircularRegion(center: location.coordinate, radius: 500.0, identifier: "Work")
             region.notifyOnEntry = true
             region.notifyOnExit = true

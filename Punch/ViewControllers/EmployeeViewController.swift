@@ -31,6 +31,8 @@ class EmployeeViewController: InterfaceViewController {
     
     var items: [Shift1] = []
     
+    var user: Employee1!
+    
     // MARK: - Views
     private lazy var calendarView: FSCalendar = {
         let calendarView = FSCalendar()
@@ -106,12 +108,23 @@ class EmployeeViewController: InterfaceViewController {
     //MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataService.instance.getShiftsByEmployeeId(forEmployee: "F1ABF468-78D3-49CC-BD0C-6937625D8F06") { (shifts) in
-            self.items = shifts
-            self.collectionView.reloadData()
+        DataService.instance.getEmployeeById(forUID: "F1ABF468-78D3-49CC-BD0C-6937625D8F06") { (employee) in
+            guard let employee = employee else { return }
+            self.user = employee
+            let id = employee.id
+            DataService.instance.getShiftsByEmployeeId(EmployeeId: id, handler: { (shifts) in
+                guard let shifts = shifts else { return }
+                self.items = shifts.sorted(by: { (shiftA, shiftB) -> Bool in
+                    return Double(shiftA.startTime) ?? 0.0 < Double(shiftB.startTime) ?? 1.0
+                })
+                print("got all dem shifts")
+                self.collectionView.reloadData()
+            })
         }
         collectionView.delegate = self
         collectionView.dataSource = self
+        calendarView.delegate = self
+        calendarView.dataSource = self
         self.view.backgroundColor = UIColor.white
         layout()
         panRecognier.addTarget(self, action: #selector(panned))
@@ -265,30 +278,30 @@ extension EmployeeViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as? CustomCell else { return UICollectionViewCell() }
         
-//        var titleLabelText = ""
-//        var detailLabelText = ""
-        
         // The Upcoming shifts for this employee.
         let item = items[indexPath.row]
-//        guard let punchInTime = item.punchInTime else { return UICollectionViewCell()}
-//        let punchOutTime = item.finishTime
-//        titleLabelText = formatToDateString(date: punchInTime)
-//        detailLabelText = "\(formatToHourMinutesString(date: punchInTime)) - " + punchOutTime
-//
-//
-//        cell.dayLabel.text = titleLabelText
-//        cell.timeLabel.text = detailLabelText
         cell.configure(with: item)
         cell.setCornerRadius()
         cell.layer.backgroundColor = UIColor.white.cgColor
-//        cell.setStandardShadow()
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if self.items[indexPath.row].punchInTime == nil{
+            DataService.instance.setPunchInTimeWith(ShiftId: self.items[indexPath.row].id, WithValue: String(Date().timeIntervalSince1970))
+            self.items[indexPath.row].punchInTime = Date()
+            print("✅PUNCH IN✅")
+        } else if self.items[indexPath.row].punchOutTime == nil  {
+            DataService.instance.setPunchOutTimeWith(ShiftId: self.items[indexPath.row].id, WithValue: String(Date().timeIntervalSince1970))
+            self.items[indexPath.row].punchOutTime = Date()
+            print("✅PUNCH OUT✅")
+        } else {
+            //TODO: Animate cell out?
+            print("Already completed your day")
+        }
+    }
     
-    
-    
-    
+  
 }
 
 //MARK: Calendar Delegate + Data Source
@@ -299,6 +312,10 @@ extension EmployeeViewController: FSCalendarDelegate, FSCalendarDataSource {
         DispatchQueue.main.async {
             self.view.layoutIfNeeded()
         }
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("\(date)")
     }
     
 }
