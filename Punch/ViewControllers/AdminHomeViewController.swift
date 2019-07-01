@@ -98,18 +98,21 @@ class AdminHomeViewController: UIViewController {
     //MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataService.instance.getEmployeesByCompanyId(companyId: "7C5A37CA-A6E9-47D6-A69E-CA4144B75AA7") { (employees) in
-            guard let employees = employees else { return }
-            self.employees = employees
-            for employee in employees {
-                DataService.instance.getShiftsByEmployeeId(EmployeeId: employee.id, handler: { (shifts) in
-                    guard let shifts = shifts else { return }
-                    employee.shifts = shifts
-                    self.items[employee] = self.shiftManager.selectShiftsBy(Employee: employee, withAGivenDate: self.calendarView.selectedDate ?? Date())
-                    self.collectionView.reloadData()
-                })
+        DispatchQueue.global(qos: .background).async {
+            DataService.instance.getEmployeesByCompanyId(companyId: "7C5A37CA-A6E9-47D6-A69E-CA4144B75AA7") { (employees) in
+                guard let employees = employees else { return }
+                self.employees = employees
+                for employee in employees {
+                    DataService.instance.getShiftsByEmployeeId(EmployeeId: employee.id, handler: { (shifts) in
+                        guard let shifts = shifts else { return }
+                        employee.shifts = shifts
+                        self.items[employee] = self.shiftManager.selectShiftsBy(Employee: employee, withAGivenDate: self.calendarView.selectedDate ?? Date())
+                        self.collectionView.reloadData()
+                    })
+                }
             }
         }
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         self.view.backgroundColor = UIColor.white
