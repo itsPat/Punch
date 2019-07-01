@@ -17,8 +17,9 @@ class AdminHomeViewController: UIViewController {
     
     //MARK: - Constants
     
-    var items: [Employee1] = []
-    var shifts: [Shift1] = []
+    var items: [Employee1: [Shift1]] = [:]
+    var employees: [Employee1] = []
+    let shiftManager = ShiftManager()
     
     
     //MARK: - Views
@@ -99,22 +100,28 @@ class AdminHomeViewController: UIViewController {
         super.viewDidLoad()
         DataService.instance.getEmployeesByCompanyId(companyId: "7C5A37CA-A6E9-47D6-A69E-CA4144B75AA7") { (employees) in
             guard let employees = employees else { return }
-            self.items = employees
-            self.collectionView.reloadData()
+            self.employees = employees
+            for employee in employees {
+                DataService.instance.getShiftsByEmployeeId(EmployeeId: employee.id, handler: { (shifts) in
+                    guard let shifts = shifts else { return }
+                    employee.shifts = shifts
+                    self.items[employee] = self.shiftManager.selectShiftsBy(Employee: employee, withAGivenDate: self.calendarView.selectedDate ?? Date())
+                    self.collectionView.reloadData()
+                })
+            }
         }
         collectionView.delegate = self
         collectionView.dataSource = self
         self.view.backgroundColor = UIColor.white
         panRecognier.addTarget(self, action: #selector(panned))
         handleOverlayView.addGestureRecognizer(panRecognier)
-        
     }
     
     override func viewDidLayoutSubviews() {
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         layout()
     }
-        
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -170,7 +177,7 @@ class AdminHomeViewController: UIViewController {
         handleOverlayView.leadingAnchor.constraint(equalTo: momentumView.leadingAnchor).isActive = true
         handleOverlayView.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor).isActive = true
         handleOverlayView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 10).isActive = true
-                
+        
         titleContainer.backgroundColor = UIColor.clear
         textLabel.textColor = UIColor.white
     }
@@ -253,15 +260,23 @@ extension AdminHomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as? CustomCell else { return UICollectionViewCell() }
         // The employees on shift for selected date
-        let item = items[indexPath.row]
-        cell.configure(with: item)
+        let employee = employees[indexPath.row]
+        guard let startTime = items[employee]?.first?.startTime else { return UICollectionViewCell() }
+        guard let startTimeInterval =  TimeInterval(startTime) else { return UICollectionViewCell() }
+        guard let finishTime = items[employee]?.first?.finishTime else { return UICollectionViewCell() }
+        guard let finishTimeInterval = TimeInterval(finishTime) else { return UICollectionViewCell() }
+        cell.dayLabel.text = employee.name
+        cell.timeLabel.text = formatToHourMinutesString(date: Date(timeIntervalSince1970: startTimeInterval)) + " - " + formatToHourMinutesString(date: Date(timeIntervalSince1970: finishTimeInterval))
         cell.setCornerRadius()
         cell.layer.backgroundColor = UIColor.white.cgColor
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //TODO: display info about employee - create segue, present modally
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        for employee in self.employees {
+            self.items[employee] = self.shiftManager.selectShiftsBy(Employee: employee, withAGivenDate: date)
+            self.collectionView.reloadData()
+        }
     }
     
 }
