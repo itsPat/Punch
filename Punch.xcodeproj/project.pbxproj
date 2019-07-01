@@ -23,6 +23,8 @@
 		78515C0E22C6D83800DBA4E4 /* SaveShiftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78515C0D22C6D83800DBA4E4 /* SaveShiftTableViewCell.xib */; };
 		7855CD4E22C26FEC00650D7E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7855CD4D22C26FEC00650D7E /* Utils.swift */; };
 		7869F45122C66FCE00A8982C /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 7869F45022C66FCE00A8982C /* success.json */; };
+		786A44F922CA5286004DF104 /* EmployeePayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 786A44F822CA5286004DF104 /* EmployeePayTableViewCell.xib */; };
+		786A44FB22CA5346004DF104 /* EmployeePayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786A44FA22CA5346004DF104 /* EmployeePayTableViewCell.swift */; };
 		78819C2422C6988200E5E3CA /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78819C2022C6988100E5E3CA /* CustomCell.swift */; };
 		78819C2522C6988200E5E3CA /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78819C2122C6988100E5E3CA /* Spring.swift */; };
 		78819C2722C6988200E5E3CA /* InterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78819C2322C6988200E5E3CA /* InterfaceViewController.swift */; };
@@ -75,6 +77,8 @@
 		78515C0D22C6D83800DBA4E4 /* SaveShiftTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaveShiftTableViewCell.xib; sourceTree = "<group>"; };
 		7855CD4D22C26FEC00650D7E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		7869F45022C66FCE00A8982C /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
+		786A44F822CA5286004DF104 /* EmployeePayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmployeePayTableViewCell.xib; sourceTree = "<group>"; };
+		786A44FA22CA5346004DF104 /* EmployeePayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeePayTableViewCell.swift; sourceTree = "<group>"; };
 		78819C2022C6988100E5E3CA /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		78819C2122C6988100E5E3CA /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
 		78819C2322C6988200E5E3CA /* InterfaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				78515C0D22C6D83800DBA4E4 /* SaveShiftTableViewCell.xib */,
 				78C2B9D922C5757600A95733 /* DatePickerTableViewCell.xib */,
 				78DB040222C690340015AB6F /* EmployeeTableViewCell.xib */,
+				786A44F822CA5286004DF104 /* EmployeePayTableViewCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 				78C2B9D222C571C800A95733 /* DatePickerTableViewCell.swift */,
 				78DB040622C690F40015AB6F /* EmployeeTableViewCell.swift */,
 				78515C0B22C6D74300DBA4E4 /* SaveShiftTableViewCell.swift */,
+				786A44FA22CA5346004DF104 /* EmployeePayTableViewCell.swift */,
 			);
 			path = ReusableCells;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 				78CD0B0D22C1792D008C251C /* LaunchScreen.storyboard in Resources */,
 				78CD0B0A22C1792D008C251C /* Assets.xcassets in Resources */,
 				78CD0B0822C1792C008C251C /* Main.storyboard in Resources */,
+				786A44F922CA5286004DF104 /* EmployeePayTableViewCell.xib in Resources */,
 				78DB040322C690340015AB6F /* EmployeeTableViewCell.xib in Resources */,
 				257D8E9C22C272D200E90BD4 /* GoogleService-Info.plist in Resources */,
 				7869F45122C66FCE00A8982C /* success.json in Resources */,
@@ -429,6 +436,7 @@
 			files = (
 				78819C2522C6988200E5E3CA /* Spring.swift in Sources */,
 				78BBF45F22C799AE00A1AA19 /* LocationManager.swift in Sources */,
+				786A44FB22CA5346004DF104 /* EmployeePayTableViewCell.swift in Sources */,
 				78CD0B1522C17F9B008C251C /* EmployeeViewController.swift in Sources */,
 				25BF14AE22C9D184007C219D /* PaymentManager.swift in Sources */,
 				D25736B122C3D3B700362F44 /* Employee.swift in Sources */,

@@ -45,6 +45,7 @@ class AddShiftViewController: UIViewController {
         super.viewDidLoad()
         view.setGradientBackground(colorOne: CustomColors.orange, colorTwo: CustomColors.darkOrange)
         testLocationManager()
+        setupDismissGesture()
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,6 +62,16 @@ class AddShiftViewController: UIViewController {
         tableView.register(UINib(nibName: EmployeeTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: EmployeeTableViewCell.reuseIdentifier())
         tableView.register(UINib(nibName: SaveShiftTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: SaveShiftTableViewCell.reuseIdentifier())
         tableView.showsVerticalScrollIndicator = false
+    }
+    
+    func setupDismissGesture() {
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleDismissGesture(gesture:)))
+        swipeGesture.direction = .down
+        headerContainerView.addGestureRecognizer(swipeGesture)
+    }
+    
+    @objc func handleDismissGesture(gesture: UISwipeGestureRecognizer) {
+        self.dismiss(animated: true, completion: nil)
     }
 
 }
