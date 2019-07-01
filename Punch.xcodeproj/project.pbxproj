@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		2516AF2322C3EB4E00475198 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2516AF2222C3EB4E00475198 /* Credential.swift */; };
 		257D8E9C22C272D200E90BD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */; };
+		25BF14AC22C9D150007C219D /* ShiftManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BF14AB22C9D150007C219D /* ShiftManager.swift */; };
+		25BF14AE22C9D184007C219D /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BF14AD22C9D184007C219D /* PaymentManager.swift */; };
+		25BF14B122C9D259007C219D /* CompanyDataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BF14B022C9D259007C219D /* CompanyDataServiceProtocol.swift */; };
+		25BF14B322C9D444007C219D /* EmployeeDataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BF14B222C9D444007C219D /* EmployeeDataServiceProtocol.swift */; };
+		25BF14B522C9D57D007C219D /* ShiftDataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BF14B422C9D57D007C219D /* ShiftDataServiceProtocol.swift */; };
 		48CCB20E41B22A8DE676E758 /* Pods_Punch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 331EC6C1AFFCC905ACC49DE2 /* Pods_Punch.framework */; };
 		783D5F9222C1927900645E11 /* AdminHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9122C1927900645E11 /* AdminHomeViewController.swift */; };
 		783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D5F9322C1970600645E11 /* AdminPayViewController.swift */; };
@@ -56,6 +61,11 @@
 		2516AF2222C3EB4E00475198 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		257D8E9B22C272D100E90BD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		25890DFB12F692ADE659F51F /* Pods-Punch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Punch.debug.xcconfig"; path = "Target Support Files/Pods-Punch/Pods-Punch.debug.xcconfig"; sourceTree = "<group>"; };
+		25BF14AB22C9D150007C219D /* ShiftManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftManager.swift; sourceTree = "<group>"; };
+		25BF14AD22C9D184007C219D /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
+		25BF14B022C9D259007C219D /* CompanyDataServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDataServiceProtocol.swift; sourceTree = "<group>"; };
+		25BF14B222C9D444007C219D /* EmployeeDataServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDataServiceProtocol.swift; sourceTree = "<group>"; };
+		25BF14B422C9D57D007C219D /* ShiftDataServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftDataServiceProtocol.swift; sourceTree = "<group>"; };
 		331EC6C1AFFCC905ACC49DE2 /* Pods_Punch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Punch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		783D5F9122C1927900645E11 /* AdminHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeViewController.swift; sourceTree = "<group>"; };
 		783D5F9322C1970600645E11 /* AdminPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPayViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +125,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25BF14AF22C9D21B007C219D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				25BF14B022C9D259007C219D /* CompanyDataServiceProtocol.swift */,
+				25BF14B222C9D444007C219D /* EmployeeDataServiceProtocol.swift */,
+				25BF14B422C9D57D007C219D /* ShiftDataServiceProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		5707FBF9CD22BFC79E2E5773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +248,7 @@
 		D25736A422C3D33E00362F44 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				25BF14AF22C9D21B007C219D /* Protocols */,
 				D25736A522C3D38B00362F44 /* AuthService.swift */,
 				D25736DB22C5420C00362F44 /* KeyChainManager.swift */,
 				D25736A222C3D33200362F44 /* DataService.swift */,
@@ -242,7 +263,9 @@
 				D25736AF22C3D3B600362F44 /* Company.swift */,
 				D25736AE22C3D3B600362F44 /* Employee.swift */,
 				D25736B022C3D3B600362F44 /* Shifts.swift */,
+				25BF14AB22C9D150007C219D /* ShiftManager.swift */,
 				2516AF2222C3EB4E00475198 /* Credential.swift */,
+				25BF14AD22C9D184007C219D /* PaymentManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -407,13 +430,16 @@
 				78819C2522C6988200E5E3CA /* Spring.swift in Sources */,
 				78BBF45F22C799AE00A1AA19 /* LocationManager.swift in Sources */,
 				78CD0B1522C17F9B008C251C /* EmployeeViewController.swift in Sources */,
+				25BF14AE22C9D184007C219D /* PaymentManager.swift in Sources */,
 				D25736B122C3D3B700362F44 /* Employee.swift in Sources */,
 				78DB040722C690F40015AB6F /* EmployeeTableViewCell.swift in Sources */,
 				78CD0B0522C1792C008C251C /* LoginViewController.swift in Sources */,
+				25BF14B322C9D444007C219D /* EmployeeDataServiceProtocol.swift in Sources */,
 				78C2B9CF22C544F600A95733 /* AddShiftViewController.swift in Sources */,
 				78515C0C22C6D74300DBA4E4 /* SaveShiftTableViewCell.swift in Sources */,
 				78CD0B1722C18216008C251C /* CollectionViewCell.swift in Sources */,
 				783D5F9222C1927900645E11 /* AdminHomeViewController.swift in Sources */,
+				25BF14B522C9D57D007C219D /* ShiftDataServiceProtocol.swift in Sources */,
 				78B25E5722C7E99900254186 /* LoadingView.swift in Sources */,
 				2516AF2322C3EB4E00475198 /* Credential.swift in Sources */,
 				D25736DC22C5420C00362F44 /* KeyChainManager.swift in Sources */,
@@ -428,6 +454,8 @@
 				7855CD4E22C26FEC00650D7E /* Utils.swift in Sources */,
 				D25736A322C3D33200362F44 /* DataService.swift in Sources */,
 				78C2B9D422C571C800A95733 /* DatePickerTableViewCell.swift in Sources */,
+				25BF14AC22C9D150007C219D /* ShiftManager.swift in Sources */,
+				25BF14B122C9D259007C219D /* CompanyDataServiceProtocol.swift in Sources */,
 				78819C2422C6988200E5E3CA /* CustomCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,7 +605,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Punch/Punch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DTTK359L6E;
+				DEVELOPMENT_TEAM = 489ZVWUGPK;
 				INFOPLIST_FILE = Punch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -598,7 +626,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Punch/Punch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DTTK359L6E;
+				DEVELOPMENT_TEAM = 489ZVWUGPK;
 				INFOPLIST_FILE = Punch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

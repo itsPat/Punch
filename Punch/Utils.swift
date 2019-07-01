@@ -73,5 +73,35 @@ extension Date {
         let newDate: String = dateFormatter.string(from: self)
         return newDate
     }
+
+
+
+
+
     
+    func greaterThanOrEqual(otherDate: Date) -> Bool{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-dd-MM"
+        return dateFormatter.calendar.compare(self, to: otherDate, toGranularity: .day).rawValue == 1 || dateFormatter.calendar.compare(self, to: otherDate, toGranularity: .day).rawValue == 0
+    }
+
+    func lessThanOrEqual(otherDate: Date) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-dd-MM"
+        return dateFormatter.calendar.compare(self, to: otherDate, toGranularity: .day).rawValue == -1 || dateFormatter.calendar.compare(self, to: otherDate, toGranularity: .day).rawValue == 0
+
+    }
+
+    func from(_ string: String ) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-dd-MM hh:mm a"
+        return dateFormatter.date(from: string)
+    }
+
+    func string() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-dd-MM hh:mm a"
+        return dateFormatter.string(from: self)
+    }
+
 }
