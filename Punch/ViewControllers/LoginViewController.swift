@@ -74,6 +74,7 @@ class LoginViewController: UIViewController {
       //                print(shift.id, shift.employeeId)
       //            }
       //        }
+        
     }
     
     @IBAction func signInTapped(_ sender: Any) {
@@ -91,7 +92,8 @@ class LoginViewController: UIViewController {
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { (success, err) in
                 if success {
                     DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "employeeSegue", sender: nil)
+                        #warning("CHECK IF USER IS ADMIN AND IF SO PERFORM THE APPROPRIATE SEGUE.")
+                        self.performSegue(withIdentifier: "adminSegue", sender: nil)
                     }
                 } else if let err = err {
                     print("Error: \(err)")

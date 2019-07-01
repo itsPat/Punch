@@ -18,6 +18,7 @@ class AdminHomeViewController: UIViewController {
     //MARK: - Constants
     
     var items: [Employee1] = []
+    var shifts: [Shift1] = []
     
     
     //MARK: - Views
@@ -113,9 +114,7 @@ class AdminHomeViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         layout()
     }
-    
-    //TODO: When a cell is tapped, check that the date is today, if so punch the user in.
-    
+        
     override var prefersStatusBarHidden: Bool {
         return true
     }

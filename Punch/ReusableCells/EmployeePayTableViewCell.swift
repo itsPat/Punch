@@ -28,6 +28,9 @@ class EmployeePayTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setCornerRadius()
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.5)
+        selectedBackgroundView = bgColorView
         selectedBackgroundView?.setCornerRadius()
         clipsToBounds = true
     }

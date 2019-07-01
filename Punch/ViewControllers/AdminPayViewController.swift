@@ -63,7 +63,6 @@ extension AdminPayViewController: UITableViewDataSource {
         employeeCell.amountOwedLabel.text = "$\(employee.amountOwed)"
         return employeeCell
     }
-    
 }
 
 // MARK: UITABLEVIEW DELEGATE
@@ -75,10 +74,9 @@ extension AdminPayViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        #warning("UPDATE AMOUNT OWED ON EMPLOYEE SIDE.")
-        tableView.beginUpdates()
-        items.remove(at: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
+        tableView.beginUpdates()
+        self.items.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         tableView.endUpdates()
     }
