@@ -9,11 +9,11 @@
 import UIKit
 
 class AdminPayViewController: UIViewController {
-    @IBOutlet weak var titleContainerView: UIView!
+    @IBOutlet weak var headerContainerView: UIView!
+    @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var collectionView: UICollectionView!
     
-    let items: [Employee] = [
+    var items: [Employee] = [
         Employee(name: "Pat Trudel", amountOwed: 1600),
         Employee(name: "Pat Trudel", amountOwed: 1600),
         Employee(name: "Pat Trudel", amountOwed: 1600),
@@ -30,34 +30,57 @@ class AdminPayViewController: UIViewController {
     ]
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
+    }
+    
     override func viewDidLayoutSubviews() {
-        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        titleContainerView.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
-        titleContainerView.setStandardShadow()
+        setupTableView()
     }
+    
+    func setupTableView() {
+        tableView.backgroundColor = .clear
+        tableView.register(UINib(nibName: EmployeePayTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: EmployeePayTableViewCell.reuseIdentifier())
+        tableView.showsVerticalScrollIndicator = false
+    }
+
     
 }
 
-extension AdminPayViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width * 0.8, height: view.frame.width * 0.2)
-    }
-}
+// MARK: UITABLEVIEW DATASOURCE
 
-extension AdminPayViewController: UICollectionViewDataSource {
+extension AdminPayViewController: UITableViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
-        cell.titleLabel.text = items[indexPath.item].name
-        cell.detailLabel.text = "$\(items[indexPath.item].amountOwed)"
-        cell.setStandardShadow()
-        cell.setCornerRadius()
-        cell.setStandardShadow()
-        return cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let employeeCell = tableView.dequeueReusableCell(withIdentifier:   EmployeePayTableViewCell.reuseIdentifier()) as!  EmployeePayTableViewCell
+        let employee = items[indexPath.row]
+        employeeCell.employeeNameLabel.text = employee.name
+        employeeCell.amountOwedLabel.text = "$\(employee.amountOwed)"
+        return employeeCell
     }
     
+    
+}
+
+// MARK: UITABLEVIEW DELEGATE
+
+extension AdminPayViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        #warning("UPDATE AMOUNT OWED ON EMPLOYEE SIDE.")
+        tableView.beginUpdates()
+        items.remove(at: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
+    }
 }
