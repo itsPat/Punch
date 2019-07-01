@@ -274,13 +274,6 @@ extension AdminHomeViewController: UICollectionViewDataSource {
         cell.layer.backgroundColor = UIColor.white.cgColor
         return cell
     }
-    
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        for employee in self.employees {
-            self.items[employee] = self.shiftManager.selectShiftsBy(Employee: employee, withAGivenDate: date)
-            self.collectionView.reloadData()
-        }
-    }
-    
+        
 }
 

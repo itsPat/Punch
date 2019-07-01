@@ -11,21 +11,10 @@ import UIKit
 class AdminPayViewController: UIViewController {
     @IBOutlet weak var headerContainerView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var allEmployeesPaidLabel: UILabel!
     
     
-    var items: [Employee] = [
-        Employee(name: "Pat Trudel", amountOwed: 1600),
-        Employee(name: "Pat Trudel", amountOwed: 1600),
-        Employee(name: "Pat Trudel", amountOwed: 1600),
-        Employee(name: "Pat Trudel", amountOwed: 1600),
-        Employee(name: "Pat Trudel", amountOwed: 1600),
-        Employee(name: "Pat Trudel", amountOwed: 1600),
-        Employee(name: "Pat Trudel", amountOwed: 1600),
-        Employee(name: "Pat Trudel", amountOwed: 1600),
-        Employee(name: "Pat Trudel", amountOwed: 1600),
-        Employee(name: "Pat Trudel", amountOwed: 1600),
-        Employee(name: "Pat Trudel", amountOwed: 1600),
-        Employee(name: "Pat Trudel", amountOwed: 1600),
+    var dataSource: [Employee1] = [
         
     ]
     
@@ -43,8 +32,22 @@ class AdminPayViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.register(UINib(nibName: EmployeePayTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: EmployeePayTableViewCell.reuseIdentifier())
         tableView.showsVerticalScrollIndicator = false
+        if dataSource.isEmpty {
+            populateDataSource()
+        }
     }
 
+    func populateDataSource() {
+        print("Getting DATA ✅")
+        DataService.instance.getEmployeesByCompanyId(companyId: "7C5A37CA-A6E9-47D6-A69E-CA4144B75AA7") { (employees) in
+            guard let employees = employees else { return }
+            print("EMPLOYEES FOR COMPANY ID '7C5A37CA-A6E9-47D6-A69E-CA4144B75AA7' \n \(employees)")
+            self.dataSource += employees.filter({ (employee) -> Bool in
+                employee.amountOwed > 0
+            })
+            self.tableView.reloadData()
+        }
+    }
     
 }
 
@@ -53,12 +56,17 @@ class AdminPayViewController: UIViewController {
 extension AdminPayViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        if dataSource.count == 0 {
+            allEmployeesPaidLabel.alpha = 1.0
+        } else {
+            allEmployeesPaidLabel.alpha = 0.0
+        }
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let employeeCell = tableView.dequeueReusableCell(withIdentifier:   EmployeePayTableViewCell.reuseIdentifier()) as!  EmployeePayTableViewCell
-        let employee = items[indexPath.row]
+        let employee = dataSource[indexPath.row]
         employeeCell.employeeNameLabel.text = employee.name
         employeeCell.amountOwedLabel.text = "$\(employee.amountOwed)"
         return employeeCell
@@ -76,8 +84,11 @@ extension AdminPayViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.beginUpdates()
-        self.items.remove(at: indexPath.row)
+        let employee = dataSource.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         tableView.endUpdates()
+        DispatchQueue.global(qos: .background).async {
+            DataService.instance.changeValueOfAmountOwedWith(EmployeeId: employee.id, value: 0.0)
+        }
     }
 }

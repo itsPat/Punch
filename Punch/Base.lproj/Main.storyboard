@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n8d-I8-PSC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uaY-fu-mj2">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -144,6 +144,12 @@
                                     <constraint firstItem="N22-GJ-duN" firstAttribute="top" secondItem="jaq-qo-OBq" secondAttribute="top" constant="80" id="uhY-J5-Z2x"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All employees have been paid." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfU-8I-lWM">
+                                <rect key="frame" x="64.333333333333329" y="395.66666666666669" width="246.33333333333337" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -152,9 +158,11 @@
                             <constraint firstItem="MB4-ed-mMb" firstAttribute="width" secondItem="UUG-uM-Pej" secondAttribute="width" multiplier="0.8" id="D1O-QW-Ba5"/>
                             <constraint firstItem="jaq-qo-OBq" firstAttribute="bottom" secondItem="vjR-Sx-nMW" secondAttribute="top" id="Wf8-du-fjG"/>
                             <constraint firstItem="MB4-ed-mMb" firstAttribute="centerX" secondItem="UUG-uM-Pej" secondAttribute="centerX" id="dPi-Ab-SNx"/>
+                            <constraint firstItem="yfU-8I-lWM" firstAttribute="centerY" secondItem="UUG-uM-Pej" secondAttribute="centerY" id="fab-MF-4vK"/>
                             <constraint firstItem="vjR-Sx-nMW" firstAttribute="top" secondItem="jaq-qo-OBq" secondAttribute="bottom" id="hp6-aw-YmQ"/>
                             <constraint firstItem="vjR-Sx-nMW" firstAttribute="centerX" secondItem="UUG-uM-Pej" secondAttribute="centerX" id="nAH-Nm-kQt"/>
                             <constraint firstItem="vjR-Sx-nMW" firstAttribute="bottom" secondItem="MB4-ed-mMb" secondAttribute="top" id="oWU-Ad-fwb"/>
+                            <constraint firstItem="yfU-8I-lWM" firstAttribute="centerX" secondItem="UUG-uM-Pej" secondAttribute="centerX" id="pRE-4h-NAG"/>
                             <constraint firstAttribute="bottom" secondItem="MB4-ed-mMb" secondAttribute="bottom" id="puc-JO-CBR"/>
                             <constraint firstItem="jaq-qo-OBq" firstAttribute="trailing" secondItem="Hm3-PA-0GM" secondAttribute="trailing" id="wBU-id-GTD"/>
                             <constraint firstItem="jaq-qo-OBq" firstAttribute="leading" secondItem="Hm3-PA-0GM" secondAttribute="leading" id="ySm-Vl-XTI"/>
@@ -163,6 +171,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="money" id="JDE-bB-WJG"/>
                     <connections>
+                        <outlet property="allEmployeesPaidLabel" destination="yfU-8I-lWM" id="zYL-X3-zDL"/>
                         <outlet property="headerContainerView" destination="jaq-qo-OBq" id="vJS-Xs-LYD"/>
                         <outlet property="tableView" destination="MB4-ed-mMb" id="ddY-5y-qfA"/>
                     </connections>

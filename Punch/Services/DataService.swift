@@ -161,8 +161,8 @@ class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, Shif
         }
     }
 
-     func changeValueOfAmountOwedWith(EmployeeId employeeId: String, value: Double){
-        REF_EMPLOYEE.child(employeeId).setValue(value, forKey: "amountOwed")
+    func changeValueOfAmountOwedWith(EmployeeId employeeId: String, value: Double){
+        REF_EMPLOYEE.child(employeeId).updateChildValues(["amountOwed": value])
     }
 
     func getEmployeesByCompanyId(companyId: String, handler: @escaping (_ employees: [Employee1]?) -> ()) {
