@@ -14,9 +14,7 @@ class AdminPayViewController: UIViewController {
     @IBOutlet weak var allEmployeesPaidLabel: UILabel!
     
     
-    var dataSource: [Employee1] = [
-        
-    ]
+    var dataSource: [Employee1] = []
     
     
     override func viewDidLoad() {
