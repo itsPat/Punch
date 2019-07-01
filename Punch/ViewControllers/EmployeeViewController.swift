@@ -114,6 +114,14 @@ class EmployeeViewController: InterfaceViewController {
         DataService.instance.getEmployeeById(forUID: "F1ABF468-78D3-49CC-BD0C-6937625D8F06") { (employee) in
             guard let employee = employee else { return }
             self.user = employee
+            
+            let formatter = NumberFormatter()
+            formatter.locale = Locale.current // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
+            formatter.numberStyle = .currency
+            let amountOwed = employee.amountOwed
+            if let formattedAmountOwed = formatter.string(from: amountOwed as NSNumber) {
+                self.textLabel.text = "\(formattedAmountOwed)"
+            }
             DataService.instance.getShiftsByEmployeeId(EmployeeId: employee.id, handler: { (shifts) in
                 guard let shifts = shifts else { return }
                 self.user.shifts = shifts
@@ -201,6 +209,7 @@ class EmployeeViewController: InterfaceViewController {
         
         titleContainer.backgroundColor = UIColor.clear
         textLabel.textColor = UIColor.white
+        
         
         //        titleContainer.setStandardShadow()
     }

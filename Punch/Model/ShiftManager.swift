@@ -31,11 +31,11 @@ class ShiftManager {
         var selectecShift : [Shift1] = []
         //        print(shifts[0].punchInTime)
         for shift in shifts {
-            guard let shiftDate = shift.punchInTime else {
-                print("Empty shift")
-                continue
+            guard let shiftDate = TimeInterval(shift.startTime) else {
+                print("empty cell")
+                continue                
             }
-            let shiftDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: shiftDate)
+            let shiftDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date(timeIntervalSince1970: shiftDate))
 
             guard let shiftYear = shiftDateComponents.year,
                 let shiftMonth = shiftDateComponents.month,
@@ -62,8 +62,8 @@ class ShiftManager {
 
 
     func selectShiftsBy(Employee employee: Employee1, fromDate: Date, toDate: Date) -> [Shift1]{
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-dd-MM"
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "YYYY-dd-MM"
 
         var selectedShifts : [Shift1] = []
         guard let shifts = employee.shifts else {
@@ -71,10 +71,10 @@ class ShiftManager {
         }
 
         for shift in shifts {
-            guard let shiftDate = shift.punchInTime else {
+            guard let shiftDate = TimeInterval(shift.startTime) else {
                 continue
             }
-            if shiftDate.greaterThanOrEqual(otherDate: fromDate) && shiftDate.lessThanOrEqual(otherDate: toDate){
+            if shiftDate >= fromDate.timeIntervalSince1970 && shiftDate <= toDate.timeIntervalSince1970 {
                 selectedShifts.append(shift)
             }
         }
