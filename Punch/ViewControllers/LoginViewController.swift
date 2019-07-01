@@ -58,6 +58,9 @@ class LoginViewController: UIViewController {
       //                print(employee.name)
       //            }
       //        }
+
+        
+
         DataService.instance.createDBCompany(uid: UUID().uuidString, companyData: ["name" : " test"])
       let formatter = DateFormatter()
       formatter.dateFormat = "YYYY-dd-MM HH:mm a"

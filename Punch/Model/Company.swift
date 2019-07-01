@@ -18,6 +18,7 @@ public class Company {
         self.id = id
         self.name = name
     }
+
     init(snapshot: DataSnapshot) {
         self.id = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]

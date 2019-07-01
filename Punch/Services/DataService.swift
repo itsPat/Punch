@@ -11,7 +11,7 @@ import Firebase
 import os.log
 
 let DB_BASE = Database.database().reference()
-class DataService {
+class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, ShiftDataServiceProtocol {
 
     static let instance = DataService()
 
@@ -52,7 +52,7 @@ class DataService {
     }
 
 
-
+    //MARK: Company Methods
     func createDBCompany(uid: String, companyData: Dictionary<String, Any>) {
         REF_COMPANY.child(uid).updateChildValues(companyData)
     }
@@ -97,6 +97,7 @@ class DataService {
         }
     }
 
+    //MARK: -Employee Methods
     func createDBEmployee(uid: String, employeeData: Dictionary<String, Any>) {
 
         REF_EMPLOYEE.child(uid).updateChildValues(employeeData)
@@ -160,6 +161,10 @@ class DataService {
         }
     }
 
+     func changeValueOfAmountOwedWith(EmployeeId employeeId: String, value: Double){
+        REF_EMPLOYEE.child(employeeId).setValue(value, forKey: "amountOwed")
+    }
+
     func getEmployeesByCompanyId(companyId: String, handler: @escaping (_ employees: [Employee1]?) -> ()) {
 
         REF_COMPANY.child(companyId).observeSingleEvent(of: .value) { (snapshot) in
@@ -190,7 +195,9 @@ class DataService {
         }
     }
 
-    //    func getShifById
+    func changeStatusOfShiftPaid(ShiftId shiftId: String, value: Bool ) {
+        REF_WORK_SHIFT.child(shiftId).setValue(value, forKey: "isPaid")
+    }
 
     func getShiftsByEmployeeId(forEmployee employeeID: String, handler: @escaping (_ uid: [Shift1]) -> ()) {
         REF_WORK_SHIFT.observeSingleEvent(of: .value) { (snapshot) in
@@ -206,8 +213,6 @@ class DataService {
             handler(shifts)
         }
     }
-
-
 
     func updateShiftById(uid: String, shiftData: Dictionary<String, Any>) {
         REF_WORK_SHIFT.child(uid).updateChildValues(shiftData)
@@ -268,11 +273,10 @@ class DataService {
 
                 }
             }
-            //            handler(employees)
+
         }
     }
 
-    //    func getShiftByDate
 
     func setPunchInTimeWith(ShiftId shiftId: String, WithValue value: String ){
         REF_WORK_SHIFT.child(shiftId).child("punchInTime").setValue(value)
@@ -281,5 +285,7 @@ class DataService {
     func setPunchOutTimeWith(ShiftId shiftId: String, WithValue value: String ){
         REF_WORK_SHIFT.child(shiftId).child("punchOutTime").setValue(value)
     }
+
+
 
 }

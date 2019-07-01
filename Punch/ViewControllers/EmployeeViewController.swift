@@ -33,6 +33,8 @@ class EmployeeViewController: InterfaceViewController {
     
     var user: Employee1!
     
+    let shiftManager = ShiftManager()
+    
     // MARK: - Views
     private lazy var calendarView: FSCalendar = {
         let calendarView = FSCalendar()
@@ -108,18 +110,21 @@ class EmployeeViewController: InterfaceViewController {
     //MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        let sevenDaysFromNow = Date().addingTimeInterval(7*24*60*60)
         DataService.instance.getEmployeeById(forUID: "F1ABF468-78D3-49CC-BD0C-6937625D8F06") { (employee) in
             guard let employee = employee else { return }
             self.user = employee
-            let id = employee.id
-            DataService.instance.getShiftsByEmployeeId(EmployeeId: id, handler: { (shifts) in
+            DataService.instance.getShiftsByEmployeeId(EmployeeId: employee.id, handler: { (shifts) in
                 guard let shifts = shifts else { return }
-                self.items = shifts.sorted(by: { (shiftA, shiftB) -> Bool in
+                self.user.shifts = shifts
+                self.items = self.shiftManager.selectShiftsBy(Employee: self.user, fromDate: Date(), toDate: sevenDaysFromNow)
+                self.items = self.items.sorted(by: { (shiftA, shiftB) -> Bool in
                     return Double(shiftA.startTime) ?? 0.0 < Double(shiftB.startTime) ?? 1.0
                 })
-                print("got all dem shifts")
+//                print("got all dem shifts")
                 self.collectionView.reloadData()
             })
+
         }
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -272,7 +277,8 @@ extension EmployeeViewController: UICollectionViewDataSource, UICollectionViewDe
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+//        guard let selectedDate = calendarView.selectedDate else { return 0 }
+        return self.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -315,7 +321,16 @@ extension EmployeeViewController: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("\(date)")
+        let shiftManager = ShiftManager()
+        if date.timeIntervalSince1970 != calendarView.today?.timeIntervalSince1970 {
+            self.items = shiftManager.selectShiftsBy(Employee: user, withAGivenDate: date)
+            self.collectionView.reloadData()
+        } else {
+            guard let today = calendarView.today else { return }
+            let sevenDaysFromNow = today.addingTimeInterval(7*24*60*60)
+            self.items = shiftManager.selectShiftsBy(Employee: user, fromDate: today, toDate: sevenDaysFromNow)
+            self.collectionView.reloadData()
+        }
     }
     
 }

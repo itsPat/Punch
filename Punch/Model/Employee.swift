@@ -8,23 +8,33 @@
 
 import Foundation
 import Firebase
-public class Employee1 {
+public class Employee1 : Hashable{
+    public static func == (lhs: Employee1, rhs: Employee1) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     var id: String
     var name: String
     var companyId: String
     var email: String
     var administratorId:String?
     var isAdministrator: Bool
+    var amountOwed: Double
     var hourlyRate: Double
     var shifts: [Shift1]?
 
-    init(id: String, name: String, email: String, companyId: String, administratorId: String?, isAdministrator: Bool = false, hourlyRate: Double, shifts: [Shift1]?) {
+    init(id: String, name: String, email: String, companyId: String, administratorId: String?, isAdministrator: Bool = false,
+         amountOwed: Double = 0.0, hourlyRate: Double, shifts: [Shift1]?) {
         self.id = id
         self.name = name
         self.companyId = companyId
         self.email = email
         self.administratorId = administratorId ?? ""
         self.isAdministrator = isAdministrator
+        self.amountOwed = amountOwed
         self.hourlyRate  = hourlyRate
         self.shifts = shifts
     }
@@ -38,6 +48,7 @@ public class Employee1 {
         self.email = snapshotValue["email"] as! String
         self.administratorId = snapshotValue["administratorId"] as? String
         self.isAdministrator = snapshotValue["isAdministrator"] as? Bool ?? false
+        self.amountOwed = snapshotValue["amountOwed"] as! Double
         self.hourlyRate = snapshotValue["hourlyRate"] as! Double
     }
 
@@ -48,6 +59,7 @@ public class Employee1 {
             "companyId" : companyId,
             "email" : email,
             "administratorId" : administratorId ?? "",
+            "amountOwed" : amountOwed,
             "hourlyRate" : hourlyRate,
         ]
 
@@ -55,3 +67,4 @@ public class Employee1 {
     }
 
 }
+
