@@ -63,11 +63,6 @@ extension AdminPayViewController: UITableViewDataSource {
         employeeCell.amountOwedLabel.text = "$\(employee.amountOwed)"
         return employeeCell
     }
-    
-    
-<<<<<<< HEAD
-    
-=======
 }
 
 // MARK: UITABLEVIEW DELEGATE
@@ -85,5 +80,4 @@ extension AdminPayViewController: UITableViewDelegate {
         tableView.deleteRows(at: [indexPath], with: .automatic)
         tableView.endUpdates()
     }
->>>>>>> 3d82d407f8411b8497fc0d6a4f20b9c1f428760b
 }
