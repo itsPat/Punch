@@ -12,7 +12,7 @@ class PaymentManager {
 
     func calculateAmountOwedOfATimeIntervalTo(Employee employee: Employee1, From initialDate: Date, To finalDate: Date) -> Double{
         let shiftManager = ShiftManager()
-        let shifts = shiftManager.SelectShiftsBy(Employee: employee, fromDate: initialDate, toDate: finalDate)
+        let shifts = shiftManager.selectShiftsBy(Employee: employee, fromDate: initialDate, toDate: finalDate)
         var amountOwedTotal : Double = 0.0
         for shift in shifts {
             if shift.isPaid == false {

@@ -61,7 +61,7 @@ class ShiftManager {
     }
 
 
-    func SelectShiftsBy(Employee employee: Employee1, fromDate: Date, toDate: Date) -> [Shift1]{
+    func selectShiftsBy(Employee employee: Employee1, fromDate: Date, toDate: Date) -> [Shift1]{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-dd-MM"
 
@@ -86,7 +86,7 @@ class ShiftManager {
 
         var dicEmployeeShift : [Employee1 : [Shift1]] = [:]
         for employee in employees {
-            dicEmployeeShift[employee] = SelectShiftsBy(Employee: employee, fromDate: fromDate, toDate: toDate)
+            dicEmployeeShift[employee] = selectShiftsBy(Employee: employee, fromDate: fromDate, toDate: toDate)
         }
         return dicEmployeeShift
     }
