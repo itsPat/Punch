@@ -64,17 +64,16 @@ class ShiftManager {
     func selectShiftsBy(Employee employee: Employee1, fromDate: Date, toDate: Date) -> [Shift1]{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-dd-MM"
-
         var selectedShifts : [Shift1] = []
         guard let shifts = employee.shifts else {
             return selectedShifts
         }
 
         for shift in shifts {
-            guard let shiftDate = TimeInterval(shift.startTime) else {
-                continue
-            }
-            if shiftDate >= fromDate.timeIntervalSince1970 && shiftDate <= toDate.timeIntervalSince1970 {
+            guard let timeInterval = TimeInterval(shift.startTime) else { return [] }
+            let shiftDate = Date(timeIntervalSince1970: timeInterval)
+            
+            if shiftDate.greaterThanOrEqual(otherDate: fromDate) && shiftDate.lessThanOrEqual(otherDate: toDate){
                 selectedShifts.append(shift)
             }
         }
