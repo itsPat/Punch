@@ -290,7 +290,6 @@ extension EmployeeViewController: UICollectionViewDataSource, UICollectionViewDe
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        guard let selectedDate = calendarView.selectedDate else { return 0 }
         return self.items.count
     }
     
@@ -306,47 +305,69 @@ extension EmployeeViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("ID OF THE SHIFT IS \(self.items[indexPath.row].id)")
-        if self.items[indexPath.row].punchInTime == nil{
-            DataService.instance.setPunchInTimeWith(ShiftId: self.items[indexPath.row].id, WithValue: String(Date().timeIntervalSince1970))
-            self.items[indexPath.row].punchInTime = "\(Date().timeIntervalSince1970)"
-            print("✅PUNCH IN✅")
+        
+        let shiftID = self.items[indexPath.row].id
+        DataService.instance.getShiftById(ShiftId: shiftID) { (shift) in
+            guard let shift = shift else { return }
+            guard let punchInTime = shift.punchInTime else { return }
+            guard let punchOutTime = shift.punchOutTime else { return }
             
-            let companyCoordinate = CLLocationCoordinate2D(latitude: company.latitude, longitude: company.longitude)
+            let companyCoordinate = CLLocationCoordinate2D(latitude: self.company.latitude, longitude: self.company.longitude)
             let employeeCoordinate = LocationManager.shared.currentLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
             
             let distance = LocationManager.shared.getDistanceImKMBetweenCoordinates(coordinate1: companyCoordinate, coordinate2: employeeCoordinate)
             
-            print("DISTANCE BETWEEN COMPANY AND EMPLOYEE IS \(distance)KM")
-            
-            
-            //TODO: ONCE RUSSELL HAS SHIFT OBJECTS BACK IN THE HOME VIEW CONTROLLER
-            // CHECK DISTANCE, if less than 1km handle the punchIN. if not, show alert.
-            // CHECK IF THE USER HAS A PUNCHIN TIME STORED TO CHECK IF THEY ARE PUNCHED IN.
-            
-            
-        } else if self.items[indexPath.row].punchOutTime == nil  {
-            DataService.instance.setPunchOutTimeWith(ShiftId: self.items[indexPath.row].id, WithValue: String(Date().timeIntervalSince1970))
-            self.items[indexPath.row].punchOutTime = String(Date().timeIntervalSince1970)
-            guard let punchInDate = self.items[indexPath.row].punchInTime else { return }
-            guard let punchOutDate = self.items[indexPath.row].punchOutTime else { return }
-            guard let punchInTimeInterval = TimeInterval(punchInDate) else { return }
-            guard let punchOutTimeInterval = TimeInterval(punchOutDate) else { return }
-            let timeDiff = ((Date(timeIntervalSince1970: punchOutTimeInterval).timeIntervalSince(Date(timeIntervalSince1970: punchInTimeInterval))) / 60) / 60
-            print("time diff: \(timeDiff)")
-            let amountOwed: Double = self.user.hourlyRate * timeDiff
-            DataService.instance.changeValueOfAmountOwedWith(EmployeeId: self.user.id, value: amountOwed + self.user.amountOwed)
-            
-            let formatter = NumberFormatter()
-            formatter.locale = Locale.current
-            formatter.numberStyle = .currency
-            if let formattedAmountOwed = formatter.string(from: amountOwed as NSNumber) {
-                self.textLabel.text = "\(formattedAmountOwed)"
+            if distance < 1 {
+                
+                let loadingView = LoadingView(frame: .zero)
+                
+                if punchInTime == "" {
+                    DataService.instance.setPunchInTimeWith(ShiftId: shiftID, WithValue: "\(Date().timeIntervalSince1970)")
+                    self.view.addSubview(loadingView)
+                    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (_) in
+                        loadingView.complete()
+                    }
+                } else if punchOutTime == "" {
+                    
+                    let actualPunchOutTime = Date().timeIntervalSince1970
+                    
+                    DataService.instance.setPunchOutTimeWith(ShiftId: shiftID, WithValue: "\(actualPunchOutTime)")
+                    self.view.addSubview(loadingView)
+                    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (_) in
+                        loadingView.complete()
+                    }
+                    
+                    
+                    let punchInTimeAsDouble = Double(punchInTime)
+                    let punchOutTimeAsDouble = Double(actualPunchOutTime)
+                    let hoursWorked = (punchOutTimeAsDouble - punchInTimeAsDouble!) / 60.0 / 60.0
+                    let earnedThisShift = self.user.hourlyRate * hoursWorked
+                    
+                    DataService.instance.changeValueOfAmountOwedWith(EmployeeId: self.user.id, value: self.user.amountOwed + earnedThisShift)
+                    
+                    
+                    print("HOURS WORKED IS \(hoursWorked)")
+                } else {
+                    // SHOW ALERT SAYING YOU'VE ALREADY PUNCHED IN / OUT.
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error", message: "You've already punched!", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                            alert.dismiss(animated: true, completion: nil)
+                        })
+                        alert.addAction(okAction)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error", message: "You are too far away!", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                    })
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
-            print("✅PUNCH OUT✅")
-        } else {
-            //TODO: Animate cell out?
-            print("Already completed your day")
         }
     }
     

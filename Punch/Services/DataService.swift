@@ -106,7 +106,16 @@ class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, Shif
         }
     }
 
-
+    func getShiftById(ShiftId shiftId: String,handler: @escaping (_ shifts: Shift1?) -> ()) {
+        REF_WORK_SHIFT.child(shiftId).observeSingleEvent(of: .value) { (shiftSnapshot) in
+            guard shiftSnapshot.exists() else {
+                print("shiftsnapshot doesn't exist -\(#file) - \(#function) - \(#line)")
+                return
+            }
+            let shift = Shift1(snapshot: shiftSnapshot)
+            handler(shift )
+        }
+    }
 
     func getEmployeename(forUID uid: String, handler: @escaping (_ employeeName: String) -> ()) {
 
