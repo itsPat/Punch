@@ -22,11 +22,12 @@ public class Employee1 : Hashable{
     var email: String
     var administratorId:String?
     var isAdministrator: Bool
+    var phoneNumber: String
     var amountOwed: Double
     var hourlyRate: Double
     var shifts: [Shift1]?
 
-    init(id: String, name: String, email: String, companyId: String, administratorId: String?, isAdministrator: Bool = false,
+    init(id: String, name: String, email: String, companyId: String, administratorId: String?, isAdministrator: Bool = false, phoneNumber: String,
          amountOwed: Double = 0.0, hourlyRate: Double, shifts: [Shift1]?) {
         self.id = id
         self.name = name
@@ -34,6 +35,7 @@ public class Employee1 : Hashable{
         self.email = email
         self.administratorId = administratorId ?? ""
         self.isAdministrator = isAdministrator
+        self.phoneNumber = phoneNumber
         self.amountOwed = amountOwed
         self.hourlyRate  = hourlyRate
         self.shifts = shifts
@@ -48,6 +50,7 @@ public class Employee1 : Hashable{
         self.email = snapshotValue["email"] as! String
         self.administratorId = snapshotValue["administratorId"] as? String
         self.isAdministrator = snapshotValue["isAdministrator"] as? Bool ?? false
+        self.phoneNumber = snapshotValue["phoneNumber"] as! String
         self.amountOwed = snapshotValue["amountOwed"] as? Double ?? 0.0
         self.hourlyRate = snapshotValue["hourlyRate"] as? Double ?? 0.0
     }
@@ -60,7 +63,9 @@ public class Employee1 : Hashable{
             "email" : email,
             "administratorId" : administratorId ?? "",
             "isAdministrator" : isAdministrator ,
+            "phoneNumber" : phoneNumber, 
             "amountOwed" : amountOwed,
+
             "hourlyRate" : hourlyRate,
         ]
 

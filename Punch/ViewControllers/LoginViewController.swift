@@ -79,10 +79,18 @@ class LoginViewController: UIViewController {
 //        testgetAllEmployeeWithShiftByCompany()
 //        testgetAllEmployeeShiftsByCompany()
 //        deleteTestCompany()
-        getAllByDate()
+//        getAllByDate()
 //        testCreateCompany()
 //testCreateEmployee()
 //        dataService.changeValueOfAmountOwedWith(EmployeeId: "11196A8A-46CD-4C28-88A9-05F0B2979A77", value: 1500.0)
+
+        let authService = AuthService()
+        authService.registerUser(withEmail: "bill@microsoft.com", andPassword: "test123") { (success, error) in
+            if error != nil {
+                print(error)
+            }
+        }
+
     }
     
     @IBAction func signInTapped(_ sender: Any) {
