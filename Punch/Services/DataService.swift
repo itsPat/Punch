@@ -162,7 +162,7 @@ class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, Shif
     }
 
     func changeValueOfAmountOwedWith(EmployeeId employeeId: String, value: Double){
-        REF_EMPLOYEE.child(employeeId).setValue(value, forKey: "amountOwed")
+        REF_EMPLOYEE.child(employeeId).updateChildValues(["amountOwed": value])
     }
 
     func getEmployeesByCompanyId(companyId: String, handler: @escaping (_ employees: [Employee1]?) -> ()) {
@@ -206,7 +206,7 @@ class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, Shif
             for shif in snapshot {
 
                 if shif.childSnapshot(forPath: "employeeId").value  as! String == employeeID {
-                    let shiftObject = Shift1(snapshot: shif) 
+                    let shiftObject = Shift1(snapshot: shif)
                     shifts.append( shiftObject)
 
                 }
@@ -214,8 +214,56 @@ class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, Shif
             handler(shifts)
         }
     }
+    //
+    func getAllShiftsOfAdate(forCompanyID companyID: String, date: Date, handler: @escaping (_ uid: [Shift1]) -> ()){
 
-    
+        REF_WORK_SHIFT.observeSingleEvent(of: .value) { (shiftSnapShot) in
+            guard let shiftSnapshot = shiftSnapShot.children.allObjects as? [DataSnapshot] else {return}
+            guard shiftSnapShot.exists() else {
+                return
+            }
+
+            guard shiftSnapShot != nil else {
+                return
+            }
+
+            var shiftsInDatabase : [Shift1] = []
+            for shiftData in shiftSnapshot {
+                let shift = Shift1(snapshot: shiftData)
+
+                shiftsInDatabase.append(shift)
+            }
+
+        }
+
+//        let dispatchGroup = DispatchGroup()
+//        dispatchGroup.wait()
+        var employees : [Employee1] = []
+        self.REF_EMPLOYEE.observeSingleEvent(of: .value, with: { (employeeSnapshot) in
+            var internEmployee : [Employee1] = []
+            guard let employeeSnapshot = employeeSnapshot.children.allObjects as? [DataSnapshot] else {return}
+            for snapshot in employeeSnapshot {
+                let employee = Employee1(snapshot: snapshot)
+                if employee.companyId == companyID {
+                    internEmployee.append(employee)
+                }
+            }
+
+//            dispatchGroup.notify(queue: .global(), execute: {
+//                employees = internEmployee
+//            })
+            DispatchQueue.global(qos: .background).async {
+               employees = internEmployee
+
+            }
+
+        })
+
+        print(employees)
+    }
+
+
+
 
     func updateShiftById(uid: String, shiftData: Dictionary<String, Any>) {
         REF_WORK_SHIFT.child(uid).updateChildValues(shiftData)
@@ -295,9 +343,9 @@ class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, Shif
             }
 
         }
+
+
     }
-
-
 
 
     func setPunchInTimeWith(ShiftId shiftId: String, WithValue value: String ){

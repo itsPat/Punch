@@ -91,6 +91,8 @@ class ShiftManager {
         for employee in employees {
             dicEmployeeShift[employee] = SelectShiftsBy(Employee: employee, fromDate: fromDate, toDate: toDate)
         }
+
+        
         return dicEmployeeShift
     }
 

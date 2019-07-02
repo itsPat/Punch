@@ -78,7 +78,11 @@ class LoginViewController: UIViewController {
 
 //        testgetAllEmployeeWithShiftByCompany()
 //        testgetAllEmployeeShiftsByCompany()
-        deleteTestCompany()
+//        deleteTestCompany()
+        getAllByDate()
+//        testCreateCompany()
+//testCreateEmployee()
+//        dataService.changeValueOfAmountOwedWith(EmployeeId: "11196A8A-46CD-4C28-88A9-05F0B2979A77", value: 1500.0)
     }
     
     @IBAction func signInTapped(_ sender: Any) {
@@ -151,6 +155,32 @@ extension LoginViewController {
 //        }
 
     }
-}
 
+    func getAllByDate() {
+        let light = "7C5A37CA-A6E9-47D6-A69E-CA4144B75AA7"
+        DataService.instance.getAllShiftsOfAdate(forCompanyID: light, date: Date()) { (shift) in
+
+        }
+    }
+
+    func testCreateCompany(){
+
+        let uidPuch = UUID().uuidString
+        let lightHouse = Company(id: uidPuch, name: "Punch")
+        DataService.instance.createDBCompany(uid: uidPuch, companyData: lightHouse.dictionary())
+    }
+
+    func testCreateEmployee() {
+        let punch = "FD69FCED-C156-469A-82C2-05A24D787B76"
+
+        let uidRussel = UUID().uuidString
+        let russel = Employee1(id: uidRussel, name: "Russel", email: "russel@punch.ca", companyId: punch, administratorId: nil, isAdministrator: true, amountOwed: 0, hourlyRate: 60, shifts: nil)
+        let uidPat = UUID().uuidString
+        let pat = Employee1(id: uidPat, name: "Pat", email: "pat@punch.ca", companyId: punch, administratorId: uidRussel, isAdministrator: false, amountOwed: 0, hourlyRate: 35, shifts: nil)
+
+        let d = DataService.instance
+        d.createDBEmployee(uid: uidRussel, employeeData: russel.dictionary())
+        d.createDBEmployee(uid: uidPat, employeeData: pat.dictionary())
+    }
+}
 

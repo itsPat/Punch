@@ -49,6 +49,11 @@ class AuthService {
                                 //TODO: Show Alert
                             }
                         })
+
+                        if credetial.isAdministrator {
+
+                        }
+
                         //TODO: Authenticate the user in the Firebase
                         //TODO: Check if the guy is a manager
                         //TODO: download all information
@@ -167,7 +172,11 @@ class AuthService {
             DataService.instance.getUserByUID(foruid: uid, AndPassword: password, handler: { (user) in
                 credetial = user
                 loginComplete(true, nil)
+
             })
+
+            //Write this line in AuthService - to save the password and login in keychain
+            self.savePasswordAndLoginInKeyChain(password: password, email: email)
         }
     }
 }

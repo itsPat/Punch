@@ -10,92 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Punch/AuthService.swift"
-            timestampString = "583347185.775535"
+            timestampString = "583719263.212278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "authenticateWithBiometrics(authenticated:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Punch/Services/DataService.swift"
-            timestampString = "583708748.085132"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
-            landmarkName = "getAllEmployeeWithShiftByCompany(companyId:handler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Punch/Services/DataService.swift"
-            timestampString = "583708748.085237"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
-            landmarkName = "getAllEmployeeWithShiftByCompany(companyId:handler:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in closure #1 (Swift.Optional&lt;Swift.Array&lt;Punch.Employee1&gt;&gt;) -&gt; () in Punch.DataService.getAllEmployeeWithShiftByCompany(companyId: Swift.String, handler: (Swift.Optional&lt;Swift.Array&lt;Punch.Employee1&gt;&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Punch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luiz/Desktop/FinalProject/Punch/Punch/Services/DataService.swift"
-                  timestampString = "583687432.856856"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "258"
-                  endingLineNumber = "258"
-                  offsetFromSymbolStart = "1376">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in closure #1 (__C.FIRDataSnapshot) -&gt; () in closure #1 (Swift.Optional&lt;Swift.Array&lt;Punch.Employee1&gt;&gt;) -&gt; () in Punch.DataService.getAllEmployeeWithShiftByCompany(companyId: Swift.String, handler: (Swift.Optional&lt;Swift.Array&lt;Punch.Employee1&gt;&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Punch"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/luiz/Desktop/FinalProject/Punch/Punch/Services/DataService.swift"
-                  timestampString = "583687432.858983"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "253"
-                  endingLineNumber = "253"
-                  offsetFromSymbolStart = "152">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Punch/Services/DataService.swift"
-            timestampString = "583708748.085313"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
-            landmarkName = "getAllEmployeeWithShiftByCompany(companyId:handler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -106,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Punch/Model/Shifts.swift"
-            timestampString = "583708748.0853961"
+            timestampString = "583719263.212371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -150,16 +70,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Punch/Services/DataService.swift"
+            timestampString = "583719263.212458"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "getAllShiftsOfAdate(forCompanyID:date:handler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Punch/Services/DataService.swift"
+            timestampString = "583719263.212948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "getAllShiftsOfAdate(forCompanyID:date:handler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Punch.DataService.getAllShiftsOfAdate(forCompanyID: Swift.String, date: Foundation.Date, handler: (Swift.Array&lt;Punch.Shift1&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Punch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/luiz/Desktop/FinalProject/Punch/Punch/Services/DataService.swift"
+                  timestampString = "583719263.723822"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "241"
+                  endingLineNumber = "241"
+                  offsetFromSymbolStart = "464">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.FIRDataSnapshot) -&gt; () in Punch.DataService.getAllShiftsOfAdate(forCompanyID: Swift.String, date: Foundation.Date, handler: (Swift.Array&lt;Punch.Shift1&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Punch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/luiz/Desktop/FinalProject/Punch/Punch/Services/DataService.swift"
+                  timestampString = "583719263.7296439"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "241"
+                  endingLineNumber = "241"
+                  offsetFromSymbolStart = "276">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Punch/Services/DataService.swift"
-            timestampString = "583708748.0854549"
+            timestampString = "583719263.213357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "getShiftsByEmployeeId(EmployeeId:handler:)"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "getAllShiftsOfAdate(forCompanyID:date:handler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -170,13 +154,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Punch/Services/DataService.swift"
-            timestampString = "583708748.0855139"
+            timestampString = "583719263.213655"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
-            landmarkName = "getShiftsByEmployeeId(EmployeeId:handler:)"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "getAllShiftsOfAdate(forCompanyID:date:handler:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.FIRDataSnapshot) -&gt; () in Punch.DataService.getAllShiftsOfAdate(forCompanyID: Swift.String, date: Foundation.Date, handler: (Swift.Array&lt;Punch.Shift1&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Punch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/luiz/Desktop/FinalProject/Punch/Punch/Services/DataService.swift"
+                  timestampString = "583716179.295961"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "252"
+                  endingLineNumber = "252"
+                  offsetFromSymbolStart = "1292">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Value Promoted from Box&gt; of closure #1 () -&gt; () in closure #2 (__C.FIRDataSnapshot) -&gt; () in Punch.DataService.getAllShiftsOfAdate(forCompanyID: Swift.String, date: Foundation.Date, handler: (Swift.Array&lt;Punch.Shift1&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Punch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/luiz/Desktop/FinalProject/Punch/Punch/Services/DataService.swift"
+                  timestampString = "583716179.297982"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "241"
+                  endingLineNumber = "241"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -186,13 +202,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Punch/Services/DataService.swift"
-            timestampString = "583708748.0855711"
+            timestampString = "583719263.213937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
-            landmarkName = "getShiftsByEmployeeId(EmployeeId:handler:)"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "getAllShiftsOfAdate(forCompanyID:date:handler:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Punch.DataService.getAllShiftsOfAdate(forCompanyID: Swift.String, date: Foundation.Date, handler: (Swift.Array&lt;Punch.Shift1&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Punch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/luiz/Desktop/FinalProject/Punch/Punch/Services/DataService.swift"
+                  timestampString = "583716442.992928"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "241"
+                  endingLineNumber = "241"
+                  offsetFromSymbolStart = "464">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.FIRDataSnapshot) -&gt; () in Punch.DataService.getAllShiftsOfAdate(forCompanyID: Swift.String, date: Foundation.Date, handler: (Swift.Array&lt;Punch.Shift1&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Punch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/luiz/Desktop/FinalProject/Punch/Punch/Services/DataService.swift"
+                  timestampString = "583716442.99536"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "241"
+                  endingLineNumber = "241"
+                  offsetFromSymbolStart = "276">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -48,8 +48,8 @@ public class Employee1 : Hashable{
         self.email = snapshotValue["email"] as! String
         self.administratorId = snapshotValue["administratorId"] as? String
         self.isAdministrator = snapshotValue["isAdministrator"] as? Bool ?? false
-        self.amountOwed = snapshotValue["amountOwed"] as! Double
-        self.hourlyRate = snapshotValue["hourlyRate"] as! Double
+        self.amountOwed = snapshotValue["amountOwed"] as? Double ?? 0.0
+        self.hourlyRate = snapshotValue["hourlyRate"] as? Double ?? 0.0
     }
 
     func dictionary() -> [String: Any] {
@@ -59,6 +59,7 @@ public class Employee1 : Hashable{
             "companyId" : companyId,
             "email" : email,
             "administratorId" : administratorId ?? "",
+            "isAdministrator" : isAdministrator ,
             "amountOwed" : amountOwed,
             "hourlyRate" : hourlyRate,
         ]
