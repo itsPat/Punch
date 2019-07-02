@@ -137,11 +137,10 @@ class EmployeeViewController: InterfaceViewController {
             })
             DataService.instance.getCompany(forUID: self.user.companyId, handler: { (company) in
                 self.company = company
+                LocationManager.shared.requestUserLocation()
+                LocationManager.shared.startMonitoringGeofenceRegion(companyCoordinate: CLLocationCoordinate2D(latitude: self.company.latitude, longitude: self.company.longitude))
                 print("Company is SET✅")
             })
-            LocationManager.shared.requestUserLocation()
-            LocationManager.shared.startMonitoringGeofenceRegion(companyCoordinate: CLLocationCoordinate2D(latitude: company.latitude, longitude: company.longitude))
-            
 
         }
         collectionView.delegate = self

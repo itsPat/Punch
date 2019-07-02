@@ -18,24 +18,24 @@ class AddShiftViewController: UIViewController {
         [Date()],
         [Date()],
         [
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false)
-            
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false)
+//
         ],
         ["Save Button"]
     ]
@@ -62,6 +62,11 @@ class AddShiftViewController: UIViewController {
         tableView.register(UINib(nibName: EmployeeTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: EmployeeTableViewCell.reuseIdentifier())
         tableView.register(UINib(nibName: SaveShiftTableViewCell.nibName(), bundle: nil), forCellReuseIdentifier: SaveShiftTableViewCell.reuseIdentifier())
         tableView.showsVerticalScrollIndicator = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        if self.dataSource[2].isEmpty {
+            self.getEmployees()
+        }
     }
     
     func setupDismissGesture() {
@@ -113,7 +118,7 @@ extension AddShiftViewController: UITableViewDataSource {
             datePickerCell.updateText(date: date)
             return datePickerCell
         case 2:
-            guard let (employee,isSeleted) = dataSource[indexPath.section][indexPath.row] as? (Employee,Bool) else { return UITableViewCell() }
+            guard let (employee,isSeleted) = dataSource[indexPath.section][indexPath.row] as? (Employee1,Bool) else { return UITableViewCell() }
             let employeeCell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.reuseIdentifier()) as! EmployeeTableViewCell
             employeeCell.titleLabel.text = employee.name
             employeeCell.showCheckmark = isSeleted
@@ -174,7 +179,7 @@ extension AddShiftViewController: UITableViewDelegate {
         case 2:
             // EMPLOYEES
             
-            var tuple = dataSource[2][indexPath.row] as! (employee: Employee, isSelected: Bool)
+            var tuple = dataSource[2][indexPath.row] as! (employee: Employee1, isSelected: Bool)
             tuple.isSelected = !tuple.isSelected
             dataSource[2][indexPath.row] = tuple
             selectedRowSection = -1 // Hide the date pickers if open.
@@ -216,20 +221,34 @@ extension AddShiftViewController: DatePickerDelegate {
 
 //MARK: FIREBASE CALLS.
 extension AddShiftViewController {
+    
+    func getEmployees() {
+        DataService.instance.getEmployeesByCompanyId(companyId: "FD69FCED-C156-469A-82C2-05A24D787B76") { (employees) in
+            guard let employees = employees else { return }
+            
+            var employeesIsSelected = [(Employee1, Bool)]()
+            employees.forEach({ (employee) in
+                employeesIsSelected.append((employee, false))
+            })
+            self.dataSource[2] = employeesIsSelected
+            self.tableView.reloadData()
+        }
+    }
+    
     func submitShifts() {
         
         guard let startDate = dataSource[0].first as? Date else { return }
         guard let endDate = dataSource[1].first as? Date else { return }
-        guard let employees = dataSource[2] as? [(Employee,Bool)] else { return }
+        guard let employees = dataSource[2] as? [(Employee1,Bool)] else { return }
         
         for (employee,isSelected) in employees {
             if isSelected {
                 #warning("REPLACE THIS WITH THE REAL (EMPLOYEE.ID) ONCE ITS SETUP.")
-                let employeeID = "F1ABF468-78D3-49CC-BD0C-6937625D8F06"
+                let employeeID = employee.id
                 DataService.instance.createDBShift(uid: UUID().uuidString, shiftData: [
                     "employeeId": "\(employeeID)",
                     "finishTime": "\(endDate.timeIntervalSince1970)",
-                    "hourlyRate": 420,
+                    "hourlyRate": employee.hourlyRate,
                     "punchInTime": "\(startDate.timeIntervalSince1970)",
                     "punchOutTime": "\(endDate.timeIntervalSince1970)",
                     "startTime": "\(startDate.timeIntervalSince1970)"

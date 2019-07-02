@@ -62,8 +62,8 @@ class ShiftManager {
 
 
     func selectShiftsBy(Employee employee: Employee1, fromDate: Date, toDate: Date) -> [Shift1]{
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "YYYY-dd-MM"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-dd-MM"
 
         var selectedShifts : [Shift1] = []
         guard let shifts = employee.shifts else {
