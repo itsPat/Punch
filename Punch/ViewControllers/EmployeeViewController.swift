@@ -309,7 +309,7 @@ extension EmployeeViewController: UICollectionViewDataSource, UICollectionViewDe
         print("ID OF THE SHIFT IS \(self.items[indexPath.row].id)")
         if self.items[indexPath.row].punchInTime == nil{
             DataService.instance.setPunchInTimeWith(ShiftId: self.items[indexPath.row].id, WithValue: String(Date().timeIntervalSince1970))
-            self.items[indexPath.row].punchInTime = Date()
+            self.items[indexPath.row].punchInTime = "\(Date().timeIntervalSince1970)"
             print("✅PUNCH IN✅")
             
             let companyCoordinate = CLLocationCoordinate2D(latitude: company.latitude, longitude: company.longitude)
@@ -327,7 +327,22 @@ extension EmployeeViewController: UICollectionViewDataSource, UICollectionViewDe
             
         } else if self.items[indexPath.row].punchOutTime == nil  {
             DataService.instance.setPunchOutTimeWith(ShiftId: self.items[indexPath.row].id, WithValue: String(Date().timeIntervalSince1970))
-            self.items[indexPath.row].punchOutTime = Date()
+            self.items[indexPath.row].punchOutTime = String(Date().timeIntervalSince1970)
+            guard let punchInDate = self.items[indexPath.row].punchInTime else { return }
+            guard let punchOutDate = self.items[indexPath.row].punchOutTime else { return }
+            guard let punchInTimeInterval = TimeInterval(punchInDate) else { return }
+            guard let punchOutTimeInterval = TimeInterval(punchOutDate) else { return }
+            let timeDiff = ((Date(timeIntervalSince1970: punchOutTimeInterval).timeIntervalSince(Date(timeIntervalSince1970: punchInTimeInterval))) / 60) / 60
+            print("time diff: \(timeDiff)")
+            let amountOwed: Double = self.user.hourlyRate * timeDiff
+            DataService.instance.changeValueOfAmountOwedWith(EmployeeId: self.user.id, value: amountOwed + self.user.amountOwed)
+            
+            let formatter = NumberFormatter()
+            formatter.locale = Locale.current
+            formatter.numberStyle = .currency
+            if let formattedAmountOwed = formatter.string(from: amountOwed as NSNumber) {
+                self.textLabel.text = "\(formattedAmountOwed)"
+            }
             print("✅PUNCH OUT✅")
         } else {
             //TODO: Animate cell out?

@@ -17,22 +17,20 @@ public class Shift1 {
 //    var isPaid: Bool
     var startTime : String
     var finishTime : String
-    var punchInTime : Date?
-    var punchOutTime : Date?
+    var punchInTime : String?
+    var punchOutTime : String?
 
-    var amountOwed : Double {
-        return (hourWorked * hourlyRate) / 60
-    }
-    var hourWorked : TimeInterval {
-        if let punchInTime = self.punchInTime, let punchOutTime = self.punchOutTime {
-            return punchOutTime.timeIntervalSince(punchInTime)
-        } else {
-            return 0
-        }
-    }
+//    var amountOwed : Double
+//    var hourWorked : TimeInterval {
+//        if let punchInTime = self.punchInTime, let punchOutTime = self.punchOutTime {
+//            return punchOutTime.timeIntervalSince(punchInTime)
+//        } else {
+//            return 0
+//        }
+//    }
 
 
-    init(id: String, employeeId: String, hourlyRate: Double, isPaid: Bool = false, startTime: String, finishTime: String, punchInTime: Date?, punchOutTime: Date?) {
+    init(id: String, employeeId: String, hourlyRate: Double, isPaid: Bool = false, startTime: String, finishTime: String, punchInTime: String?, punchOutTime: String?) {
         self.id = id
         self.employeeId = employeeId
         self.hourlyRate = hourlyRate
@@ -67,12 +65,14 @@ public class Shift1 {
 //        self.isPaid = snapshotValue["isPaid"] as! Bool
         self.startTime = snapshotValue["startTime"] as! String
         self.finishTime = snapshotValue["finishTime"] as! String
-        if let time = snapshotValue["punchInTime"] as? Double {
-            self.punchInTime = Date(timeIntervalSince1970: TimeInterval( time))
-        }
-        if let time = snapshotValue["punchOutTime"] as? Double {
-            self.punchOutTime = Date(timeIntervalSince1970: TimeInterval( time))
-        }
+        self.punchInTime = snapshotValue["punchInTime"] as! String
+        self.punchOutTime = snapshotValue["punchOutTime"] as! String
+//        if let time = snapshotValue["punchInTime"] as? Double {
+//            self.punchInTime = Date(timeIntervalSince1970: TimeInterval( time))
+//        }
+//        if let time = snapshotValue["punchOutTime"] as? Double {
+//            self.punchOutTime = Date(timeIntervalSince1970: TimeInterval( time))
+//        }
     }
     
 }
