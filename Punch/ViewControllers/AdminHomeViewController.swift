@@ -106,7 +106,6 @@ class AdminHomeViewController: UIViewController {
     
     private var closedTransform = CGAffineTransform.identity
     
-    
     func reloadDataSource() {
         self.shiftsWithEmployeeName.removeAll()
         DataService.instance.getAllShiftsOf(CompanyID: "FD69FCED-C156-469A-82C2-05A24D787B76") { (shifts) in

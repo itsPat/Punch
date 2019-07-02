@@ -20,7 +20,7 @@ class CustomCell: UICollectionViewCell {
     
     public func configure(with model: Shift1) {
         guard let startTimeInterval = TimeInterval(model.startTime) else { return }
-        guard let finishTimeInterval = TimeInterval(model.startTime) else { return }
+        guard let finishTimeInterval = TimeInterval(model.finishTime) else { return }
         let startTime = Date(timeIntervalSince1970: startTimeInterval)
         let finishTime = Date(timeIntervalSince1970: finishTimeInterval )
         let dayTextLabel = formatToDateString(date: startTime)
