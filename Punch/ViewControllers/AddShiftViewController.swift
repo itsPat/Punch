@@ -18,23 +18,23 @@ class AddShiftViewController: UIViewController {
         [Date()],
         [Date()],
         [
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
-            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false)
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false),
+//            (employee: Employee(name: "Pat Trudel", amountOwed: 1600), isSelected: false)
             
         ],
         ["Save Button"]
@@ -216,6 +216,14 @@ extension AddShiftViewController: DatePickerDelegate {
 
 //MARK: FIREBASE CALLS.
 extension AddShiftViewController {
+    
+    func getEmployee() {
+        DataService.instance.getEmployeesByCompanyId(companyId: "FD69FCED-C156-469A-82C2-05A24D787B76", handler: { (employees) in
+            guard let employees = employees else { return }
+            self.dataSource[2] = employees
+        })
+    }
+    
     func submitShifts() {
         
         guard let startDate = dataSource[0].first as? Date else { return }
@@ -225,7 +233,7 @@ extension AddShiftViewController {
         for (employee,isSelected) in employees {
             if isSelected {
                 #warning("REPLACE THIS WITH THE REAL (EMPLOYEE.ID) ONCE ITS SETUP.")
-                let employeeID = "F1ABF468-78D3-49CC-BD0C-6937625D8F06"
+                let employeeID = "FD69FCED-C156-469A-82C2-05A24D787B76"
                 DataService.instance.createDBShift(uid: UUID().uuidString, shiftData: [
                     "employeeId": "\(employeeID)",
                     "finishTime": "\(endDate.timeIntervalSince1970)",
