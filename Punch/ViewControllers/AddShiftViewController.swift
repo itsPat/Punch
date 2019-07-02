@@ -214,6 +214,7 @@ extension AddShiftViewController: DatePickerDelegate {
             guard let datePlus8Hours = Calendar.current.date(byAdding: .hour, value: 8, to: date) else { return }
             guard let endDateCell = tableView.cellForRow(at: IndexPath(row: indexPath.row, section: indexPath.section + 1)) as? DatePickerTableViewCell else { return }
             endDateCell.updateText(date: datePlus8Hours)
+            dataSource[1][0] = datePlus8Hours // Adjusts the end date in the data source when the user automagically sets it to the new date.
         }
     }
     
@@ -239,6 +240,10 @@ extension AddShiftViewController {
         
         guard let startDate = dataSource[0].first as? Date else { return }
         guard let endDate = dataSource[1].first as? Date else { return }
+        
+        
+        #warning("END DATE IS JUST SUBMITTING CURRENT TIME?")
+        
         guard let employees = dataSource[2] as? [(Employee1,Bool)] else { return }
         
         for (employee,isSelected) in employees {
