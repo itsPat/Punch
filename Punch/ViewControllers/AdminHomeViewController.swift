@@ -17,9 +17,12 @@ class AdminHomeViewController: UIViewController {
     
     //MARK: - Constants
     
-    var items: [Employee1: [Shift1]] = [:]
-    var employees: [Employee1] = []
-    var shifts: [Shift1] = []
+    var shiftsWithEmployeeName = [(shift: Shift1, name: String)]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     let shiftManager = ShiftManager()
     
     
@@ -103,25 +106,27 @@ class AdminHomeViewController: UIViewController {
     
     private var closedTransform = CGAffineTransform.identity
     
+    
+    func reloadDataSource() {
+        self.shiftsWithEmployeeName.removeAll()
+        DataService.instance.getAllShiftsOf(CompanyID: "FD69FCED-C156-469A-82C2-05A24D787B76") { (shifts) in
+            guard let shifts = shifts else { return }
+            for shift in shifts {
+                DataService.instance.getEmployeename(forUID: shift.employeeId, handler: { (name) in
+                    guard let startTimeInterval = TimeInterval(shift.startTime) else { return }
+                    let startDate = Date(timeIntervalSince1970: startTimeInterval)
+                    if Calendar.current.isDate(startDate, inSameDayAs: self.calendarView.selectedDate ?? Date()) {
+                        self.shiftsWithEmployeeName.append((shift, name))
+                    }
+                })
+            }
+        }
+    }
+    
     //MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.global(qos: .background).async {
-            DataService.instance.getEmployeesByCompanyId(companyId: "FD69FCED-C156-469A-82C2-05A24D787B76") { (employees) in
-                guard let employees = employees else { return }
-                self.employees = employees
-                for employee in employees {
-                    DataService.instance.getShiftsByEmployeeId(EmployeeId: employee.id, handler: { (shifts) in
-                        guard let shifts = shifts else { return }
-                        self.shifts += shifts
-                        employee.shifts = shifts
-                        self.items[employee] = self.shiftManager.selectShiftsBy(Employee: employee, withAGivenDate: self.calendarView.selectedDate ?? Date())
-                        self.collectionView.reloadData()
-                    })
-                }
-            }
-        }
-        
+        reloadDataSource()
         collectionView.delegate = self
         collectionView.dataSource = self
         calendarView.delegate = self
@@ -277,26 +282,19 @@ extension AdminHomeViewController: UICollectionViewDelegateFlowLayout {
 extension AdminHomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if self.items.count == 0 {
-//            momentumView.isHidden = false
-//        }
-        return shifts.count
+        return shiftsWithEmployeeName.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as? CustomCell else { return UICollectionViewCell() }
-        // The employees on shift for selected date
-        let employee = employees[indexPath.row]
-        if let startTime = items[employee]?.first?.startTime {
-            if let startTimeInterval =  TimeInterval(startTime) {
-                if let finishTime = items[employee]?.first?.finishTime {
-                    if let finishTimeInterval = TimeInterval(finishTime) {
-                        cell.dayLabel.text = employee.name
-                        cell.timeLabel.text = formatToHourMinutesString(date: Date(timeIntervalSince1970: startTimeInterval)) + " - " + formatToHourMinutesString(date: Date(timeIntervalSince1970: finishTimeInterval))
-                    }
-                }
-            }
+        
+        let shiftWithEmployeeName = shiftsWithEmployeeName[indexPath.item]
+        if let startTimeInterval = TimeInterval(shiftWithEmployeeName.shift.startTime),
+            let finishTimeInterval = TimeInterval(shiftWithEmployeeName.shift.finishTime) {
+            cell.dayLabel.text = shiftWithEmployeeName.name
+            cell.timeLabel.text = formatToHourMinutesString(date: Date(timeIntervalSince1970: startTimeInterval)) + " - " + formatToHourMinutesString(date: Date(timeIntervalSince1970: finishTimeInterval))
         }
+        
         cell.setCornerRadius()
         cell.layer.backgroundColor = UIColor.white.cgColor
         return cell
@@ -315,15 +313,7 @@ extension AdminHomeViewController: UICollectionViewDataSource {
 extension AdminHomeViewController: FSCalendarDelegate {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        self.shifts.removeAll()
-        for employee in self.employees {
-                DataService.instance.getShiftsByEmployeeId(EmployeeId: employee.id, handler: { (shifts) in
-                    guard let shifts = shifts else { return }
-                    employee.shifts = shifts
-                    self.shifts += self.shiftManager.selectShiftsBy(Employee: employee, withAGivenDate: date)
-                    self.collectionView.reloadData()
-                    })
-        }
+        reloadDataSource()
     }
 }
 

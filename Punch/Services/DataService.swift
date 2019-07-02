@@ -140,6 +140,7 @@ class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, Shif
             }
         }
     }
+    
 
     func getEmployeeByEmail(forEmail employeeEmail: String, handler: @escaping (_ uid: Employee1) -> ()) {
         REF_EMPLOYEE.observeSingleEvent(of: .value) { (userSnapshot) in
@@ -294,6 +295,45 @@ class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, Shif
                 }
             }
 
+        }
+    }
+    
+    func getAllShiftsOf(CompanyID companyID: String, handler: @escaping (_ uid: [Shift1]?) -> ()) {
+        
+        REF_WORK_SHIFT.observeSingleEvent(of: .value) { (shiftSnapShot) in
+            guard let shiftSnapshot = shiftSnapShot.children.allObjects as? [DataSnapshot] else {return}
+            guard shiftSnapShot.exists() else {
+                return
+            }
+            var shiftsInDatabase : [Shift1]  = []
+            for shiftData in shiftSnapshot {
+                let shift = Shift1(snapshot: shiftData)
+                shiftsInDatabase.append(shift)
+            }
+            
+            var employees : [Employee1] = []
+            self.REF_EMPLOYEE.observeSingleEvent(of: .value, with: { (employeeSnapshot) in
+                var internEmployees : [Employee1] = []
+                guard let employeeSnapshot = employeeSnapshot.children.allObjects as? [DataSnapshot] else {return}
+                for snapshot in employeeSnapshot {
+                    let employee = Employee1(snapshot: snapshot)
+                    if employee.companyId == companyID {
+                        internEmployees.append(employee)
+                    }
+                }
+                
+                var shiftsByCompany :[Shift1] = []
+                
+                for shiftInDatabase in shiftsInDatabase {
+                    for employee in internEmployees {
+                        if shiftInDatabase.employeeId == employee.id {
+                            shiftsByCompany.append(shiftInDatabase)
+                        }
+                    }
+                }
+                print(shiftsByCompany)
+                handler(shiftsByCompany)
+            })
         }
     }
 
