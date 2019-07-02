@@ -111,7 +111,7 @@ class EmployeeViewController: InterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let sevenDaysFromNow = Date().addingTimeInterval(7*24*60*60)
-        DataService.instance.getEmployeeById(forUID: "5A9F29D7-ECDF-4B67-AF28-FD72A7EEA6B7") { (employee) in
+        DataService.instance.getEmployeeById(forUID: "F1ABF468-78D3-49CC-BD0C-6937625D8F06") { (employee) in
             guard let employee = employee else { return }
             self.user = employee
             
@@ -147,6 +147,12 @@ class EmployeeViewController: InterfaceViewController {
     
     override func viewDidLayoutSubviews() {
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+    }
+    
+    //TODO: When a cell is tapped, check that the date is today, if so punch the user in.
+   
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     // MARK: - Layout
@@ -301,20 +307,8 @@ extension EmployeeViewController: UICollectionViewDataSource, UICollectionViewDe
             self.items[indexPath.row].punchInTime = Date()
             print("✅PUNCH IN✅")
         } else if self.items[indexPath.row].punchOutTime == nil  {
-            self.items[indexPath.row].punchOutTime = Date()
             DataService.instance.setPunchOutTimeWith(ShiftId: self.items[indexPath.row].id, WithValue: String(Date().timeIntervalSince1970))
-            guard let punchInDate = self.items[indexPath.row].punchInTime else { return }
-            guard let punchOutDate = self.items[indexPath.row].punchOutTime else { return }
-            let amountOwed: Double = PaymentManager.shared.calculateAmountOwedOfATimeIntervalTo(Employee: self.user, From: punchInDate, To: punchOutDate)
-            DataService.instance.changeValueOfAmountOwedWith(EmployeeId: self.user.id, value: amountOwed)
-            
-            let formatter = NumberFormatter()
-            formatter.locale = Locale.current // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
-            formatter.numberStyle = .currency
-            if let formattedAmountOwed = formatter.string(from: amountOwed as NSNumber) {
-                self.textLabel.text = "\(formattedAmountOwed)"
-            }
-            
+            self.items[indexPath.row].punchOutTime = Date()
             print("✅PUNCH OUT✅")
         } else {
             //TODO: Animate cell out?

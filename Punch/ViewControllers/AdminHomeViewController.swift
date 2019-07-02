@@ -74,13 +74,6 @@ class AdminHomeViewController: UIViewController {
         return view
     }()
     
-    private lazy var noneTextLabel: UILabel = {
-        let label = UILabel()
-        label.text = "No shifts have been assigned yet."
-        label.isHidden = true
-        return label
-    }()
-    
     private lazy var collectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
@@ -106,7 +99,7 @@ class AdminHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.global(qos: .background).async {
-            DataService.instance.getEmployeesByCompanyId(companyId: "FD69FCED-C156-469A-82C2-05A24D787B76") { (employees) in
+            DataService.instance.getEmployeesByCompanyId(companyId: "7C5A37CA-A6E9-47D6-A69E-CA4144B75AA7") { (employees) in
                 guard let employees = employees else { return }
                 self.employees = employees
                 for employee in employees {
@@ -122,7 +115,6 @@ class AdminHomeViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        calendarView.delegate = self
         self.view.backgroundColor = UIColor.white
         panRecognier.addTarget(self, action: #selector(panned))
         handleOverlayView.addGestureRecognizer(panRecognier)
@@ -188,16 +180,6 @@ class AdminHomeViewController: UIViewController {
         handleOverlayView.leadingAnchor.constraint(equalTo: momentumView.leadingAnchor).isActive = true
         handleOverlayView.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor).isActive = true
         handleOverlayView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 10).isActive = true
-        
-        momentumView.addSubview(noneTextLabel)
-        noneTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: noneTextLabel, attribute: .centerX, relatedBy: .equal, toItem: self.momentumView, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: noneTextLabel, attribute: .centerY, relatedBy: .equal, toItem: self.momentumView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: noneTextLabel, attribute: .width, relatedBy: .equal, toItem: self.momentumView, attribute: .width, multiplier: 1.0, constant: 0.0),
-            ])
-        noneTextLabel.textAlignment = .center
-        noneTextLabel.textColor = CustomColors.darkBlue
         
         titleContainer.backgroundColor = UIColor.clear
         textLabel.textColor = UIColor.white
@@ -275,9 +257,6 @@ extension AdminHomeViewController: UICollectionViewDelegateFlowLayout {
 extension AdminHomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if self.items.count == 0 {
-            momentumView.isHidden = false
-        }
         return items.count
     }
     
@@ -285,33 +264,16 @@ extension AdminHomeViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as? CustomCell else { return UICollectionViewCell() }
         // The employees on shift for selected date
         let employee = employees[indexPath.row]
-        if let startTime = items[employee]?.first?.startTime {
-            if let startTimeInterval =  TimeInterval(startTime) {
-                if let finishTime = items[employee]?.first?.finishTime {
-                    if let finishTimeInterval = TimeInterval(finishTime) {
-                        cell.dayLabel.text = employee.name
-                        cell.timeLabel.text = formatToHourMinutesString(date: Date(timeIntervalSince1970: startTimeInterval)) + " - " + formatToHourMinutesString(date: Date(timeIntervalSince1970: finishTimeInterval))
-                    }
-                }
-            }
-        }
+        guard let startTime = items[employee]?.first?.startTime else { return UICollectionViewCell() }
+        guard let startTimeInterval =  TimeInterval(startTime) else { return UICollectionViewCell() }
+        guard let finishTime = items[employee]?.first?.finishTime else { return UICollectionViewCell() }
+        guard let finishTimeInterval = TimeInterval(finishTime) else { return UICollectionViewCell() }
+        cell.dayLabel.text = employee.name
+        cell.timeLabel.text = formatToHourMinutesString(date: Date(timeIntervalSince1970: startTimeInterval)) + " - " + formatToHourMinutesString(date: Date(timeIntervalSince1970: finishTimeInterval))
         cell.setCornerRadius()
         cell.layer.backgroundColor = UIColor.white.cgColor
         return cell
     }
         
-}
-
-extension AdminHomeViewController: FSCalendarDelegate {
-    
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        for employee in self.employees {
-            self.items[employee] = self.shiftManager.selectShiftsBy(Employee: employee, withAGivenDate: date)
-            if self.items[employee]?.count == 0 {
-                self.items.removeValue(forKey: employee)
-            }
-        }
-        self.collectionView.reloadData()
-    }
 }
 

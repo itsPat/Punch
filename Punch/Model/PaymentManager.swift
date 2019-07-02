@@ -10,8 +10,6 @@ import Foundation
 
 class PaymentManager {
 
-    static let shared = PaymentManager()
-    
     func calculateAmountOwedOfATimeIntervalTo(Employee employee: Employee1, From initialDate: Date, To finalDate: Date) -> Double{
         let shiftManager = ShiftManager()
         let shifts = shiftManager.selectShiftsBy(Employee: employee, fromDate: initialDate, toDate: finalDate)
