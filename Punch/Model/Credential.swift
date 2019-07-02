@@ -42,7 +42,7 @@ struct Credential {
 
     init(snapshot: DataSnapshot, password: String) {
 
-
+        print("SNAPSHOT IS : \(snapshot)")
         let snapshotValue = snapshot.value as! [String: AnyObject]
         self.uid =  snapshotValue["id"] as! String
         self.name = snapshotValue["name"] as! String
