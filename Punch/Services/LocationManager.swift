@@ -27,14 +27,23 @@ class LocationManager: NSObject {
                 print("User accepted Notifications.")
             }
         }
+        requestUserLocation()
     }
     
     func requestUserLocation() {
         locationManager.requestLocation()
     }
     
-    func startMonitoringGeofenceRegion(region: CLCircularRegion) {
-        locationManager.startMonitoring(for: region)
+    func startMonitoringGeofenceRegion(companyCoordinate: CLLocationCoordinate2D) {
+        
+        let region = CLCircularRegion(center: companyCoordinate, radius: 500.0, identifier: "work")
+        region.notifyOnEntry = true
+        region.notifyOnExit = true
+        
+        if !locationManager.monitoredRegions.contains(region) {
+            locationManager.startMonitoring(for: region)
+        }
+        
     }
     
     func getDistanceImKMBetweenCoordinates(coordinate1: CLLocationCoordinate2D, coordinate2: CLLocationCoordinate2D) -> Double {
@@ -69,7 +78,6 @@ extension LocationManager: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        // Handle authorization status change.
         requestUserLocation()
     }
     
@@ -78,14 +86,6 @@ extension LocationManager: CLLocationManagerDelegate {
         // If so approve the punch in. If not tell the user they are too far away.
         if let location = locations.first {
             currentLocation = location
-//            getDistanceImKMBetweenCoordinates(coordinate1: currentLocation?.coordinate, coordinate2:)
-            let region = CLCircularRegion(center: location.coordinate, radius: 500.0, identifier: "Work")
-            region.notifyOnEntry = true
-            region.notifyOnExit = true
-            if !locationManager.monitoredRegions.contains(region) {
-                startMonitoringGeofenceRegion(region: region)
-                print("Starting to monitor geofence region with center \(location.coordinate).✅")
-            }
         }
     }
     

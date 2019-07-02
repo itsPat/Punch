@@ -8,6 +8,7 @@
 
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
+import CoreLocation
 
 //MARK: - Structs
 
@@ -32,6 +33,7 @@ class EmployeeViewController: InterfaceViewController {
     var items: [Shift1] = []
     
     var user: Employee1!
+    var company: Company!
     
     let shiftManager = ShiftManager()
     
@@ -110,8 +112,10 @@ class EmployeeViewController: InterfaceViewController {
     //MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let sevenDaysFromNow = Date().addingTimeInterval(7*24*60*60)
-        DataService.instance.getEmployeeById(forUID: "F1ABF468-78D3-49CC-BD0C-6937625D8F06") { (employee) in
+        #warning("THIS IS HARD CODED TO RUSSELLS ID.")
+        DataService.instance.getEmployeeById(forUID: "5A9F29D7-ECDF-4B67-AF28-FD72A7EEA6B7") { (employee) in
             guard let employee = employee else { return }
             self.user = employee
             
@@ -129,9 +133,15 @@ class EmployeeViewController: InterfaceViewController {
                 self.items = self.items.sorted(by: { (shiftA, shiftB) -> Bool in
                     return Double(shiftA.startTime) ?? 0.0 < Double(shiftB.startTime) ?? 1.0
                 })
-//                print("got all dem shifts")
                 self.collectionView.reloadData()
             })
+            DataService.instance.getCompany(forUID: self.user.companyId, handler: { (company) in
+                self.company = company
+                print("Company is SET✅")
+            })
+            LocationManager.shared.requestUserLocation()
+            LocationManager.shared.startMonitoringGeofenceRegion(companyCoordinate: CLLocationCoordinate2D(latitude: company.latitude, longitude: company.longitude))
+            
 
         }
         collectionView.delegate = self
@@ -148,9 +158,6 @@ class EmployeeViewController: InterfaceViewController {
     override func viewDidLayoutSubviews() {
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     }
-    
-    //TODO: When a cell is tapped, check that the date is today, if so punch the user in.
-   
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -210,8 +217,6 @@ class EmployeeViewController: InterfaceViewController {
         titleContainer.backgroundColor = UIColor.clear
         textLabel.textColor = UIColor.white
         
-        
-        //        titleContainer.setStandardShadow()
     }
     
     // MARK: - Animation
@@ -302,10 +307,25 @@ extension EmployeeViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("ID OF THE SHIFT IS \(self.items[indexPath.row].id)")
         if self.items[indexPath.row].punchInTime == nil{
             DataService.instance.setPunchInTimeWith(ShiftId: self.items[indexPath.row].id, WithValue: String(Date().timeIntervalSince1970))
             self.items[indexPath.row].punchInTime = Date()
             print("✅PUNCH IN✅")
+            
+            let companyCoordinate = CLLocationCoordinate2D(latitude: company.latitude, longitude: company.longitude)
+            let employeeCoordinate = LocationManager.shared.currentLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+            
+            let distance = LocationManager.shared.getDistanceImKMBetweenCoordinates(coordinate1: companyCoordinate, coordinate2: employeeCoordinate)
+            
+            print("DISTANCE BETWEEN COMPANY AND EMPLOYEE IS \(distance)KM")
+            
+            
+            //TODO: ONCE RUSSELL HAS SHIFT OBJECTS BACK IN THE HOME VIEW CONTROLLER
+            // CHECK DISTANCE, if less than 1km handle the punchIN. if not, show alert.
+            // CHECK IF THE USER HAS A PUNCHIN TIME STORED TO CHECK IF THEY ARE PUNCHED IN.
+            
+            
         } else if self.items[indexPath.row].punchOutTime == nil  {
             DataService.instance.setPunchOutTimeWith(ShiftId: self.items[indexPath.row].id, WithValue: String(Date().timeIntervalSince1970))
             self.items[indexPath.row].punchOutTime = Date()
