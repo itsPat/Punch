@@ -198,6 +198,17 @@ class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, Shif
     func changeStatusOfShiftPaid(ShiftId shiftId: String, value: Bool ) {
         REF_WORK_SHIFT.child(shiftId).setValue(value, forKey: "isPaid")
     }
+    
+    func getCompany(forUID uid: String, handler: @escaping (_ companyName: Company) -> ()) {
+        REF_COMPANY.observeSingleEvent(of: .value) { (companySnapshot) in
+            guard let companySnapshot = companySnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for company in companySnapshot {
+                if company.key == uid {
+                    handler(Company(snapshot: company))
+                }
+            }
+        }
+    }
 
     func getShiftsByEmployeeId(forEmployee employeeID: String, handler: @escaping (_ uid: [Shift1]) -> ()) {
         REF_WORK_SHIFT.observeSingleEvent(of: .value) { (snapshot) in
