@@ -93,6 +93,7 @@ class LoginViewController: UIViewController {
                 if success {
                     DispatchQueue.main.async {
                         #warning("CHECK IF USER IS ADMIN AND IF SO PERFORM THE APPROPRIATE SEGUE.")
+                        print("credetial.isAdministrator is \(credetial.isAdministrator)")
                         self.performSegue(withIdentifier: "adminSegue", sender: nil)
                     }
                 } else if let err = err {

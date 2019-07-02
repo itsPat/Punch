@@ -274,6 +274,15 @@ extension AdminHomeViewController: UICollectionViewDataSource {
         cell.layer.backgroundColor = UIColor.white.cgColor
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        #warning("Leave this here for demo purposes. Call russell when he is late.")
+        let number = "5142498344"
+        if let url = URL(string: "tel://\(number)"),
+            UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
         
 }
 
