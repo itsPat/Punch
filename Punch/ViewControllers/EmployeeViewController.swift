@@ -119,13 +119,7 @@ class EmployeeViewController: InterfaceViewController {
             guard let employee = employee else { return }
             self.user = employee
             
-            let formatter = NumberFormatter()
-            formatter.locale = Locale.current // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
-            formatter.numberStyle = .currency
-            let amountOwed = employee.amountOwed
-            if let formattedAmountOwed = formatter.string(from: amountOwed as NSNumber) {
-                self.textLabel.text = "\(formattedAmountOwed)"
-            }
+            self.updateAmountOwedLabel(employee: employee, duration: 1.0)
             DataService.instance.getShiftsByEmployeeId(EmployeeId: employee.id, handler: { (shifts) in
                 guard let shifts = shifts else { return }
                 self.user.shifts = shifts
@@ -152,6 +146,22 @@ class EmployeeViewController: InterfaceViewController {
         panRecognier.addTarget(self, action: #selector(panned))
         handleOverlayView.addGestureRecognizer(panRecognier)
         
+    }
+    
+    func updateAmountOwedLabel(employee: Employee1, duration: Double) {
+        let numberOfUpdatesPerSecond = 30.0
+        let numberOfUpdates = Int(duration * numberOfUpdatesPerSecond)
+        for i in 1...numberOfUpdates {
+            DispatchQueue.main.asyncAfter(deadline: .now() + (duration/numberOfUpdatesPerSecond/2.0) * Double(i)) {
+                let formatter = NumberFormatter()
+                formatter.locale = Locale.current // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
+                formatter.numberStyle = .currency
+                let amountOwed = employee.amountOwed / Double(numberOfUpdates) * Double(i)
+                if let formattedAmountOwed = formatter.string(from: amountOwed as NSNumber) {
+                    self.textLabel.text = "\(formattedAmountOwed)"
+                }
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
