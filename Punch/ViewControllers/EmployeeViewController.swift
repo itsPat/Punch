@@ -242,9 +242,9 @@ class EmployeeViewController: InterfaceViewController {
         handleOverlayView.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor).isActive = true
         handleOverlayView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 10).isActive = true
         
-        let center = CGPoint(x: view.center.x, y: view.center.y + 150)
-        progressCircle = ProgressCircle(center: center)
-        view.layer.addSublayer(progressCircle)
+//        let center = CGPoint(x: view.center.x, y: view.center.y + 150)
+//        progressCircle = ProgressCircle(center: center)
+//        view.layer.addSublayer(progressCircle)
         
         titleContainer.backgroundColor = UIColor.clear
         textLabel.textColor = UIColor.white

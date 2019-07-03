@@ -97,7 +97,7 @@ class AdminHomeViewController: UIViewController {
         return view
     }()
     
-    var progressCircle: ProgressCircle!
+    let progressCircle = ProgressCircle(frame: .zero)
 
     
     private let panRecognier = InstantPanGestureRecognizer()
@@ -113,6 +113,8 @@ class AdminHomeViewController: UIViewController {
         self.shiftsWithEmployeeName.removeAll()
         DataService.instance.getAllShiftsOf(CompanyID: "FD69FCED-C156-469A-82C2-05A24D787B76") { (shifts) in
             guard let shifts = shifts else { return }
+            //TODO: THIS NEEDS TO BE IN A DISPATCH.
+            
             self.updateScoreLabel(shifts: shifts, duration: 1.0)
             self.progressCircle.animate(to: calculateScoreFrom(shifts: shifts))
             for shift in shifts {
@@ -224,9 +226,17 @@ class AdminHomeViewController: UIViewController {
         noneTextLabel.textAlignment = .center
         noneTextLabel.textColor = CustomColors.darkBlue
         
-        let center = CGPoint(x: view.center.x, y: view.center.y + 100)
-        progressCircle = ProgressCircle(center: center)
-        view.layer.addSublayer(progressCircle)
+        
+        calendarBottomConstraintView.addSubview(progressCircle)
+        
+        scoreAmountLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: scoreAmountLabel, attribute: .centerX, relatedBy: .equal, toItem: progressCircle, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: scoreAmountLabel, attribute: .centerY, relatedBy: .equal, toItem: progressCircle, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: scoreAmountLabel, attribute: .width, relatedBy: .equal, toItem: progressCircle, attribute: .width, multiplier: 0.8, constant: 0.0),
+            NSLayoutConstraint(item: scoreAmountLabel, attribute: .height, relatedBy: .equal, toItem: progressCircle, attribute: .height, multiplier: 0.7, constant: 0.0)
+            ])
         
         titleContainer.backgroundColor = UIColor.clear
         textLabel.textColor = UIColor.white
