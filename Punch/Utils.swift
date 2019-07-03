@@ -37,7 +37,7 @@ public func calculateScoreFrom(shifts: [Shift1]) -> Double {
                 total += 10
             }
         }
-        if Date().greaterThanOrEqual(otherDate: startDate.addingTimeInterval(86400)) && shift.punchInTime == "" {
+        if Date().timeIntervalSince1970 + 86400 > startTimeInterval && shift.punchInTime == "" {
             total -= 20
         }
         
