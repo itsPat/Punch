@@ -30,7 +30,7 @@ class CustomCell: UICollectionViewCell {
         let startTime = Date(timeIntervalSince1970: startTimeInterval)
         let finishTime = Date(timeIntervalSince1970: finishTimeInterval )
         let dayTextLabel = formatToDateString(date: startTime)
-        let timeLabelText = (formatToHourMinutesString(date: startTime) + " - " + formatToHourMinutesString(date: finishTime))
+        let timeLabelText = (formatToHourMinutesString(date: Date(timeIntervalSince1970: TimeInterval(model.punchInTime ?? model.startTime) ?? startTimeInterval)) + " - " + formatToHourMinutesString(date: Date(timeIntervalSince1970: TimeInterval(model.punchOutTime ?? model.finishTime) ?? finishTimeInterval)))
         dayLabel.text = dayTextLabel
         timeLabel.text = timeLabelText
         let punchInTimeInterval = TimeInterval(model.punchInTime ?? "")

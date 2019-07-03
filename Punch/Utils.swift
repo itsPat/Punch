@@ -21,14 +21,16 @@ struct CustomColors {
 public func calculateScoreFrom(shifts: [Shift1]) -> Double {
     var score: Double = 0
     
+    if shifts.count == 0 {
+        return 0
+    }
+    
     for shift in shifts {
         var total: Double = 100
         guard let startTimeInterval = TimeInterval(shift.startTime) else { return 0.0 }
-        let startDate = Date(timeIntervalSince1970: startTimeInterval)
         
         if let punchInTime = shift.punchInTime,
             let punchInTimeInterval = TimeInterval(punchInTime) {
-                let punchInDate = Date(timeIntervalSince1970: punchInTimeInterval)
             if punchInTimeInterval > startTimeInterval {
                 total -= 10
             }
