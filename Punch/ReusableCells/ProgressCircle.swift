@@ -57,7 +57,7 @@ class ProgressCircle: UIView {
     
     func animate(to progress: Double) {
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        basicAnimation.toValue = progress * 0.85
+        basicAnimation.toValue = progress * 0.80
         basicAnimation.duration = 1.0
         basicAnimation.fillMode = CAMediaTimingFillMode.forwards
         basicAnimation.isRemovedOnCompletion = false
