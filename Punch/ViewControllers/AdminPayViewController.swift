@@ -42,6 +42,8 @@ class AdminPayViewController: UIViewController {
             print("EMPLOYEES FOR COMPANY ID 'FD69FCED-C156-469A-82C2-05A24D787B76' \n \(employees)")
             self.dataSource += employees.filter({ (employee) -> Bool in
                 employee.amountOwed > 0
+            }).sorted(by: { (employeeA, employeeB) -> Bool in
+                return employeeA.amountOwed > employeeB.amountOwed
             })
             self.tableView.reloadData()
         }

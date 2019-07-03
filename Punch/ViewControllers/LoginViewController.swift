@@ -24,10 +24,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.view.layoutIfNeeded()
         self.view.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
-//        self.authService.registerUser(withEmail: "russell@punch.ca", andPassword: "test123") { (complete, error) in
-//            print("complete")
-//        }
-        authService.savePasswordAndLoginInKeyChain(password: "test123", email: "russell@punch.ca")
         
         if let credentials = authService.loadPasswordAndLoginInKeyChain(),
             let email = credentials["email"],
