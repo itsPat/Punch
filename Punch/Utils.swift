@@ -18,6 +18,31 @@ struct CustomColors {
 
 //MARK: - Helper Methods
 
+public func calculateScoreFrom(shifts: [Shift1]) -> Double {
+    var score: Double = 100
+    
+    for shift in shifts {
+        guard let startTimeInterval = TimeInterval(shift.startTime) else { return 0.0 }
+        let startDate = Date(timeIntervalSince1970: startTimeInterval)
+        if let punchInTime = shift.punchInTime,
+            let punchInTimeInterval = TimeInterval(punchInTime) {
+                let punchInDate = Date(timeIntervalSince1970: punchInTimeInterval)
+            if punchInDate.greaterThanOrEqual(otherDate: startDate) {
+                score -= 1
+            }
+            
+            if punchInDate.lessThanOrEqual(otherDate: startDate) && score != 100 {
+                score += 1
+            }
+        }
+        if Date().greaterThanOrEqual(otherDate: startDate.addingTimeInterval(86400)) && shift.punchInTime == "" {
+            score -= 2
+        }
+
+    }
+    return score / 100
+}
+
 public func formatToDateString(date: Date) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "EEEE, MMMM dd"

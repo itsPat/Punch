@@ -331,7 +331,6 @@ class DataService: CompanyDataServiceProtocol, EmployeeDataServiceProtocol, Shif
                         }
                     }
                 }
-                print(shiftsByCompany)
                 handler(shiftsByCompany)
             })
         }

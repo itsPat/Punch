@@ -12,13 +12,19 @@ class CustomCell: UICollectionViewCell {
 
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
+    override func prepareForReuse() {
+        self.imageView.image = UIImage(named: "beforePunchIn")
+    }
+    
     public func configure(with model: Shift1) {
+
         guard let startTimeInterval = TimeInterval(model.startTime) else { return }
         guard let finishTimeInterval = TimeInterval(model.finishTime) else { return }
         let startTime = Date(timeIntervalSince1970: startTimeInterval)
@@ -27,18 +33,47 @@ class CustomCell: UICollectionViewCell {
         let timeLabelText = (formatToHourMinutesString(date: startTime) + " - " + formatToHourMinutesString(date: finishTime))
         dayLabel.text = dayTextLabel
         timeLabel.text = timeLabelText
-        print(Date())
+        guard let punchInTimeInterval = TimeInterval(model.punchInTime ?? "") else { return }
+        let punchInDate = Date(timeIntervalSince1970: punchInTimeInterval)
+        
+        if model.punchInTime == "" && Date().lessThanOrEqual(otherDate: startTime) {
+            imageView.image = UIImage(named: "beforePunchIn")
+        }
+        if model.punchInTime == "" && Date().greaterThanOrEqual(otherDate: startTime) {
+            imageView.image = UIImage(named: "alertPunchIn")
+        }
+        if punchInTimeInterval <= startTimeInterval + 120 {
+            imageView.image = UIImage(named: "goodPunchedIn")
+        }
+        if punchInTimeInterval > startTimeInterval + 120 {
+            imageView.image = UIImage(named: "alertPunchedIn")
+        }
     }
     
-    public func configure(with employee: Employee1) {
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current // Change this to another locale if you want to force a specific locale, otherwise this is redundant as the current locale is the default already
-        formatter.numberStyle = .currency
-        let hrlyRate = employee.hourlyRate
-        if let formattedHrlyRate = formatter.string(from: hrlyRate as NSNumber) {
-            timeLabel.text = "Hourly Rate: \(formattedHrlyRate)"
+    public func configure(with model: Shift1, and employeeName: String) {
+        guard let startTimeInterval = TimeInterval(model.startTime) else { return }
+        guard let finishTimeInterval = TimeInterval(model.finishTime) else { return }
+        let startTime = Date(timeIntervalSince1970: startTimeInterval)
+//        let finishTime = Date(timeIntervalSince1970: finishTimeInterval )
+        
+        let timeLabelText = (formatToHourMinutesString(date: Date(timeIntervalSince1970: TimeInterval(model.punchInTime ?? model.startTime) ?? startTimeInterval)) + " - " + formatToHourMinutesString(date: Date(timeIntervalSince1970: TimeInterval(model.punchOutTime ?? model.finishTime) ?? finishTimeInterval)))
+        dayLabel.text = employeeName
+        timeLabel.text = timeLabelText
+        guard let punchInTimeInterval = TimeInterval(model.punchInTime ?? "") else { return }
+//        let punchInDate = Date(timeIntervalSince1970: punchInTimeInterval)
+        
+        if model.punchInTime == "" && Date().lessThanOrEqual(otherDate: startTime) {
+            imageView.image = UIImage(named: "beforePunchIn")
         }
-        dayLabel.text = employee.name
+        if model.punchInTime == "" && Date().greaterThanOrEqual(otherDate: startTime) {
+            imageView.image = UIImage(named: "alertPunchIn")
+        }
+        if punchInTimeInterval <= startTimeInterval + 120 {
+            imageView.image = UIImage(named: "goodPunchedIn")
+        }
+        if punchInTimeInterval > startTimeInterval + 120 {
+            imageView.image = UIImage(named: "alertPunchedIn")
+        }
     }
     
 }

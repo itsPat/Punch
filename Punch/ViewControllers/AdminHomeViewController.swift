@@ -135,12 +135,8 @@ class AdminHomeViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 30, right: 0)
         layout()
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
     }
     
     // MARK: - Layout
@@ -288,12 +284,7 @@ extension AdminHomeViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as? CustomCell else { return UICollectionViewCell() }
         
         let shiftWithEmployeeName = shiftsWithEmployeeName[indexPath.item]
-        if let startTimeInterval = TimeInterval(shiftWithEmployeeName.shift.startTime),
-            let finishTimeInterval = TimeInterval(shiftWithEmployeeName.shift.finishTime) {
-            cell.dayLabel.text = shiftWithEmployeeName.name
-            cell.timeLabel.text = formatToHourMinutesString(date: Date(timeIntervalSince1970: startTimeInterval)) + " - " + formatToHourMinutesString(date: Date(timeIntervalSince1970: finishTimeInterval))
-        }
-        
+        cell.configure(with: shiftWithEmployeeName.shift, and: shiftWithEmployeeName.name)
         cell.setCornerRadius()
         cell.layer.backgroundColor = UIColor.white.cgColor
         return cell

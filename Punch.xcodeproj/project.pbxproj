@@ -55,6 +55,7 @@
 		D25736B322C3D3B700362F44 /* Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736B022C3D3B600362F44 /* Shifts.swift */; };
 		D25736DC22C5420C00362F44 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736DB22C5420C00362F44 /* KeyChainManager.swift */; };
 		D25736DE22C5422400362F44 /* CustomCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */; };
+		D2A204DD22CC422300A2876B /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A204DC22CC422300A2876B /* ProgressCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,7 @@
 		D25736B022C3D3B600362F44 /* Shifts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shifts.swift; sourceTree = "<group>"; };
 		D25736DB22C5420C00362F44 /* KeyChainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		D25736DD22C5422400362F44 /* CustomCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionReusableView.swift; sourceTree = "<group>"; };
+		D2A204DC22CC422300A2876B /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +249,7 @@
 				78DB040622C690F40015AB6F /* EmployeeTableViewCell.swift */,
 				78515C0B22C6D74300DBA4E4 /* SaveShiftTableViewCell.swift */,
 				786A44FA22CA5346004DF104 /* EmployeePayTableViewCell.swift */,
+				D2A204DC22CC422300A2876B /* ProgressCircle.swift */,
 			);
 			path = ReusableCells;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				D25736DE22C5422400362F44 /* CustomCollectionReusableView.swift in Sources */,
 				78819C2B22C6993A00E5E3CA /* GradientView.swift in Sources */,
 				D25736B222C3D3B700362F44 /* Company.swift in Sources */,
+				D2A204DD22CC422300A2876B /* ProgressCircle.swift in Sources */,
 				783D5F9422C1970600645E11 /* AdminPayViewController.swift in Sources */,
 				78819C2722C6988200E5E3CA /* InterfaceViewController.swift in Sources */,
 				D25736A622C3D38B00362F44 /* AuthService.swift in Sources */,
@@ -613,7 +617,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Punch/Punch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DTTK359L6E;
+				DEVELOPMENT_TEAM = TL2NQXM9D4;
 				INFOPLIST_FILE = Punch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -634,7 +638,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Punch/Punch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DTTK359L6E;
+				DEVELOPMENT_TEAM = TL2NQXM9D4;
 				INFOPLIST_FILE = Punch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

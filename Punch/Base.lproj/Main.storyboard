@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iK6-h3-CHm">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -278,7 +278,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9r-VL-oBs">
                                         <rect key="frame" x="20" y="80" width="335" height="38.333333333333343"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bg-O4-drQ">
@@ -383,6 +383,27 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2WY-aN-F5R">
                                 <rect key="frame" x="0.0" y="453.33333333333326" width="375" height="324.66666666666674"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtP-gU-1zy">
+                                        <rect key="frame" x="155.66666666666666" y="46" width="63.666666666666657" height="25.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRx-OF-BUg">
+                                        <rect key="frame" x="155.66666666666666" y="79.333333333333314" width="63.666666666666657" height="25.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="wRx-OF-BUg" firstAttribute="centerX" secondItem="2WY-aN-F5R" secondAttribute="centerX" id="Jr4-O5-YcH"/>
+                                    <constraint firstItem="YtP-gU-1zy" firstAttribute="centerX" secondItem="2WY-aN-F5R" secondAttribute="centerX" id="LWT-gd-yVr"/>
+                                    <constraint firstItem="wRx-OF-BUg" firstAttribute="width" secondItem="YtP-gU-1zy" secondAttribute="width" id="LZd-Zx-kFj"/>
+                                    <constraint firstAttribute="bottom" secondItem="wRx-OF-BUg" secondAttribute="bottom" constant="220" id="nLd-AZ-GzC"/>
+                                    <constraint firstItem="wRx-OF-BUg" firstAttribute="top" secondItem="YtP-gU-1zy" secondAttribute="bottom" constant="8" id="oG4-V5-ULm"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KI4-7F-L4w" userLabel="titleContainer">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="153"/>
@@ -437,6 +458,7 @@
                     <tabBarItem key="tabBarItem" title="" image="history" id="42E-nH-e7f"/>
                     <connections>
                         <outlet property="calendarBottomConstraintView" destination="2WY-aN-F5R" id="yZ6-MU-f8R"/>
+                        <outlet property="scoreAmountLabel" destination="wRx-OF-BUg" id="dGX-N1-Hve"/>
                         <outlet property="textLabel" destination="bSY-pG-OKm" id="4wx-m9-MGo"/>
                         <outlet property="titleContainer" destination="KI4-7F-L4w" id="S5J-S2-vwT"/>
                     </connections>

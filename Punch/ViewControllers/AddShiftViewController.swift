@@ -254,8 +254,8 @@ extension AddShiftViewController {
                     "employeeId": "\(employeeID)",
                     "finishTime": "\(endDate.timeIntervalSince1970)",
                     "hourlyRate": employee.hourlyRate,
-                    "punchInTime": "\(startDate.timeIntervalSince1970)",
-                    "punchOutTime": "\(endDate.timeIntervalSince1970)",
+                    "punchInTime": "",
+                    "punchOutTime": "",
                     "startTime": "\(startDate.timeIntervalSince1970)"
                     ])
                 print("SUBMITTING SHIFT TO FIREBASE ✅")

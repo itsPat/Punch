@@ -22,17 +22,23 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgI-Mi-pVs" userLabel="containerView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beforePunchIn" translatesAutoresizingMaskIntoConstraints="NO" id="RSt-pR-xNB">
+                                <rect key="frame" x="344" y="30" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="RSt-pR-xNB" secondAttribute="height" multiplier="1:1" id="nth-1I-Ogu"/>
+                                </constraints>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tcF-hR-EIZ">
-                                <rect key="frame" x="12" y="12" width="390" height="76"/>
+                                <rect key="frame" x="12" y="12" width="362" height="76"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pat Trudel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kG-YI-Neb">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="38"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="362" height="38"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:00 - 16:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9O0-fh-JOX">
-                                        <rect key="frame" x="0.0" y="38" width="390" height="38"/>
+                                        <rect key="frame" x="0.0" y="38" width="362" height="38"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -43,8 +49,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tcF-hR-EIZ" firstAttribute="top" secondItem="wgI-Mi-pVs" secondAttribute="top" constant="12" id="12R-zh-yGg"/>
+                            <constraint firstItem="tcF-hR-EIZ" firstAttribute="trailing" secondItem="RSt-pR-xNB" secondAttribute="leading" constant="30" id="HOH-eg-Qsz"/>
                             <constraint firstItem="tcF-hR-EIZ" firstAttribute="leading" secondItem="wgI-Mi-pVs" secondAttribute="leading" constant="12" id="Mt8-Qa-gh4"/>
-                            <constraint firstAttribute="trailing" secondItem="tcF-hR-EIZ" secondAttribute="trailing" constant="12" id="po1-ga-E2d"/>
+                            <constraint firstAttribute="trailing" secondItem="RSt-pR-xNB" secondAttribute="trailing" constant="30" id="UZS-aX-1gi"/>
+                            <constraint firstItem="RSt-pR-xNB" firstAttribute="top" secondItem="wgI-Mi-pVs" secondAttribute="top" constant="30" id="akD-bX-hea"/>
+                            <constraint firstAttribute="bottom" secondItem="RSt-pR-xNB" secondAttribute="bottom" constant="30" id="dgw-py-55D"/>
                             <constraint firstAttribute="bottom" secondItem="tcF-hR-EIZ" secondAttribute="bottom" constant="12" id="vWD-TX-xit"/>
                         </constraints>
                     </view>
@@ -59,9 +68,13 @@
             <viewLayoutGuide key="safeArea" id="NrH-cF-3P6"/>
             <connections>
                 <outlet property="dayLabel" destination="0kG-YI-Neb" id="YWR-x1-aNz"/>
+                <outlet property="imageView" destination="RSt-pR-xNB" id="N9G-w5-klE"/>
                 <outlet property="timeLabel" destination="9O0-fh-JOX" id="foX-vX-kW4"/>
             </connections>
             <point key="canvasLocation" x="220.80000000000001" y="254.57271364317842"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="beforePunchIn" width="512" height="512"/>
+    </resources>
 </document>

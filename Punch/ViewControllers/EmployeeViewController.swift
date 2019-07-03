@@ -27,6 +27,7 @@ class EmployeeViewController: InterfaceViewController {
     @IBOutlet weak var calendarBottomConstraintView: UIView!
     @IBOutlet weak var titleContainer: UIView!
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var scoreAmountLabel: UILabel!
     
     // MARK: - vars
     
@@ -100,9 +101,13 @@ class EmployeeViewController: InterfaceViewController {
         return view
     }()
     
+    var progressCircle: ProgressCircle!
+       
+    
     private let panRecognier = InstantPanGestureRecognizer()
     
     private var animator = UIViewPropertyAnimator()
+    private var percentageTextLabel: UILabel!
     
     private var isOpen = false
     private var animationProgress: CGFloat = 0
@@ -123,6 +128,8 @@ class EmployeeViewController: InterfaceViewController {
             DataService.instance.getShiftsByEmployeeId(EmployeeId: employee.id, handler: { (shifts) in
                 guard let shifts = shifts else { return }
                 self.user.shifts = shifts
+                self.updateScoreLabel(shifts: shifts, duration: 1.0)
+                self.progressCircle.animate(to: calculateScoreFrom(shifts: shifts))
                 self.items = self.shiftManager.selectShiftsBy(Employee: self.user, fromDate: Date(), toDate: sevenDaysFromNow)
                 self.items = self.items.sorted(by: { (shiftA, shiftB) -> Bool in
                     return Double(shiftA.startTime) ?? 0.0 < Double(shiftB.startTime) ?? 1.0
@@ -164,11 +171,22 @@ class EmployeeViewController: InterfaceViewController {
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+    func updateScoreLabel(shifts: [Shift1], duration: Double) {
+        let numberOfUpdatesPerSecond = 30.0
+        let numberOfUpdates = Int(duration * numberOfUpdatesPerSecond)
+        for i in 1...numberOfUpdates {
+            DispatchQueue.main.asyncAfter(deadline: .now() + (duration/numberOfUpdatesPerSecond/2.0) * Double(i)) {
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .percent
+                let score = calculateScoreFrom(shifts: shifts) / Double(numberOfUpdates) * Double(i)
+                guard let formattedScore = formatter.string(from: score as NSNumber) else { return }
+                    self.scoreAmountLabel.text = "\(formattedScore)"
+            }
+        }
     }
-    override var prefersStatusBarHidden: Bool {
-        return true
+    
+    override func viewDidLayoutSubviews() {
+        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 30, right: 0)
     }
     
     // MARK: - Layout
@@ -177,7 +195,7 @@ class EmployeeViewController: InterfaceViewController {
     
     private func layout() {
         
-        self.view.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
+        view.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
         
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(calendarView)
@@ -195,6 +213,7 @@ class EmployeeViewController: InterfaceViewController {
         overlayView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         view.addSubview(momentumView)
+        momentumView.layer.zPosition = 1
         momentumView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         momentumView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         momentumView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 80).isActive = true
@@ -222,6 +241,10 @@ class EmployeeViewController: InterfaceViewController {
         handleOverlayView.leadingAnchor.constraint(equalTo: momentumView.leadingAnchor).isActive = true
         handleOverlayView.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor).isActive = true
         handleOverlayView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 10).isActive = true
+        
+        let center = CGPoint(x: view.center.x, y: titleContainer.center.y + ((titleContainer.bounds.height + 350) + 40))
+        progressCircle = ProgressCircle(center: center)
+        view.layer.addSublayer(progressCircle)
         
         titleContainer.backgroundColor = UIColor.clear
         textLabel.textColor = UIColor.white
@@ -398,11 +421,17 @@ extension EmployeeViewController: FSCalendarDelegate, FSCalendarDataSource {
         let shiftManager = ShiftManager()
         if date.timeIntervalSince1970 != calendarView.today?.timeIntervalSince1970 {
             self.items = shiftManager.selectShiftsBy(Employee: user, withAGivenDate: date)
+            self.items = self.items.sorted(by: { (shiftA, shiftB) -> Bool in
+                return Double(shiftA.startTime) ?? 0.0 < Double(shiftB.startTime) ?? 1.0
+            })
             self.collectionView.reloadData()
         } else {
             guard let today = calendarView.today else { return }
             let sevenDaysFromNow = today.addingTimeInterval(7*24*60*60)
             self.items = shiftManager.selectShiftsBy(Employee: user, fromDate: today, toDate: sevenDaysFromNow)
+            self.items = self.items.sorted(by: { (shiftA, shiftB) -> Bool in
+                return Double(shiftA.startTime) ?? 0.0 < Double(shiftB.startTime) ?? 1.0
+            })
             self.collectionView.reloadData()
         }
     }
