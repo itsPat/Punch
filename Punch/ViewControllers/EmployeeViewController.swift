@@ -212,7 +212,6 @@ class EmployeeViewController: InterfaceViewController {
         overlayView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         view.addSubview(momentumView)
-        momentumView.layer.zPosition = 1
         momentumView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         momentumView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         momentumView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 80).isActive = true
@@ -433,6 +432,8 @@ extension EmployeeViewController: FSCalendarDelegate, FSCalendarDataSource {
             self.items = self.items.sorted(by: { (shiftA, shiftB) -> Bool in
                 return Double(shiftA.startTime) ?? 0.0 < Double(shiftB.startTime) ?? 1.0
             })
+            self.progressCircle.animate(to: calculateScoreFrom(shifts: self.items))
+            self.updateScoreLabel(shifts: self.items, duration: 1.0)
             self.collectionView.reloadData()
         } else {
             guard let today = calendarView.today else { return }
@@ -444,6 +445,8 @@ extension EmployeeViewController: FSCalendarDelegate, FSCalendarDataSource {
             self.items = self.items.sorted(by: { (shiftA, shiftB) -> Bool in
                 return Double(shiftA.startTime) ?? 0.0 < Double(shiftB.startTime) ?? 1.0
             })
+            self.progressCircle.animate(to: calculateScoreFrom(shifts: self.items))
+            self.updateScoreLabel(shifts: self.items, duration: 1.0)
             self.collectionView.reloadData()
         }
     }

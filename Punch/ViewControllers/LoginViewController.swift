@@ -27,13 +27,16 @@ class LoginViewController: UIViewController {
 //        self.authService.registerUser(withEmail: "russell@punch.ca", andPassword: "test123") { (complete, error) in
 //            print("complete")
 //        }
-//        if let credentials = authService.loadPasswordAndLoginInKeyChain(),
-//            let email = credentials["email"],
-//            let password = credentials["password"] {
-//            self.userTextField.text = email
-//            self.email = email
-//            self.password = password
-//        }
+        authService.savePasswordAndLoginInKeyChain(password: "test123", email: "russell@punch.ca")
+        
+        if let credentials = authService.loadPasswordAndLoginInKeyChain(),
+            let email = credentials["email"],
+            let password = credentials["password"] {
+            self.userTextField.text = email
+            self.email = email
+            self.password = password
+            print("⭐️CREDENTIALS: \(email) + \(password)")
+        }
     }
     
     @IBAction func signInTapped(_ sender: Any) {

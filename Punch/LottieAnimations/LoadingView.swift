@@ -23,6 +23,7 @@ class LoadingView: UIView {
         if let superview = self.superview {
             constrainToEdgesOf(superview: superview)
             setupView()
+            superview.bringSubviewToFront(self)
         }
     }
     

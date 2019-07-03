@@ -187,7 +187,6 @@ class AdminHomeViewController: UIViewController {
         overlayView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         view.addSubview(momentumView)
-        momentumView.layer.zPosition = 1
         momentumView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         momentumView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         momentumView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 80).isActive = true

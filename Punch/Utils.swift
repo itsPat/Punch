@@ -19,28 +19,32 @@ struct CustomColors {
 //MARK: - Helper Methods
 
 public func calculateScoreFrom(shifts: [Shift1]) -> Double {
-    var score: Double = 100
+    var score: Double = 0
     
     for shift in shifts {
+        var total: Double = 100
         guard let startTimeInterval = TimeInterval(shift.startTime) else { return 0.0 }
         let startDate = Date(timeIntervalSince1970: startTimeInterval)
+        
         if let punchInTime = shift.punchInTime,
             let punchInTimeInterval = TimeInterval(punchInTime) {
                 let punchInDate = Date(timeIntervalSince1970: punchInTimeInterval)
-            if punchInDate.greaterThanOrEqual(otherDate: startDate) {
-                score -= 1
+            if punchInTimeInterval > startTimeInterval {
+                total -= 10
             }
             
-            if punchInDate.lessThanOrEqual(otherDate: startDate) && score != 100 {
-                score += 1
+            if punchInTimeInterval <= startTimeInterval && score != 100 {
+                total += 10
             }
         }
         if Date().greaterThanOrEqual(otherDate: startDate.addingTimeInterval(86400)) && shift.punchInTime == "" {
-            score -= 2
+            total -= 20
         }
+        
+        score += total
 
     }
-    return score / 100
+    return score / Double(shifts.count) / 100
 }
 
 public func formatToDateString(date: Date) -> String {
