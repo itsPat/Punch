@@ -14,6 +14,7 @@ class AdminHomeViewController: UIViewController {
     @IBOutlet weak var calendarBottomConstraintView: UIView!
     @IBOutlet weak var titleContainer: UIView!
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var scoreAmountLabel: UILabel!
     
     //MARK: - Constants
     
@@ -96,7 +97,9 @@ class AdminHomeViewController: UIViewController {
         return view
     }()
     
-    //MARK: - Animation
+    var progressCircle: ProgressCircle!
+
+    
     private let panRecognier = InstantPanGestureRecognizer()
     
     private var animator = UIViewPropertyAnimator()
@@ -110,6 +113,8 @@ class AdminHomeViewController: UIViewController {
         self.shiftsWithEmployeeName.removeAll()
         DataService.instance.getAllShiftsOf(CompanyID: "FD69FCED-C156-469A-82C2-05A24D787B76") { (shifts) in
             guard let shifts = shifts else { return }
+            self.updateScoreLabel(shifts: shifts, duration: 1.0)
+            self.progressCircle.animate(to: calculateScoreFrom(shifts: shifts))
             for shift in shifts {
                 DataService.instance.getEmployeename(forUID: shift.employeeId, handler: { (name) in
                     guard let startTimeInterval = TimeInterval(shift.startTime) else { return }
@@ -126,6 +131,7 @@ class AdminHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         reloadDataSource()
+        layout()
         collectionView.delegate = self
         collectionView.dataSource = self
         calendarView.delegate = self
@@ -136,10 +142,26 @@ class AdminHomeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 30, right: 0)
-        layout()
+//        layout()
     }
     
+    
+    
     // MARK: - Layout
+    
+    func updateScoreLabel(shifts: [Shift1], duration: Double) {
+        let numberOfUpdatesPerSecond = 30.0
+        let numberOfUpdates = Int(duration * numberOfUpdatesPerSecond)
+        for i in 1...numberOfUpdates {
+            DispatchQueue.main.asyncAfter(deadline: .now() + (duration/numberOfUpdatesPerSecond/2.0) * Double(i)) {
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .percent
+                let score = calculateScoreFrom(shifts: shifts) / Double(numberOfUpdates) * Double(i)
+                guard let formattedScore = formatter.string(from: score as NSNumber) else { return }
+                self.scoreAmountLabel.text = "\(formattedScore)"
+            }
+        }
+    }
     
     private var bottomConstraint = NSLayoutConstraint()
     
@@ -163,6 +185,7 @@ class AdminHomeViewController: UIViewController {
         overlayView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         view.addSubview(momentumView)
+        momentumView.layer.zPosition = 1
         momentumView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         momentumView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         momentumView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 80).isActive = true
@@ -200,6 +223,10 @@ class AdminHomeViewController: UIViewController {
             ])
         noneTextLabel.textAlignment = .center
         noneTextLabel.textColor = CustomColors.darkBlue
+        
+        let center = CGPoint(x: view.center.x, y: view.center.y + 100)
+        progressCircle = ProgressCircle(center: center)
+        view.layer.addSublayer(progressCircle)
         
         titleContainer.backgroundColor = UIColor.clear
         textLabel.textColor = UIColor.white

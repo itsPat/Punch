@@ -242,7 +242,7 @@ class EmployeeViewController: InterfaceViewController {
         handleOverlayView.trailingAnchor.constraint(equalTo: momentumView.trailingAnchor).isActive = true
         handleOverlayView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 10).isActive = true
         
-        let center = CGPoint(x: view.center.x, y: titleContainer.center.y + ((titleContainer.bounds.height + 350) + 40))
+        let center = CGPoint(x: view.center.x, y: view.center.y + 150)
         progressCircle = ProgressCircle(center: center)
         view.layer.addSublayer(progressCircle)
         

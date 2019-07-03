@@ -305,6 +305,27 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BK0-so-Pz7">
                                 <rect key="frame" x="0.0" y="404.33333333333326" width="375" height="324.66666666666674"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrV-Hv-0tl">
+                                        <rect key="frame" x="155.66666666666666" y="46" width="63.666666666666657" height="25.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BfA-cX-VHu">
+                                        <rect key="frame" x="155.66666666666666" y="79.333333333333371" width="63.666666666666657" height="25.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="BfA-cX-VHu" firstAttribute="centerX" secondItem="BK0-so-Pz7" secondAttribute="centerX" id="8u6-nA-tUD"/>
+                                    <constraint firstItem="BfA-cX-VHu" firstAttribute="width" secondItem="rrV-Hv-0tl" secondAttribute="width" id="Cw7-l6-vhd"/>
+                                    <constraint firstAttribute="bottom" secondItem="BfA-cX-VHu" secondAttribute="bottom" constant="220" id="KK4-jp-zDI"/>
+                                    <constraint firstItem="BfA-cX-VHu" firstAttribute="top" secondItem="rrV-Hv-0tl" secondAttribute="bottom" constant="8" id="SOz-Aa-Rxk"/>
+                                    <constraint firstItem="rrV-Hv-0tl" firstAttribute="centerX" secondItem="BK0-so-Pz7" secondAttribute="centerX" id="uYg-X7-SdC"/>
+                                </constraints>
                             </view>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YdO-E3-IFN" userLabel="seperatorView">
                                 <rect key="frame" x="18.666666666666657" y="128.33333333333334" width="337.66666666666674" height="1"/>
@@ -332,6 +353,7 @@
                     <tabBarItem key="tabBarItem" title="" image="home" id="WrV-My-m4I"/>
                     <connections>
                         <outlet property="calendarBottomConstraintView" destination="BK0-so-Pz7" id="Qn1-6q-ubl"/>
+                        <outlet property="scoreAmountLabel" destination="BfA-cX-VHu" id="2z8-kq-R5T"/>
                         <outlet property="textLabel" destination="x9r-VL-oBs" id="7RS-HI-Dcx"/>
                         <outlet property="titleContainer" destination="FIx-Fn-wlr" id="627-bb-7A2"/>
                     </connections>

@@ -20,7 +20,6 @@ class ProgressCircle: CAShapeLayer {
     init(center: CGPoint) {
         super.init()
         print("center init")
-        let center = CGPoint(x: center.x, y: center.y)
         let bezierPath = UIBezierPath(arcCenter: center, radius: 85, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
         path = bezierPath.cgPath
         strokeColor = UIColor.lightGray.cgColor
