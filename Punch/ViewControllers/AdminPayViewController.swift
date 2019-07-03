@@ -37,9 +37,9 @@ class AdminPayViewController: UIViewController {
 
     func populateDataSource() {
         print("Getting DATA ✅")
-        DataService.instance.getEmployeesByCompanyId(companyId: "7C5A37CA-A6E9-47D6-A69E-CA4144B75AA7") { (employees) in
+        DataService.instance.getEmployeesByCompanyId(companyId: "FD69FCED-C156-469A-82C2-05A24D787B76") { (employees) in
             guard let employees = employees else { return }
-            print("EMPLOYEES FOR COMPANY ID '7C5A37CA-A6E9-47D6-A69E-CA4144B75AA7' \n \(employees)")
+            print("EMPLOYEES FOR COMPANY ID 'FD69FCED-C156-469A-82C2-05A24D787B76' \n \(employees)")
             self.dataSource += employees.filter({ (employee) -> Bool in
                 employee.amountOwed > 0
             })
@@ -66,7 +66,10 @@ extension AdminPayViewController: UITableViewDataSource {
         let employeeCell = tableView.dequeueReusableCell(withIdentifier:   EmployeePayTableViewCell.reuseIdentifier()) as!  EmployeePayTableViewCell
         let employee = dataSource[indexPath.row]
         employeeCell.employeeNameLabel.text = employee.name
-        employeeCell.amountOwedLabel.text = "$\(employee.amountOwed)"
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        guard let formattedAmountOwed = formatter.string(from: employee.amountOwed as NSNumber) else { return UITableViewCell()}
+        employeeCell.amountOwedLabel.text = formattedAmountOwed
         return employeeCell
     }
 }
