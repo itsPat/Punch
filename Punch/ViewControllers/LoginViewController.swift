@@ -24,13 +24,16 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.view.layoutIfNeeded()
         self.view.setGradientBackground(colorOne: CustomColors.blue, colorTwo: CustomColors.darkBlue)
-        if let credentials = authService.loadPasswordAndLoginInKeyChain(),
-            let email = credentials["email"],
-            let password = credentials["password"] {
-            self.userTextField.text = email
-            self.email = email
-            self.password = password
-        }
+//        self.authService.registerUser(withEmail: "russell@punch.ca", andPassword: "test123") { (complete, error) in
+//            print("complete")
+//        }
+//        if let credentials = authService.loadPasswordAndLoginInKeyChain(),
+//            let email = credentials["email"],
+//            let password = credentials["password"] {
+//            self.userTextField.text = email
+//            self.email = email
+//            self.password = password
+//        }
     }
     
     @IBAction func signInTapped(_ sender: Any) {

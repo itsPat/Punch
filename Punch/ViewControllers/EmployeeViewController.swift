@@ -152,7 +152,6 @@ class EmployeeViewController: InterfaceViewController {
         layout()
         panRecognier.addTarget(self, action: #selector(panned))
         handleOverlayView.addGestureRecognizer(panRecognier)
-        
     }
     
     func updateAmountOwedLabel(employee: Employee1, duration: Double) {
@@ -427,6 +426,9 @@ extension EmployeeViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let shiftManager = ShiftManager()
         if date.timeIntervalSince1970 != calendarView.today?.timeIntervalSince1970 {
+            DataService.instance.getShiftsByEmployeeId(EmployeeId: self.user.id) { (shifts) in
+                self.user.shifts = shifts
+            }
             self.items = shiftManager.selectShiftsBy(Employee: user, withAGivenDate: date)
             self.items = self.items.sorted(by: { (shiftA, shiftB) -> Bool in
                 return Double(shiftA.startTime) ?? 0.0 < Double(shiftB.startTime) ?? 1.0
@@ -435,6 +437,9 @@ extension EmployeeViewController: FSCalendarDelegate, FSCalendarDataSource {
         } else {
             guard let today = calendarView.today else { return }
             let sevenDaysFromNow = today.addingTimeInterval(7*24*60*60)
+            DataService.instance.getShiftsByEmployeeId(EmployeeId: self.user.id) { (shifts) in
+                self.user.shifts = shifts
+            }
             self.items = shiftManager.selectShiftsBy(Employee: user, fromDate: today, toDate: sevenDaysFromNow)
             self.items = self.items.sorted(by: { (shiftA, shiftB) -> Bool in
                 return Double(shiftA.startTime) ?? 0.0 < Double(shiftB.startTime) ?? 1.0
