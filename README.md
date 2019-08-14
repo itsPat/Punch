@@ -1,3 +1,3 @@
 # Punch
 
-<img  src="punch02 (3).gif" width="350" height="60%" />
+<img  src="punch02 (3).gif" width="350pt" height="800pt" />
