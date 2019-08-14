@@ -1,7 +1,5 @@
 # Punch
 
-<img  src="punch02 (3).gif" width="300pt" height="640pt" />
-
 ## Description
 A time-clock  and scheduling app
 
@@ -13,4 +11,8 @@ A time-clock  and scheduling app
 - [x] Core Location
 - [x] Geofencing
 - [x] Geolocation
+
+<img  src="punch02 (3).gif" width="300pt" height="640pt" />
+
+
 
